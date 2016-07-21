@@ -11,7 +11,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/compute/network/post'
+require 'google/storage/network/post'
 
 module Google
   module Storage

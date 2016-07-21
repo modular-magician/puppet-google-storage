@@ -1,4 +1,4 @@
-# Copyright 2017 Google Inc.
+# Copyright 2018 Google Inc.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -40,7 +40,7 @@
 # command line you can pass it via Facter:
 #
 #   FACTER_cred_path=/path/to/my/cred.json \
-#       puppet apply examples/bucket.pp
+#       puppet apply .tools/end2end/data/bucket~acl.pp
 #
 # For convenience you optionally can add it to your ~/.bash_profile (or the
 # respective .profile settings) environment:
@@ -55,11 +55,22 @@ gauth_credential { 'mycred':
   ],
 }
 
-# This is a simple example of a bucket creation/ensure existence. If you want a
-# more thorough setup of its ACL please refer to 'examples/bucket~acl.pp'
-# manifest.
-gstorage_bucket { 'puppet-storage-module-test':
+gstorage_bucket { 'puppet-e2e-puppet-storage-module-test':
   ensure     => present,
+  acl        => [
+    {
+      entity => 'user-nelsona@google.com',
+      role   => 'OWNER',
+    },
+    {
+      entity => 'allAuthenticatedUsers',
+      role   => 'READER',
+    },
+    {
+      entity => 'project-owners-1068887641754',
+      role   => 'OWNER',
+    },
+  ],
   project    => 'google.com:graphite-playground',
   credential => 'mycred',
 }

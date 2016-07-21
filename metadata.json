@@ -1,6 +1,6 @@
 {
   "name": "google-gstorage",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": "Google",
   "summary": "A Puppet module to manage Google Compute Storage resources",
   "license": "Apache-2.0",
@@ -71,7 +71,6 @@
   "tags": [
     "google",
     "cloud",
-    "compute",
     "storage"
   ],
   "data_provider": null,

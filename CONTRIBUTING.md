@@ -85,10 +85,10 @@ puppet-codegen:
 
   * .gitignore
   * .rubocop.yml
-  * .tests/end2end/data/bucket.pp
-  * .tests/end2end/data/bucket_access_control.pp
-  * .tests/end2end/data/bucket~acl.pp
-  * .tests/end2end/data/delete_bucket.pp
+  * .tools/end2end/data/bucket.pp
+  * .tools/end2end/data/bucket_access_control.pp
+  * .tools/end2end/data/bucket~acl.pp
+  * .tools/end2end/data/delete_bucket.pp
   * CHANGELOG.md
   * CONTRIBUTING.md
   * examples/bucket.pp
@@ -173,7 +173,7 @@ puppet-codegen:
 The list below contains all the files that were automatically sourced from a
 central location:
 
-  * .tests/README.md
+  * .tools/README.md
   * Gemfile.lock
   * LICENSE
   * spec/data/poor_example.pp
