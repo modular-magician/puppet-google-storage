@@ -1,10 +1,10 @@
-# Google Compute Storage Puppet Module
+# Google Cloud Storage Puppet Module
 
 #### Table of Contents
 
 1. [Module Description - What the module does and why it is useful](
     #module-description)
-2. [Setup - The basics of getting started with Google Compute Storage](#setup)
+2. [Setup - The basics of getting started with Google Cloud Storage](#setup)
 3. [Usage - Configuration options and additional functionality](#usage)
 4. [Reference - An under-the-hood peek at what the module is doing and how](
    #reference)
@@ -13,7 +13,7 @@
 
 ## Module Description
 
-This Puppet module manages the resource of Google Compute Storage.
+This Puppet module manages the resource of Google Cloud Storage.
 You can manage its resources using standard Puppet DSL and the module will,
 under the hood, ensure the state described will be reflected in the Google
 Cloud Platform resources.
