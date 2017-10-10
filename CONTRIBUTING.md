@@ -98,6 +98,7 @@ puppet-codegen:
   * Gemfile
   * lib/google/hash_utils.rb
   * lib/google/object_store.rb
+  * lib/google/storage/api/gstorage_object.rb
   * lib/google/storage/network/base.rb
   * lib/google/storage/network/delete.rb
   * lib/google/storage/network/get.rb
@@ -165,6 +166,9 @@ puppet-codegen:
   * spec/spec_helper.rb
   * spec/string_utils_spec.rb
   * spec/test_constants.rb
+  * tasks/README.md
+  * tasks/upload.json
+  * tasks/upload.rb
 
 The list below contains all the files that were automatically sourced from a
 central location:

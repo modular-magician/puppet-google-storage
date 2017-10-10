@@ -10,6 +10,8 @@
 3. [Usage - Configuration options and additional functionality](#usage)
 4. [Reference - An under-the-hood peek at what the module is doing and how](
    #reference)
+    - [Classes](#classes)
+    - [Bolt Tasks](#bolt-tasks)
 5. [Limitations - OS compatibility, etc.](#limitations)
 6. [Development - Guide for contributing to the module](#development)
 
@@ -581,6 +583,37 @@ Required.  The entity holding the permission, in one of the following forms:
 
 * `id`: Output only.
   The ID of the access-control entry.
+
+
+### Bolt Tasks
+
+
+#### `tasks/upload.rb`
+
+  Uploads a local file to Google Cloud Storage
+
+This task takes inputs as JSON from standard input.
+
+##### Arguments
+
+  - `name`:
+    The name of the remote file to upload
+
+  - `type`:
+    The type of the remote file (in MIME notation) (default:
+    'application/octet-stream')
+
+  - `source`:
+    The path to a local file to upload
+
+  - `bucket`:
+    The target bucket to write the file to
+
+  - `project`:
+    The project that owns the bucket
+
+  - `credential`:
+    Path to a service account credentials file
 
 
 ## Limitations
