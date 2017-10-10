@@ -51,15 +51,9 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
               allow(Time).to receive(:now).and_return(
                 Time.new(2017, 1, 2, 3, 4, 5)
               )
-              expect_network_get_success 1,
-                                         name: 'title0',
-                                         bucket: 'test name#0 data'
-              expect_network_get_success 2,
-                                         name: 'title1',
-                                         bucket: 'test name#1 data'
-              expect_network_get_success 3,
-                                         name: 'title2',
-                                         bucket: 'test name#2 data'
+              expect_network_get_success 1, name: 'title0'
+              expect_network_get_success 2, name: 'title1'
+              expect_network_get_success 3, name: 'title2'
             end
 
             let(:catalog) do
@@ -92,32 +86,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                       project_team => {
                         team           => 'owners',
                         project_number => 'test project_number#1 data',
-                      },
-                    },
-                    {
-                      bucket       => 'resource(bucket,2)',
-                      domain       => 'test domain#2 data',
-                      email        => 'test email#2 data',
-                      entity       => 'test entity#2 data',
-                      entity_id    => 'test entity_id#2 data',
-                      id           => 'test id#2 data',
-                      role         => 'WRITER',
-                      project_team => {
-                        team           => 'viewers',
-                        project_number => 'test project_number#2 data',
-                      },
-                    },
-                    {
-                      bucket       => 'resource(bucket,0)',
-                      domain       => 'test domain#3 data',
-                      email        => 'test email#3 data',
-                      entity       => 'test entity#3 data',
-                      entity_id    => 'test entity_id#3 data',
-                      id           => 'test id#3 data',
-                      role         => 'OWNER',
-                      project_team => {
-                        team           => 'editors',
-                        project_number => 'test project_number#3 data',
                       },
                     },
                   ],
@@ -249,6 +217,19 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                         project_number => 'test project_number#2 data',
                       },
                     },
+                    {
+                      bucket       => 'resource(bucket,0)',
+                      domain       => 'test domain#3 data',
+                      email        => 'test email#3 data',
+                      entity       => 'test entity#3 data',
+                      entity_id    => 'test entity_id#3 data',
+                      id           => 'test id#3 data',
+                      role         => 'OWNER',
+                      project_team => {
+                        team           => 'editors',
+                        project_number => 'test project_number#3 data',
+                      },
+                    },
                   ],
                   cors                          => [
                     {
@@ -369,32 +350,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                       project_team => {
                         team           => 'owners',
                         project_number => 'test project_number#4 data',
-                      },
-                    },
-                    {
-                      bucket       => 'resource(bucket,2)',
-                      domain       => 'test domain#5 data',
-                      email        => 'test email#5 data',
-                      entity       => 'test entity#5 data',
-                      entity_id    => 'test entity_id#5 data',
-                      id           => 'test id#5 data',
-                      role         => 'WRITER',
-                      project_team => {
-                        team           => 'viewers',
-                        project_number => 'test project_number#5 data',
-                      },
-                    },
-                    {
-                      bucket       => 'resource(bucket,0)',
-                      domain       => 'test domain#6 data',
-                      email        => 'test email#6 data',
-                      entity       => 'test entity#6 data',
-                      entity_id    => 'test entity_id#6 data',
-                      id           => 'test id#6 data',
-                      role         => 'OWNER',
-                      project_team => {
-                        team           => 'editors',
-                        project_number => 'test project_number#6 data',
                       },
                     },
                   ],
@@ -530,58 +485,9 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                 catalog.resource('Gstorage_bucket[title0]').provider
               end
 
-              # TODO(nelsonjr): Implement complex array object test.
-              # it 'acl' do
-              #   # Add test code here
-              # end
-              # TODO(nelsonjr): Implement complex array object test.
-              # it 'cors' do
-              #   # Add test code here
-              # end
-              it { is_expected.to have_attributes(id: 'test id#0 data') }
-              # TODO(nelsonjr): Implement complex nested property object test.
-              # it 'lifecycle' do
-              #   # Add test code here
-              # end
-              it do
-                is_expected.to have_attributes(location: 'test location#0 data')
+              it 'was expected to be present', broken: true do
+                pending('Implement tests where object references its own type.')
               end
-              # TODO(nelsonjr): Implement complex nested property object test.
-              # it 'logging' do
-              #   # Add test code here
-              # end
-              it do
-                is_expected.to have_attributes(metageneration: 1_438_554_838)
-              end
-              it { is_expected.to have_attributes(name: 'title0') }
-              # TODO(nelsonjr): Implement complex nested property object test.
-              # it 'owner' do
-              #   # Add test code here
-              # end
-              it { is_expected.to have_attributes(project_number: 93_526_318) }
-              it do
-                is_expected.to have_attributes(storage_class: 'MULTI_REGIONAL')
-              end
-              it do
-                is_expected
-                  .to have_attributes(
-                    time_created: ::Time.parse('2048-10-25T11:37:54+00:00')
-                  )
-              end
-              it do
-                is_expected
-                  .to have_attributes(
-                    updated: ::Time.parse('2040-09-29T02:08:01+00:00')
-                  )
-              end
-              # TODO(nelsonjr): Implement complex nested property object test.
-              # it 'versioning' do
-              #   # Add test code here
-              # end
-              # TODO(nelsonjr): Implement complex nested property object test.
-              # it 'website' do
-              #   # Add test code here
-              # end
             end
 
             context 'Gstorage_bucket[title1]' do
@@ -589,56 +495,9 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                 catalog.resource('Gstorage_bucket[title1]').provider
               end
 
-              # TODO(nelsonjr): Implement complex array object test.
-              # it 'acl' do
-              #   # Add test code here
-              # end
-              # TODO(nelsonjr): Implement complex array object test.
-              # it 'cors' do
-              #   # Add test code here
-              # end
-              it { is_expected.to have_attributes(id: 'test id#1 data') }
-              # TODO(nelsonjr): Implement complex nested property object test.
-              # it 'lifecycle' do
-              #   # Add test code here
-              # end
-              it do
-                is_expected.to have_attributes(location: 'test location#1 data')
+              it 'was expected to be present', broken: true do
+                pending('Implement tests where object references its own type.')
               end
-              # TODO(nelsonjr): Implement complex nested property object test.
-              # it 'logging' do
-              #   # Add test code here
-              # end
-              it do
-                is_expected.to have_attributes(metageneration: 2_877_109_677)
-              end
-              it { is_expected.to have_attributes(name: 'title1') }
-              # TODO(nelsonjr): Implement complex nested property object test.
-              # it 'owner' do
-              #   # Add test code here
-              # end
-              it { is_expected.to have_attributes(project_number: 187_052_636) }
-              it { is_expected.to have_attributes(storage_class: 'REGIONAL') }
-              it do
-                is_expected
-                  .to have_attributes(
-                    time_created: ::Time.parse('2127-08-20T23:15:48+00:00')
-                  )
-              end
-              it do
-                is_expected
-                  .to have_attributes(
-                    updated: ::Time.parse('2111-06-29T04:16:03+00:00')
-                  )
-              end
-              # TODO(nelsonjr): Implement complex nested property object test.
-              # it 'versioning' do
-              #   # Add test code here
-              # end
-              # TODO(nelsonjr): Implement complex nested property object test.
-              # it 'website' do
-              #   # Add test code here
-              # end
             end
 
             context 'Gstorage_bucket[title2]' do
@@ -646,56 +505,9 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                 catalog.resource('Gstorage_bucket[title2]').provider
               end
 
-              # TODO(nelsonjr): Implement complex array object test.
-              # it 'acl' do
-              #   # Add test code here
-              # end
-              # TODO(nelsonjr): Implement complex array object test.
-              # it 'cors' do
-              #   # Add test code here
-              # end
-              it { is_expected.to have_attributes(id: 'test id#2 data') }
-              # TODO(nelsonjr): Implement complex nested property object test.
-              # it 'lifecycle' do
-              #   # Add test code here
-              # end
-              it do
-                is_expected.to have_attributes(location: 'test location#2 data')
+              it 'was expected to be present', broken: true do
+                pending('Implement tests where object references its own type.')
               end
-              # TODO(nelsonjr): Implement complex nested property object test.
-              # it 'logging' do
-              #   # Add test code here
-              # end
-              it do
-                is_expected.to have_attributes(metageneration: 4_315_664_515)
-              end
-              it { is_expected.to have_attributes(name: 'title2') }
-              # TODO(nelsonjr): Implement complex nested property object test.
-              # it 'owner' do
-              #   # Add test code here
-              # end
-              it { is_expected.to have_attributes(project_number: 280_578_955) }
-              it { is_expected.to have_attributes(storage_class: 'STANDARD') }
-              it do
-                is_expected
-                  .to have_attributes(
-                    time_created: ::Time.parse('2206-06-15T10:53:43+00:00')
-                  )
-              end
-              it do
-                is_expected
-                  .to have_attributes(
-                    updated: ::Time.parse('2182-03-27T06:24:04+00:00')
-                  )
-              end
-              # TODO(nelsonjr): Implement complex nested property object test.
-              # it 'versioning' do
-              #   # Add test code here
-              # end
-              # TODO(nelsonjr): Implement complex nested property object test.
-              # it 'website' do
-              #   # Add test code here
-              # end
             end
           end
 
@@ -715,9 +527,9 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
               allow(Time).to receive(:now).and_return(
                 Time.new(2017, 1, 2, 3, 4, 5)
               )
-              expect_network_get_success 1, bucket: 'test name#0 data'
-              expect_network_get_success 2, bucket: 'test name#1 data'
-              expect_network_get_success 3, bucket: 'test name#2 data'
+              expect_network_get_success 1
+              expect_network_get_success 2
+              expect_network_get_success 3
             end
 
             let(:catalog) do
@@ -750,32 +562,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                       project_team => {
                         team           => 'owners',
                         project_number => 'test project_number#1 data',
-                      },
-                    },
-                    {
-                      bucket       => 'resource(bucket,2)',
-                      domain       => 'test domain#2 data',
-                      email        => 'test email#2 data',
-                      entity       => 'test entity#2 data',
-                      entity_id    => 'test entity_id#2 data',
-                      id           => 'test id#2 data',
-                      role         => 'WRITER',
-                      project_team => {
-                        team           => 'viewers',
-                        project_number => 'test project_number#2 data',
-                      },
-                    },
-                    {
-                      bucket       => 'resource(bucket,0)',
-                      domain       => 'test domain#3 data',
-                      email        => 'test email#3 data',
-                      entity       => 'test entity#3 data',
-                      entity_id    => 'test entity_id#3 data',
-                      id           => 'test id#3 data',
-                      role         => 'OWNER',
-                      project_team => {
-                        team           => 'editors',
-                        project_number => 'test project_number#3 data',
                       },
                     },
                   ],
@@ -908,6 +694,19 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                         project_number => 'test project_number#2 data',
                       },
                     },
+                    {
+                      bucket       => 'resource(bucket,0)',
+                      domain       => 'test domain#3 data',
+                      email        => 'test email#3 data',
+                      entity       => 'test entity#3 data',
+                      entity_id    => 'test entity_id#3 data',
+                      id           => 'test id#3 data',
+                      role         => 'OWNER',
+                      project_team => {
+                        team           => 'editors',
+                        project_number => 'test project_number#3 data',
+                      },
+                    },
                   ],
                   cors                          => [
                     {
@@ -1029,32 +828,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                       project_team => {
                         team           => 'owners',
                         project_number => 'test project_number#4 data',
-                      },
-                    },
-                    {
-                      bucket       => 'resource(bucket,2)',
-                      domain       => 'test domain#5 data',
-                      email        => 'test email#5 data',
-                      entity       => 'test entity#5 data',
-                      entity_id    => 'test entity_id#5 data',
-                      id           => 'test id#5 data',
-                      role         => 'WRITER',
-                      project_team => {
-                        team           => 'viewers',
-                        project_number => 'test project_number#5 data',
-                      },
-                    },
-                    {
-                      bucket       => 'resource(bucket,0)',
-                      domain       => 'test domain#6 data',
-                      email        => 'test email#6 data',
-                      entity       => 'test entity#6 data',
-                      entity_id    => 'test entity_id#6 data',
-                      id           => 'test id#6 data',
-                      role         => 'OWNER',
-                      project_team => {
-                        team           => 'editors',
-                        project_number => 'test project_number#6 data',
                       },
                     },
                   ],
@@ -1191,58 +964,9 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                 catalog.resource('Gstorage_bucket[title0]').provider
               end
 
-              # TODO(nelsonjr): Implement complex array object test.
-              # it 'acl' do
-              #   # Add test code here
-              # end
-              # TODO(nelsonjr): Implement complex array object test.
-              # it 'cors' do
-              #   # Add test code here
-              # end
-              it { is_expected.to have_attributes(id: 'test id#0 data') }
-              # TODO(nelsonjr): Implement complex nested property object test.
-              # it 'lifecycle' do
-              #   # Add test code here
-              # end
-              it do
-                is_expected.to have_attributes(location: 'test location#0 data')
+              it 'was expected to be present', broken: true do
+                pending('Implement tests where object references its own type.')
               end
-              # TODO(nelsonjr): Implement complex nested property object test.
-              # it 'logging' do
-              #   # Add test code here
-              # end
-              it do
-                is_expected.to have_attributes(metageneration: 1_438_554_838)
-              end
-              it { is_expected.to have_attributes(name: 'test name#0 data') }
-              # TODO(nelsonjr): Implement complex nested property object test.
-              # it 'owner' do
-              #   # Add test code here
-              # end
-              it { is_expected.to have_attributes(project_number: 93_526_318) }
-              it do
-                is_expected.to have_attributes(storage_class: 'MULTI_REGIONAL')
-              end
-              it do
-                is_expected
-                  .to have_attributes(
-                    time_created: ::Time.parse('2048-10-25T11:37:54+00:00')
-                  )
-              end
-              it do
-                is_expected
-                  .to have_attributes(
-                    updated: ::Time.parse('2040-09-29T02:08:01+00:00')
-                  )
-              end
-              # TODO(nelsonjr): Implement complex nested property object test.
-              # it 'versioning' do
-              #   # Add test code here
-              # end
-              # TODO(nelsonjr): Implement complex nested property object test.
-              # it 'website' do
-              #   # Add test code here
-              # end
             end
 
             context 'Gstorage_bucket[title1]' do
@@ -1250,56 +974,9 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                 catalog.resource('Gstorage_bucket[title1]').provider
               end
 
-              # TODO(nelsonjr): Implement complex array object test.
-              # it 'acl' do
-              #   # Add test code here
-              # end
-              # TODO(nelsonjr): Implement complex array object test.
-              # it 'cors' do
-              #   # Add test code here
-              # end
-              it { is_expected.to have_attributes(id: 'test id#1 data') }
-              # TODO(nelsonjr): Implement complex nested property object test.
-              # it 'lifecycle' do
-              #   # Add test code here
-              # end
-              it do
-                is_expected.to have_attributes(location: 'test location#1 data')
+              it 'was expected to be present', broken: true do
+                pending('Implement tests where object references its own type.')
               end
-              # TODO(nelsonjr): Implement complex nested property object test.
-              # it 'logging' do
-              #   # Add test code here
-              # end
-              it do
-                is_expected.to have_attributes(metageneration: 2_877_109_677)
-              end
-              it { is_expected.to have_attributes(name: 'test name#1 data') }
-              # TODO(nelsonjr): Implement complex nested property object test.
-              # it 'owner' do
-              #   # Add test code here
-              # end
-              it { is_expected.to have_attributes(project_number: 187_052_636) }
-              it { is_expected.to have_attributes(storage_class: 'REGIONAL') }
-              it do
-                is_expected
-                  .to have_attributes(
-                    time_created: ::Time.parse('2127-08-20T23:15:48+00:00')
-                  )
-              end
-              it do
-                is_expected
-                  .to have_attributes(
-                    updated: ::Time.parse('2111-06-29T04:16:03+00:00')
-                  )
-              end
-              # TODO(nelsonjr): Implement complex nested property object test.
-              # it 'versioning' do
-              #   # Add test code here
-              # end
-              # TODO(nelsonjr): Implement complex nested property object test.
-              # it 'website' do
-              #   # Add test code here
-              # end
             end
 
             context 'Gstorage_bucket[title2]' do
@@ -1307,56 +984,9 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                 catalog.resource('Gstorage_bucket[title2]').provider
               end
 
-              # TODO(nelsonjr): Implement complex array object test.
-              # it 'acl' do
-              #   # Add test code here
-              # end
-              # TODO(nelsonjr): Implement complex array object test.
-              # it 'cors' do
-              #   # Add test code here
-              # end
-              it { is_expected.to have_attributes(id: 'test id#2 data') }
-              # TODO(nelsonjr): Implement complex nested property object test.
-              # it 'lifecycle' do
-              #   # Add test code here
-              # end
-              it do
-                is_expected.to have_attributes(location: 'test location#2 data')
+              it 'was expected to be present', broken: true do
+                pending('Implement tests where object references its own type.')
               end
-              # TODO(nelsonjr): Implement complex nested property object test.
-              # it 'logging' do
-              #   # Add test code here
-              # end
-              it do
-                is_expected.to have_attributes(metageneration: 4_315_664_515)
-              end
-              it { is_expected.to have_attributes(name: 'test name#2 data') }
-              # TODO(nelsonjr): Implement complex nested property object test.
-              # it 'owner' do
-              #   # Add test code here
-              # end
-              it { is_expected.to have_attributes(project_number: 280_578_955) }
-              it { is_expected.to have_attributes(storage_class: 'STANDARD') }
-              it do
-                is_expected
-                  .to have_attributes(
-                    time_created: ::Time.parse('2206-06-15T10:53:43+00:00')
-                  )
-              end
-              it do
-                is_expected
-                  .to have_attributes(
-                    updated: ::Time.parse('2182-03-27T06:24:04+00:00')
-                  )
-              end
-              # TODO(nelsonjr): Implement complex nested property object test.
-              # it 'versioning' do
-              #   # Add test code here
-              # end
-              # TODO(nelsonjr): Implement complex nested property object test.
-              # it 'website' do
-              #   # Add test code here
-              # end
             end
           end
 
@@ -1409,9 +1039,7 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
         # Ensure present: resource missing, ignore, no name, pass
         context 'title == name (pass)' do
           before(:each) do
-            expect_network_get_failed 1,
-                                      name: 'title0',
-                                      bucket: 'test name#0 data'
+            expect_network_get_failed 1, name: 'title0'
             expect_network_create \
               1,
               {
@@ -1442,32 +1070,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                       'team' => 'owners'
                     },
                     'role' => 'READER'
-                  },
-                  {
-                    'bucket' => 'test name#2 data',
-                    'domain' => 'test domain#2 data',
-                    'email' => 'test email#2 data',
-                    'entity' => 'test entity#2 data',
-                    'entityId' => 'test entity_id#2 data',
-                    'id' => 'test id#2 data',
-                    'projectTeam' => {
-                      'projectNumber' => 'test project_number#2 data',
-                      'team' => 'viewers'
-                    },
-                    'role' => 'WRITER'
-                  },
-                  {
-                    'bucket' => 'test name#0 data',
-                    'domain' => 'test domain#3 data',
-                    'email' => 'test email#3 data',
-                    'entity' => 'test entity#3 data',
-                    'entityId' => 'test entity_id#3 data',
-                    'id' => 'test id#3 data',
-                    'projectTeam' => {
-                      'projectNumber' => 'test project_number#3 data',
-                      'team' => 'editors'
-                    },
-                    'role' => 'OWNER'
                   }
                 ],
                 'cors' => [
@@ -1568,34 +1170,12 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                 'project' => 'test project#0 data',
                 'predefinedDefaultObjectAcl' => 'authenticatedRead'
               },
-              name: 'title0',
-              bucket: 'test name#0 data'
+              name: 'title0'
           end
 
           subject do
             apply_with_error_check(
               <<-MANIFEST
-              gstorage_bucket { 'resource(bucket,0)':
-                ensure     => present,
-                name       => 'test name#0 data',
-                project    => 'test project#0 data',
-                credential => 'cred0',
-              }
-
-              gstorage_bucket { 'resource(bucket,1)':
-                ensure     => present,
-                name       => 'test name#1 data',
-                project    => 'test project#1 data',
-                credential => 'cred1',
-              }
-
-              gstorage_bucket { 'resource(bucket,2)':
-                ensure     => present,
-                name       => 'test name#2 data',
-                project    => 'test project#2 data',
-                credential => 'cred2',
-              }
-
               gstorage_bucket { 'title0':
                 ensure                        => present,
                 acl                           => [
@@ -1623,32 +1203,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                     project_team => {
                       team           => 'owners',
                       project_number => 'test project_number#1 data',
-                    },
-                  },
-                  {
-                    bucket       => 'resource(bucket,2)',
-                    domain       => 'test domain#2 data',
-                    email        => 'test email#2 data',
-                    entity       => 'test entity#2 data',
-                    entity_id    => 'test entity_id#2 data',
-                    id           => 'test id#2 data',
-                    role         => 'WRITER',
-                    project_team => {
-                      team           => 'viewers',
-                      project_number => 'test project_number#2 data',
-                    },
-                  },
-                  {
-                    bucket       => 'resource(bucket,0)',
-                    domain       => 'test domain#3 data',
-                    email        => 'test email#3 data',
-                    entity       => 'test entity#3 data',
-                    entity_id    => 'test entity_id#3 data',
-                    id           => 'test id#3 data',
-                    role         => 'OWNER',
-                    project_team => {
-                      team           => 'editors',
-                      project_number => 'test project_number#3 data',
                     },
                   },
                 ],
@@ -1750,228 +1304,10 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                 project                       => 'test project#0 data',
                 credential                    => 'cred0',
               }
-              MANIFEST
-            ).catalog.resource('Gstorage_bucket[title0]').provider.ensure
-          end
 
-          it 'was expected to be present', broken: true do
-            pending('Implement tests where object references its own type.')
-          end
-        end
-
-        # Ensure present: resource missing, ignore, no name, fail
-        context 'title == name (fail)' do
-          # TODO(nelsonjr): Implement new test format.
-          subject { -> { raise '[placeholder] This should fail.' } }
-          it { is_expected.to raise_error(RuntimeError, /placeholder/) }
-        end
-      end
-
-      # Ensure present: resource missing, ignore, has name
-      context 'title != name' do
-        # Ensure present: resource missing, ignore, has name, pass
-        context 'title != name (pass)' do
-          before(:each) do
-            expect_network_get_failed 1, bucket: 'test name#0 data'
-            expect_network_create \
-              1,
-              {
-                'kind' => 'storage#bucket',
-                'acl' => [
-                  {
-                    'bucket' => 'test name#0 data',
-                    'domain' => 'test domain#0 data',
-                    'email' => 'test email#0 data',
-                    'entity' => 'test entity#0 data',
-                    'entityId' => 'test entity_id#0 data',
-                    'id' => 'test id#0 data',
-                    'projectTeam' => {
-                      'projectNumber' => 'test project_number#0 data',
-                      'team' => 'editors'
-                    },
-                    'role' => 'OWNER'
-                  },
-                  {
-                    'bucket' => 'test name#1 data',
-                    'domain' => 'test domain#1 data',
-                    'email' => 'test email#1 data',
-                    'entity' => 'test entity#1 data',
-                    'entityId' => 'test entity_id#1 data',
-                    'id' => 'test id#1 data',
-                    'projectTeam' => {
-                      'projectNumber' => 'test project_number#1 data',
-                      'team' => 'owners'
-                    },
-                    'role' => 'READER'
-                  },
-                  {
-                    'bucket' => 'test name#2 data',
-                    'domain' => 'test domain#2 data',
-                    'email' => 'test email#2 data',
-                    'entity' => 'test entity#2 data',
-                    'entityId' => 'test entity_id#2 data',
-                    'id' => 'test id#2 data',
-                    'projectTeam' => {
-                      'projectNumber' => 'test project_number#2 data',
-                      'team' => 'viewers'
-                    },
-                    'role' => 'WRITER'
-                  },
-                  {
-                    'bucket' => 'test name#0 data',
-                    'domain' => 'test domain#3 data',
-                    'email' => 'test email#3 data',
-                    'entity' => 'test entity#3 data',
-                    'entityId' => 'test entity_id#3 data',
-                    'id' => 'test id#3 data',
-                    'projectTeam' => {
-                      'projectNumber' => 'test project_number#3 data',
-                      'team' => 'editors'
-                    },
-                    'role' => 'OWNER'
-                  }
-                ],
-                'cors' => [
-                  {
-                    'maxAgeSeconds' => 334_924_763,
-                    'method' => %w[rr ss tt uu vv],
-                    'origin' => %w[ww xx],
-                    'responseHeader' => %w[jj kk ll mm nn]
-                  },
-                  {
-                    'maxAgeSeconds' => 669_849_527,
-                    'method' => %w[ll mm nn oo pp],
-                    'origin' => %w[vv ww xx],
-                    'responseHeader' => %w[vv ww xx yy zz]
-                  },
-                  {
-                    'maxAgeSeconds' => 1_004_774_291,
-                    'method' => %w[ff gg hh ii jj],
-                    'origin' => %w[tt uu vv],
-                    'responseHeader' => %w[hh ii jj kk ll]
-                  }
-                ],
-                'lifecycle' => {
-                  'rule' => [
-                    {
-                      'action' => {
-                        'storageClass' => 'test storage_class#0 data',
-                        'type' => 'Delete'
-                      },
-                      'condition' => {
-                        'age' => 1_777_301_852,
-                        'createdBefore' => '1998-04-19T23:15:17+00:00',
-                        'isLive' => true,
-                        'matchesStorageClass' => %w[ii jj kk ll],
-                        'numNewerVersions' => 2_057_963_480
-                      }
-                    },
-                    {
-                      'action' => {
-                        'storageClass' => 'test storage_class#1 data',
-                        'type' => 'SetStorageClass'
-                      },
-                      'condition' => {
-                        'age' => 3_554_603_704,
-                        'createdBefore' => '2026-08-06T22:30:34+00:00',
-                        'isLive' => false,
-                        'matchesStorageClass' => %w[ii jj kk ll],
-                        'numNewerVersions' => 4_115_926_961
-                      }
-                    },
-                    {
-                      'action' => {
-                        'storageClass' => 'test storage_class#2 data',
-                        'type' => 'Delete'
-                      },
-                      'condition' => {
-                        'age' => 5_331_905_557,
-                        'createdBefore' => '2054-11-23T21:45:51+00:00',
-                        'isLive' => true,
-                        'matchesStorageClass' => %w[ii jj kk ll],
-                        'numNewerVersions' => 6_173_890_442
-                      }
-                    },
-                    {
-                      'action' => {
-                        'storageClass' => 'test storage_class#3 data',
-                        'type' => 'SetStorageClass'
-                      },
-                      'condition' => {
-                        'age' => 7_109_207_409,
-                        'createdBefore' => '2083-03-12T21:01:09+00:00',
-                        'isLive' => false,
-                        'matchesStorageClass' => %w[ii jj kk ll],
-                        'numNewerVersions' => 8_231_853_923
-                      }
-                    }
-                  ]
-                },
-                'location' => 'test location#0 data',
-                'logging' => {
-                  'logBucket' => 'test log_bucket#0 data',
-                  'logObjectPrefix' => 'test log_object_prefix#0 data'
-                },
-                'metageneration' => 1_438_554_838,
-                'name' => 'test name#0 data',
-                'owner' => {
-                  'entity' => 'test entity#0 data',
-                  'entityId' => 'test entity_id#0 data'
-                },
-                'storageClass' => 'MULTI_REGIONAL',
-                'versioning' => {
-                  'enabled' => true
-                },
-                'website' => {
-                  'mainPageSuffix' => 'test main_page_suffix#0 data',
-                  'notFoundPage' => 'test not_found_page#0 data'
-                },
-                'project' => 'test project#0 data',
-                'predefinedDefaultObjectAcl' => 'authenticatedRead'
-              },
-              bucket: 'test name#0 data'
-          end
-
-          subject do
-            apply_with_error_check(
-              <<-MANIFEST
-              gstorage_bucket { 'resource(bucket,0)':
-                ensure     => present,
-                name       => 'test name#0 data',
-                project    => 'test project#0 data',
-                credential => 'cred0',
-              }
-
-              gstorage_bucket { 'resource(bucket,1)':
-                ensure     => present,
-                name       => 'test name#1 data',
-                project    => 'test project#1 data',
-                credential => 'cred1',
-              }
-
-              gstorage_bucket { 'resource(bucket,2)':
-                ensure     => present,
-                name       => 'test name#2 data',
-                project    => 'test project#2 data',
-                credential => 'cred2',
-              }
-
-              gstorage_bucket { 'title0':
+              gstorage_bucket { 'title1':
                 ensure                        => present,
                 acl                           => [
-                  {
-                    bucket       => 'resource(bucket,0)',
-                    domain       => 'test domain#0 data',
-                    email        => 'test email#0 data',
-                    entity       => 'test entity#0 data',
-                    entity_id    => 'test entity_id#0 data',
-                    id           => 'test id#0 data',
-                    role         => 'OWNER',
-                    project_team => {
-                      team           => 'editors',
-                      project_number => 'test project_number#0 data',
-                    },
-                  },
                   {
                     bucket       => 'resource(bucket,1)',
                     domain       => 'test domain#1 data',
@@ -2009,6 +1345,270 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                     project_team => {
                       team           => 'editors',
                       project_number => 'test project_number#3 data',
+                    },
+                  },
+                ],
+                cors                          => [
+                  {
+                    max_age_seconds => 669849527,
+                    method          => ['ll', 'mm', 'nn', 'oo', 'pp'],
+                    origin          => ['vv', 'ww', 'xx'],
+                    response_header => ['vv', 'ww', 'xx', 'yy', 'zz'],
+                  },
+                  {
+                    max_age_seconds => 1004774291,
+                    method          => ['ff', 'gg', 'hh', 'ii', 'jj'],
+                    origin          => ['tt', 'uu', 'vv'],
+                    response_header => ['hh', 'ii', 'jj', 'kk', 'll'],
+                  },
+                  {
+                    max_age_seconds => 1339699054,
+                    method          => ['vv', 'ww', 'xx', 'yy', 'zz'],
+                    origin          => ['ss', 'tt', 'uu', 'vv'],
+                    response_header => ['tt', 'uu', 'vv', 'ww', 'xx'],
+                  },
+                  {
+                    max_age_seconds => 1674623818,
+                    method          => ['tt', 'uu', 'vv', 'ww', 'xx'],
+                    origin          => ['qq', 'rr', 'ss', 'tt'],
+                    response_header => ['ff', 'gg', 'hh', 'ii', 'jj'],
+                  },
+                ],
+                lifecycle                     => {
+                  rule => [
+                    {
+                      action    => {
+                        storage_class => 'test storage_class#1 data',
+                        type          => 'SetStorageClass',
+                      },
+                      condition => {
+                        age_days              => 3554603704,
+                        created_before        => '2026-08-06T22:30:34+00:00',
+                        is_live               => false,
+                        matches_storage_class => ['ss', 'tt'],
+                        num_newer_versions    => 4115926961,
+                      },
+                    },
+                    {
+                      action    => {
+                        storage_class => 'test storage_class#2 data',
+                        type          => 'Delete',
+                      },
+                      condition => {
+                        age_days              => 5331905557,
+                        created_before        => '2054-11-23T21:45:51+00:00',
+                        is_live               => true,
+                        matches_storage_class => ['cc', 'dd', 'ee', 'ff'],
+                        num_newer_versions    => 6173890442,
+                      },
+                    },
+                  ],
+                },
+                location                      => 'test location#1 data',
+                logging                       => {
+                  log_bucket        => 'test log_bucket#1 data',
+                  log_object_prefix => 'test log_object_prefix#1 data',
+                },
+                metageneration                => 2877109677,
+                owner                         => {
+                  entity    => 'test entity#1 data',
+                  entity_id => 'test entity_id#1 data',
+                },
+                predefined_default_object_acl => 'bucketOwnerFullControl',
+                storage_class                 => 'REGIONAL',
+                versioning                    => {
+                  enabled => false,
+                },
+                website                       => {
+                  main_page_suffix => 'test main_page_suffix#1 data',
+                  not_found_page   => 'test not_found_page#1 data',
+                },
+                project                       => 'test project#1 data',
+                credential                    => 'cred1',
+              }
+              MANIFEST
+            ).catalog.resource('Gstorage_bucket[title0]').provider.ensure
+          end
+
+          it 'was expected to be present', broken: true do
+            pending('Implement tests where object references its own type.')
+          end
+        end
+
+        # Ensure present: resource missing, ignore, no name, fail
+        context 'title == name (fail)' do
+          # TODO(nelsonjr): Implement new test format.
+          subject { -> { raise '[placeholder] This should fail.' } }
+          it { is_expected.to raise_error(RuntimeError, /placeholder/) }
+        end
+      end
+
+      # Ensure present: resource missing, ignore, has name
+      context 'title != name' do
+        # Ensure present: resource missing, ignore, has name, pass
+        context 'title != name (pass)' do
+          before(:each) do
+            expect_network_get_failed 1
+            expect_network_create \
+              1,
+              'kind' => 'storage#bucket',
+              'acl' => [
+                {
+                  'bucket' => 'test name#0 data',
+                  'domain' => 'test domain#0 data',
+                  'email' => 'test email#0 data',
+                  'entity' => 'test entity#0 data',
+                  'entityId' => 'test entity_id#0 data',
+                  'id' => 'test id#0 data',
+                  'projectTeam' => {
+                    'projectNumber' => 'test project_number#0 data',
+                    'team' => 'editors'
+                  },
+                  'role' => 'OWNER'
+                },
+                {
+                  'bucket' => 'test name#1 data',
+                  'domain' => 'test domain#1 data',
+                  'email' => 'test email#1 data',
+                  'entity' => 'test entity#1 data',
+                  'entityId' => 'test entity_id#1 data',
+                  'id' => 'test id#1 data',
+                  'projectTeam' => {
+                    'projectNumber' => 'test project_number#1 data',
+                    'team' => 'owners'
+                  },
+                  'role' => 'READER'
+                }
+              ],
+              'cors' => [
+                {
+                  'maxAgeSeconds' => 334_924_763,
+                  'method' => %w[rr ss tt uu vv],
+                  'origin' => %w[ww xx],
+                  'responseHeader' => %w[jj kk ll mm nn]
+                },
+                {
+                  'maxAgeSeconds' => 669_849_527,
+                  'method' => %w[ll mm nn oo pp],
+                  'origin' => %w[vv ww xx],
+                  'responseHeader' => %w[vv ww xx yy zz]
+                },
+                {
+                  'maxAgeSeconds' => 1_004_774_291,
+                  'method' => %w[ff gg hh ii jj],
+                  'origin' => %w[tt uu vv],
+                  'responseHeader' => %w[hh ii jj kk ll]
+                }
+              ],
+              'lifecycle' => {
+                'rule' => [
+                  {
+                    'action' => {
+                      'storageClass' => 'test storage_class#0 data',
+                      'type' => 'Delete'
+                    },
+                    'condition' => {
+                      'age' => 1_777_301_852,
+                      'createdBefore' => '1998-04-19T23:15:17+00:00',
+                      'isLive' => true,
+                      'matchesStorageClass' => %w[ii jj kk ll],
+                      'numNewerVersions' => 2_057_963_480
+                    }
+                  },
+                  {
+                    'action' => {
+                      'storageClass' => 'test storage_class#1 data',
+                      'type' => 'SetStorageClass'
+                    },
+                    'condition' => {
+                      'age' => 3_554_603_704,
+                      'createdBefore' => '2026-08-06T22:30:34+00:00',
+                      'isLive' => false,
+                      'matchesStorageClass' => %w[ii jj kk ll],
+                      'numNewerVersions' => 4_115_926_961
+                    }
+                  },
+                  {
+                    'action' => {
+                      'storageClass' => 'test storage_class#2 data',
+                      'type' => 'Delete'
+                    },
+                    'condition' => {
+                      'age' => 5_331_905_557,
+                      'createdBefore' => '2054-11-23T21:45:51+00:00',
+                      'isLive' => true,
+                      'matchesStorageClass' => %w[ii jj kk ll],
+                      'numNewerVersions' => 6_173_890_442
+                    }
+                  },
+                  {
+                    'action' => {
+                      'storageClass' => 'test storage_class#3 data',
+                      'type' => 'SetStorageClass'
+                    },
+                    'condition' => {
+                      'age' => 7_109_207_409,
+                      'createdBefore' => '2083-03-12T21:01:09+00:00',
+                      'isLive' => false,
+                      'matchesStorageClass' => %w[ii jj kk ll],
+                      'numNewerVersions' => 8_231_853_923
+                    }
+                  }
+                ]
+              },
+              'location' => 'test location#0 data',
+              'logging' => {
+                'logBucket' => 'test log_bucket#0 data',
+                'logObjectPrefix' => 'test log_object_prefix#0 data'
+              },
+              'metageneration' => 1_438_554_838,
+              'name' => 'test name#0 data',
+              'owner' => {
+                'entity' => 'test entity#0 data',
+                'entityId' => 'test entity_id#0 data'
+              },
+              'storageClass' => 'MULTI_REGIONAL',
+              'versioning' => {
+                'enabled' => true
+              },
+              'website' => {
+                'mainPageSuffix' => 'test main_page_suffix#0 data',
+                'notFoundPage' => 'test not_found_page#0 data'
+              },
+              'project' => 'test project#0 data',
+              'predefinedDefaultObjectAcl' => 'authenticatedRead'
+          end
+
+          subject do
+            apply_with_error_check(
+              <<-MANIFEST
+              gstorage_bucket { 'title0':
+                ensure                        => present,
+                acl                           => [
+                  {
+                    bucket       => 'resource(bucket,0)',
+                    domain       => 'test domain#0 data',
+                    email        => 'test email#0 data',
+                    entity       => 'test entity#0 data',
+                    entity_id    => 'test entity_id#0 data',
+                    id           => 'test id#0 data',
+                    role         => 'OWNER',
+                    project_team => {
+                      team           => 'editors',
+                      project_number => 'test project_number#0 data',
+                    },
+                  },
+                  {
+                    bucket       => 'resource(bucket,1)',
+                    domain       => 'test domain#1 data',
+                    email        => 'test email#1 data',
+                    entity       => 'test entity#1 data',
+                    entity_id    => 'test entity_id#1 data',
+                    id           => 'test id#1 data',
+                    role         => 'READER',
+                    project_team => {
+                      team           => 'owners',
+                      project_number => 'test project_number#1 data',
                     },
                   },
                 ],
@@ -2110,6 +1710,129 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                 },
                 project                       => 'test project#0 data',
                 credential                    => 'cred0',
+              }
+
+              gstorage_bucket { 'title1':
+                ensure                        => present,
+                acl                           => [
+                  {
+                    bucket       => 'resource(bucket,1)',
+                    domain       => 'test domain#1 data',
+                    email        => 'test email#1 data',
+                    entity       => 'test entity#1 data',
+                    entity_id    => 'test entity_id#1 data',
+                    id           => 'test id#1 data',
+                    role         => 'READER',
+                    project_team => {
+                      team           => 'owners',
+                      project_number => 'test project_number#1 data',
+                    },
+                  },
+                  {
+                    bucket       => 'resource(bucket,2)',
+                    domain       => 'test domain#2 data',
+                    email        => 'test email#2 data',
+                    entity       => 'test entity#2 data',
+                    entity_id    => 'test entity_id#2 data',
+                    id           => 'test id#2 data',
+                    role         => 'WRITER',
+                    project_team => {
+                      team           => 'viewers',
+                      project_number => 'test project_number#2 data',
+                    },
+                  },
+                  {
+                    bucket       => 'resource(bucket,0)',
+                    domain       => 'test domain#3 data',
+                    email        => 'test email#3 data',
+                    entity       => 'test entity#3 data',
+                    entity_id    => 'test entity_id#3 data',
+                    id           => 'test id#3 data',
+                    role         => 'OWNER',
+                    project_team => {
+                      team           => 'editors',
+                      project_number => 'test project_number#3 data',
+                    },
+                  },
+                ],
+                cors                          => [
+                  {
+                    max_age_seconds => 669849527,
+                    method          => ['ll', 'mm', 'nn', 'oo', 'pp'],
+                    origin          => ['vv', 'ww', 'xx'],
+                    response_header => ['vv', 'ww', 'xx', 'yy', 'zz'],
+                  },
+                  {
+                    max_age_seconds => 1004774291,
+                    method          => ['ff', 'gg', 'hh', 'ii', 'jj'],
+                    origin          => ['tt', 'uu', 'vv'],
+                    response_header => ['hh', 'ii', 'jj', 'kk', 'll'],
+                  },
+                  {
+                    max_age_seconds => 1339699054,
+                    method          => ['vv', 'ww', 'xx', 'yy', 'zz'],
+                    origin          => ['ss', 'tt', 'uu', 'vv'],
+                    response_header => ['tt', 'uu', 'vv', 'ww', 'xx'],
+                  },
+                  {
+                    max_age_seconds => 1674623818,
+                    method          => ['tt', 'uu', 'vv', 'ww', 'xx'],
+                    origin          => ['qq', 'rr', 'ss', 'tt'],
+                    response_header => ['ff', 'gg', 'hh', 'ii', 'jj'],
+                  },
+                ],
+                lifecycle                     => {
+                  rule => [
+                    {
+                      action    => {
+                        storage_class => 'test storage_class#1 data',
+                        type          => 'SetStorageClass',
+                      },
+                      condition => {
+                        age_days              => 3554603704,
+                        created_before        => '2026-08-06T22:30:34+00:00',
+                        is_live               => false,
+                        matches_storage_class => ['ss', 'tt'],
+                        num_newer_versions    => 4115926961,
+                      },
+                    },
+                    {
+                      action    => {
+                        storage_class => 'test storage_class#2 data',
+                        type          => 'Delete',
+                      },
+                      condition => {
+                        age_days              => 5331905557,
+                        created_before        => '2054-11-23T21:45:51+00:00',
+                        is_live               => true,
+                        matches_storage_class => ['cc', 'dd', 'ee', 'ff'],
+                        num_newer_versions    => 6173890442,
+                      },
+                    },
+                  ],
+                },
+                location                      => 'test location#1 data',
+                logging                       => {
+                  log_bucket        => 'test log_bucket#1 data',
+                  log_object_prefix => 'test log_object_prefix#1 data',
+                },
+                metageneration                => 2877109677,
+                name                          => 'test name#1 data',
+                owner                         => {
+                  entity    => 'test entity#1 data',
+                  entity_id => 'test entity_id#1 data',
+                },
+                predefined_default_object_acl => 'bucketOwnerFullControl',
+                storage_class                 => 'REGIONAL',
+                versioning                    => {
+                  enabled => false,
+                },
+                website                       => {
+                  main_page_suffix => 'test main_page_suffix#1 data',
+                  not_found_page   => 'test not_found_page#1 data',
+                },
+                project                       => 'test project#1 data',
+                credential                    => 'cred1',
               }
               MANIFEST
             ).catalog.resource('Gstorage_bucket[title0]').provider.ensure
@@ -2358,11 +2081,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
     merged_uri = uri_data(id).merge(data)
     body = { kind: 'storage#bucket' }.to_json
 
-    # Remove refs that are also part of the body
-    expected_body = Hash[expected_body.map do |k, v|
-      [k.is_a?(Symbol) ? k.id2name : k, v]
-    end]
-
     request = double('request')
     allow(request).to receive(:send).and_return(http_success(body))
 
@@ -2402,68 +2120,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
     data
   end
 
-  def expect_network_get_success_bucket(id, data = {})
-    id_data = data.fetch(:name, '').include?('title') ? 'title' : 'name'
-    body = load_network_result_bucket("success#{id}~" \
-                                                           "#{id_data}.yaml")
-           .to_json
-    uri = uri_data_bucket(id).merge(data)
-
-    request = double('request')
-    allow(request).to receive(:send).and_return(http_success(body))
-
-    debug_network "!! GET #{uri}"
-    expect(Google::Storage::Network::Get).to receive(:new)
-      .with(self_link_bucket(uri),
-            instance_of(Google::FakeAuthorization)) do |args|
-      debug_network ">> GET #{args}"
-      request
-    end
-  end
-
-  def load_network_result_bucket(file)
-    results = File.join(File.dirname(__FILE__), 'data', 'network',
-                        'gstorage_bucket', file)
-    raise "Network result data file #{results}" unless File.exist?(results)
-    data = YAML.safe_load(File.read(results))
-    raise "Invalid network results #{results}" unless data.class <= Hash
-    data
-  end
-
-  # Creates variable test data to comply with self_link URI parameters
-  # Only used for gstorage_bucket objects
-  def uri_data_bucket(id)
-    {
-      name: GoogleTests::Constants::B_NAME_DATA[(id - 1) \
-        % GoogleTests::Constants::B_NAME_DATA.size],
-      project: GoogleTests::Constants::B_PROJECT_DATA[(id - 1) \
-        % GoogleTests::Constants::B_PROJECT_DATA.size]
-    }
-  end
-
-  def self_link_bucket(data)
-    URI.join(
-      'https://www.googleapis.com/storage/v1/',
-      expand_variables_bucket(
-        'b/{{name}}?projection=full',
-        data
-      )
-    )
-  end
-
-  # Creates and prefetch type so exports can be resolved without network access.
-  def prefetch_bucket
-    expect_network_get_success_bucket 1
-
-    resource = Puppet::Type.type(:gstorage_bucket).new(
-      project: 'test project#0 data',
-      name: 'test name#0 data'
-    )
-
-    Puppet::Type.type(:gstorage_bucket).provider(:google)
-                .prefetch(resource: resource)
-  end
-
   def debug(message)
     puts(message) if ENV['RSPEC_DEBUG']
   end
@@ -2471,11 +2127,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
   def debug_network(message)
     puts("Network #{message}") \
       if ENV['RSPEC_DEBUG'] || ENV['RSPEC_HTTP_VERBOSE']
-  end
-
-  def expand_variables_bucket(template, data, ext_dat = {})
-    Puppet::Type.type(:gstorage_bucket).provider(:google)
-                .expand_variables(template, data, ext_dat)
   end
 
   def create_type(id)

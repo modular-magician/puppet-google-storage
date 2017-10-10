@@ -89,6 +89,7 @@ puppet-codegen:
   * .tests/end2end/data/bucket_access_control.pp
   * .tests/end2end/data/bucket~acl.pp
   * .tests/end2end/data/delete_bucket.pp
+  * CHANGELOG.md
   * CONTRIBUTING.md
   * examples/bucket.pp
   * examples/bucket_access_control.pp

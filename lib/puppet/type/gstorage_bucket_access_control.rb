@@ -32,7 +32,7 @@ require 'google/storage/property/string'
 require 'puppet'
 
 Puppet::Type.newtype(:gstorage_bucket_access_control) do
-  @doc = <<-EOT
+  @doc = <<-DOC
     The BucketAccessControls resource represents the Access Control Lists
     (ACLs) for buckets within Google Cloud Storage. ACLs let you specify who
     has access to your data and to what extent. There are three roles that can
@@ -44,19 +44,21 @@ Puppet::Type.newtype(:gstorage_bucket_access_control) do
     bucket. For more information, see Access Control, with the caveat that this
     API uses READER, WRITER, and OWNER instead of READ, WRITE, and
     FULL_CONTROL.
-  EOT
+  DOC
 
   autorequire(:gauth_credential) do
-    [self[:credential]]
+    credential = self[:credential]
+    raise "#{ref}: required property 'credential' is missing" if credential.nil?
+    [credential]
   end
 
   ensurable
 
   newparam :credential do
-    desc <<-EOT
+    desc <<-DESC
       A gauth_credential name to be used to authenticate with Google Cloud
       Platform.
-    EOT
+    DESC
   end
 
   newparam(:project) do
@@ -81,7 +83,7 @@ Puppet::Type.newtype(:gstorage_bucket_access_control) do
   end
 
   newproperty(:entity, parent: Google::Storage::Property::String) do
-    desc <<-EOT
+    desc <<-DOC
       The entity holding the permission, in one of the following forms:
       user-userId  user-email  group-groupId  group-email  domain-domain
       project-team-projectId  allUsers  allAuthenticatedUsers Examples:  The
@@ -89,7 +91,7 @@ Puppet::Type.newtype(:gstorage_bucket_access_control) do
       example@googlegroups.com would be  group-example@googlegroups.com.  To
       refer to all members of the Google Apps for Business domain  example.com,
       the entity would be domain-example.com.
-    EOT
+    DOC
   end
 
   newproperty(:entity_id, parent: Google::Storage::Property::String) do

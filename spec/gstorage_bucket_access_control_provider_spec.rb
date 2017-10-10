@@ -582,7 +582,9 @@ describe Puppet::Type.type(:gstorage_bucket_access_control).provider(:google) do
         # Ensure absent: resource missing, ignore, no name, pass
         context 'title == name (pass)' do
           before(:each) do
-            expect_network_get_failed 1, name: 'title0'
+            expect_network_get_failed 1,
+                                      name: 'title0',
+                                      bucket: 'test name#0 data'
             expect_network_get_success_bucket 1
           end
 
@@ -624,7 +626,7 @@ describe Puppet::Type.type(:gstorage_bucket_access_control).provider(:google) do
         # Ensure absent: resource missing, ignore, has name, pass
         context 'title != name (pass)' do
           before(:each) do
-            expect_network_get_failed 1
+            expect_network_get_failed 1, bucket: 'test name#0 data'
             expect_network_get_success_bucket 1
           end
 
@@ -668,7 +670,9 @@ describe Puppet::Type.type(:gstorage_bucket_access_control).provider(:google) do
         # Ensure absent: resource exists, ignore, no name, pass
         context 'title == name (pass)' do
           before(:each) do
-            expect_network_get_success 1, name: 'title0'
+            expect_network_get_success 1,
+                                       name: 'title0',
+                                       bucket: 'test name#0 data'
             expect_network_delete 1, 'title0', bucket: 'test name#0 data'
             expect_network_get_success_bucket 1
           end
@@ -711,7 +715,7 @@ describe Puppet::Type.type(:gstorage_bucket_access_control).provider(:google) do
         # Ensure absent: resource exists, ignore, has name, pass
         context 'title != name (pass)' do
           before(:each) do
-            expect_network_get_success 1
+            expect_network_get_success 1, bucket: 'test name#0 data'
             expect_network_delete 1, nil, bucket: 'test name#0 data'
             expect_network_get_success_bucket 1
           end

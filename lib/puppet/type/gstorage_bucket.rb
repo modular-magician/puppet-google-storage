@@ -47,7 +47,7 @@ require 'google/storage/property/time'
 require 'puppet'
 
 Puppet::Type.newtype(:gstorage_bucket) do
-  @doc = <<-EOT
+  @doc = <<-DOC
     The Buckets resource represents a bucket in Google Cloud Storage. There is
     a single global namespace shared by all buckets. For more information, see
     Bucket Name Requirements. Buckets contain objects which can be accessed by
@@ -55,19 +55,21 @@ Puppet::Type.newtype(:gstorage_bucket) do
     bucketAccessControls, for use in fine-grained manipulation of an existing
     bucket's access controls. A bucket is always owned by the project team
     owners group.
-  EOT
+  DOC
 
   autorequire(:gauth_credential) do
-    [self[:credential]]
+    credential = self[:credential]
+    raise "#{ref}: required property 'credential' is missing" if credential.nil?
+    [credential]
   end
 
   ensurable
 
   newparam :credential do
-    desc <<-EOT
+    desc <<-DESC
       A gauth_credential name to be used to authenticate with Google Cloud
       Platform.
-    EOT
+    DESC
   end
 
   newparam(:name, namevar: true) do
@@ -81,7 +83,7 @@ Puppet::Type.newtype(:gstorage_bucket) do
 
   newparam(:predefined_default_object_acl,
            parent: Google::Storage::Property::Enum) do
-    desc <<-EOT
+    desc <<-DOC
       Apply a predefined set of default object access controls to this bucket.
       Acceptable values are:  - "authenticatedRead": Object owner gets OWNER
       access, and   allAuthenticatedUsers get READER access.  -
@@ -92,7 +94,7 @@ Puppet::Type.newtype(:gstorage_bucket) do
       OWNER access, and project team   members get access according to their
       roles.  - "publicRead": Object owner gets OWNER access, and allUsers get
       READER access.
-    EOT
+    DOC
     newvalue(:authenticatedRead)
     newvalue(:bucketOwnerFullControl)
     newvalue(:bucketOwnerRead)
@@ -110,33 +112,33 @@ Puppet::Type.newtype(:gstorage_bucket) do
   end
 
   newproperty(:id, parent: Google::Storage::Property::String) do
-    desc <<-EOT
+    desc <<-DOC
       The ID of the bucket. For buckets, the id and name properities are the
       same. (output only)
-    EOT
+    DOC
   end
 
   newproperty(:lifecycle, parent: Google::Storage::Property::BucketLifecycle) do
-    desc <<-EOT
+    desc <<-DOC
       The bucket's lifecycle configuration. See
       https://developers.google.com/storage/docs/lifecycle for more
       information.
-    EOT
+    DOC
   end
 
   newproperty(:location, parent: Google::Storage::Property::String) do
-    desc <<-EOT
+    desc <<-DOC
       The location of the bucket. Object data for objects in the bucket resides
       in physical storage within this region. Defaults to US. See the
       developer's guide for the authoritative list.
-    EOT
+    DOC
   end
 
   newproperty(:logging, parent: Google::Storage::Property::BucketLogging) do
-    desc <<-EOT
+    desc <<-DOC
       The bucket's logging configuration, which defines the destination bucket
       and optional name prefix for the current bucket's logs.
-    EOT
+    DOC
   end
 
   newproperty(:metageneration, parent: Google::Storage::Property::Integer) do
@@ -148,19 +150,19 @@ Puppet::Type.newtype(:gstorage_bucket) do
   end
 
   newproperty(:owner, parent: Google::Storage::Property::BucketOwner) do
-    desc <<-EOT
+    desc <<-DOC
       The owner of the bucket. This is always the project team's owner group.
-    EOT
+    DOC
   end
 
   newproperty(:project_number, parent: Google::Storage::Property::Integer) do
-    desc <<-EOT
+    desc <<-DOC
       The project number of the project the bucket belongs to. (output only)
-    EOT
+    DOC
   end
 
   newproperty(:storage_class, parent: Google::Storage::Property::Enum) do
-    desc <<-EOT
+    desc <<-DOC
       The bucket's default storage class, used whenever no storageClass is
       specified for a newly-created object. This defines how objects in the
       bucket are stored and determines the SLA and the cost of storage. Values
@@ -168,7 +170,7 @@ Puppet::Type.newtype(:gstorage_bucket) do
       DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the
       bucket is created, it will default to STANDARD. For more information, see
       storage classes.
-    EOT
+    DOC
     newvalue(:MULTI_REGIONAL)
     newvalue(:REGIONAL)
     newvalue(:STANDARD)
@@ -191,11 +193,11 @@ Puppet::Type.newtype(:gstorage_bucket) do
   end
 
   newproperty(:website, parent: Google::Storage::Property::BucketWebsite) do
-    desc <<-EOT
+    desc <<-DOC
       The bucket's website configuration, controlling how the service behaves
       when accessing bucket contents as a web site. See the Static Website
       Examples for more information.
-    EOT
+    DOC
   end
 
   # Returns all properties that a provider can export to other resources

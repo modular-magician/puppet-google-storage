@@ -50,26 +50,6 @@ acl:
     projectNumber: test project_number#1 data
     team: owners
   role: READER
-- bucket: test name#2 data
-  domain: test domain#2 data
-  email: test email#2 data
-  entity: test entity#2 data
-  entityId: test entity_id#2 data
-  id: test id#2 data
-  projectTeam:
-    projectNumber: test project_number#2 data
-    team: viewers
-  role: WRITER
-- bucket: test name#0 data
-  domain: test domain#3 data
-  email: test email#3 data
-  entity: test entity#3 data
-  entityId: test entity_id#3 data
-  id: test id#3 data
-  projectTeam:
-    projectNumber: test project_number#3 data
-    team: editors
-  role: OWNER
 cors:
 - maxAgeSeconds: 334924763
   method:

@@ -1,5 +1,7 @@
 # Google Cloud Storage Puppet Module
 
+[![Puppet Forge](http://img.shields.io/puppetforge/v/google/gstorage.svg)](https://forge.puppetlabs.com/google/gstorage)
+
 #### Table of Contents
 
 1. [Module Description - What the module does and why it is useful](
