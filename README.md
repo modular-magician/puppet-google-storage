@@ -255,7 +255,7 @@ gstorage_bucket { 'id-of-resource':
   Access controls on the bucket.
 
 ##### acl[]/bucket
-Required.  A reference to Bucket resource
+Required.  The name of the bucket.
 
 ##### acl[]/domain
 Output only.  The domain associated with the entity.
@@ -534,7 +534,7 @@ gstorage_bucket_access_control { 'id-of-resource':
 
 ##### `bucket`
 
-Required.  A reference to Bucket resource
+Required.  The name of the bucket.
 
 ##### `entity`
 
