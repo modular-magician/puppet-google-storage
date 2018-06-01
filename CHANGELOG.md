@@ -1,11 +1,5 @@
 # Changelog
 
-## 0.2.1 (2018-03-28)
-
-### Fixes
-
-- Update changes on 'lifecycle' and other object properties.
-
 ## 0.2.0 (2017-10-10)
 
 ### New features
