@@ -26,33 +26,18 @@
 # ----------------------------------------------------------------------------
 
 require 'google/hash_utils'
-require 'google/object_store'
 require 'google/storage/network/delete'
 require 'google/storage/network/get'
 require 'google/storage/network/post'
 require 'google/storage/network/put'
-require 'google/storage/property/boolean'
-require 'google/storage/property/bucket_acl'
-require 'google/storage/property/bucket_action'
-require 'google/storage/property/bucket_condition'
-require 'google/storage/property/bucket_cors'
-require 'google/storage/property/bucket_default_object_acl'
-require 'google/storage/property/bucket_lifecycle'
-require 'google/storage/property/bucket_logging'
 require 'google/storage/property/bucket_name'
-require 'google/storage/property/bucket_owner'
-require 'google/storage/property/bucket_project_team'
-require 'google/storage/property/bucket_rule'
-require 'google/storage/property/bucket_versioning'
-require 'google/storage/property/bucket_website'
+require 'google/storage/property/defaultobjectacl_project_team'
 require 'google/storage/property/enum'
 require 'google/storage/property/integer'
 require 'google/storage/property/string'
-require 'google/storage/property/string_array'
-require 'google/storage/property/time'
 require 'puppet'
 
-Puppet::Type.type(:gstorage_bucket).provide(:google) do
+Puppet::Type.type(:gstorage_default_object_acl).provide(:google) do
   mk_resource_methods
 
   def self.instances
@@ -69,53 +54,35 @@ Puppet::Type.type(:gstorage_bucket).provide(:google) do
       project = resource[:project]
       debug("prefetch #{name}") if project.nil?
       debug("prefetch #{name} @ #{project}") unless project.nil?
-      fetch = fetch_resource(resource, self_link(resource), 'storage#bucket')
-      resource.provider = present(name, fetch, resource) unless fetch.nil?
-      Google::ObjectStore.instance.add(:gstorage_bucket, resource)
+      fetch = fetch_resource(resource, self_link(resource),
+                             'storage#objectAccessControl')
+      resource.provider = present(name, fetch) unless fetch.nil?
     end
   end
 
-  def self.present(name, fetch, resource)
-    result = new(
-      { title: name, ensure: :present }.merge(fetch_to_hash(fetch, resource))
-    )
+  def self.present(name, fetch)
+    result = new({ title: name, ensure: :present }.merge(fetch_to_hash(fetch)))
     result
   end
 
-  # rubocop:disable Metrics/AbcSize
-  # rubocop:disable Metrics/MethodLength
-  def self.fetch_to_hash(fetch, resource)
+  def self.fetch_to_hash(fetch)
     {
-      acl: Google::Storage::Property::BucketAclArray.api_munge(fetch['acl']),
-      cors: Google::Storage::Property::BucketCorsArray.api_munge(fetch['cors']),
+      bucket:
+        Google::Storage::Property::BucketNameRef.api_munge(fetch['bucket']),
+      domain: Google::Storage::Property::String.api_munge(fetch['domain']),
+      email: Google::Storage::Property::String.api_munge(fetch['email']),
+      entity: Google::Storage::Property::String.api_munge(fetch['entity']),
+      entity_id: Google::Storage::Property::String.api_munge(fetch['entityId']),
+      generation:
+        Google::Storage::Property::Integer.api_munge(fetch['generation']),
       id: Google::Storage::Property::String.api_munge(fetch['id']),
-      lifecycle: Google::Storage::Property::BucketLifecycle.api_munge(
-        fetch['lifecycle']
+      object: Google::Storage::Property::String.api_munge(fetch['object']),
+      project_team: Google::Storage::Property::DefaObjeAclProjTeam.api_munge(
+        fetch['projectTeam']
       ),
-      location: Google::Storage::Property::String.api_munge(fetch['location']),
-      logging:
-        Google::Storage::Property::BucketLogging.api_munge(fetch['logging']),
-      metageneration:
-        Google::Storage::Property::Integer.api_munge(fetch['metageneration']),
-      name: Google::Storage::Property::String.api_munge(fetch['name']),
-      owner: Google::Storage::Property::BucketOwner.api_munge(fetch['owner']),
-      project_number:
-        Google::Storage::Property::Integer.api_munge(fetch['projectNumber']),
-      storage_class:
-        Google::Storage::Property::Enum.api_munge(fetch['storageClass']),
-      time_created:
-        Google::Storage::Property::Time.api_munge(fetch['timeCreated']),
-      updated: Google::Storage::Property::Time.api_munge(fetch['updated']),
-      versioning: Google::Storage::Property::BucketVersioning.api_munge(
-        fetch['versioning']
-      ),
-      website:
-        Google::Storage::Property::BucketWebsite.api_munge(fetch['website']),
-      default_object_acl: resource[:default_object_acl]
+      role: Google::Storage::Property::Enum.api_munge(fetch['role'])
     }.reject { |_, v| v.nil? }
   end
-  # rubocop:enable Metrics/MethodLength
-  # rubocop:enable Metrics/AbcSize
 
   def exists?
     debug("exists? #{@property_hash[:ensure] == :present}")
@@ -129,7 +96,7 @@ Puppet::Type.type(:gstorage_bucket).provide(:google) do
                                                     fetch_auth(@resource),
                                                     'application/json',
                                                     resource_to_request)
-    return_if_object create_req.send, 'storage#bucket'
+    return_if_object create_req.send, 'storage#objectAccessControl'
     @property_hash[:ensure] = :present
   end
 
@@ -138,7 +105,7 @@ Puppet::Type.type(:gstorage_bucket).provide(:google) do
     @deleted = true
     delete_req = Google::Storage::Network::Delete.new(self_link(@resource),
                                                       fetch_auth(@resource))
-    return_if_object delete_req.send, 'storage#bucket'
+    return_if_object delete_req.send, 'storage#objectAccessControl'
     @property_hash[:ensure] = :absent
   end
 
@@ -150,7 +117,7 @@ Puppet::Type.type(:gstorage_bucket).provide(:google) do
                                                    fetch_auth(@resource),
                                                    'application/json',
                                                    resource_to_request)
-    return_if_object update_req.send, 'storage#bucket'
+    return_if_object update_req.send, 'storage#objectAccessControl'
   end
 
   def dirty(field, from, to)
@@ -161,63 +128,39 @@ Puppet::Type.type(:gstorage_bucket).provide(:google) do
     }
   end
 
-  def exports
-    {
-      name: resource[:name]
-    }
-  end
-
   private
 
-  # rubocop:disable Metrics/MethodLength
   def self.resource_to_hash(resource)
     {
-      name: resource[:name],
-      kind: 'storage#bucket',
-      acl: resource[:acl],
-      cors: resource[:cors],
-      default_object_acl: resource[:default_object_acl],
-      id: resource[:id],
-      lifecycle: resource[:lifecycle],
-      location: resource[:location],
-      logging: resource[:logging],
-      metageneration: resource[:metageneration],
-      owner: resource[:owner],
-      project_number: resource[:project_number],
-      storage_class: resource[:storage_class],
-      time_created: resource[:time_created],
-      updated: resource[:updated],
-      versioning: resource[:versioning],
-      website: resource[:website],
       project: resource[:project],
-      predefined_default_object_acl: resource[:predefined_default_object_acl]
+      name: resource[:name],
+      kind: 'storage#objectAccessControl',
+      bucket: resource[:bucket],
+      domain: resource[:domain],
+      email: resource[:email],
+      entity: resource[:entity],
+      entity_id: resource[:entity_id],
+      generation: resource[:generation],
+      id: resource[:id],
+      object: resource[:object],
+      project_team: resource[:project_team],
+      role: resource[:role]
     }.reject { |_, v| v.nil? }
   end
-  # rubocop:enable Metrics/MethodLength
 
-  # rubocop:disable Metrics/MethodLength
   def resource_to_request
     request = {
-      kind: 'storage#bucket',
-      acl: @resource[:acl],
-      cors: @resource[:cors],
-      defaultObjectAcl: @resource[:default_object_acl],
-      lifecycle: @resource[:lifecycle],
-      location: @resource[:location],
-      logging: @resource[:logging],
-      metageneration: @resource[:metageneration],
-      name: @resource[:name],
-      owner: @resource[:owner],
-      storageClass: @resource[:storage_class],
-      versioning: @resource[:versioning],
-      website: @resource[:website],
-      project: @resource[:project],
-      predefinedDefaultObjectAcl: @resource[:predefined_default_object_acl]
+      kind: 'storage#objectAccessControl',
+      bucket: @resource[:bucket],
+      entity: @resource[:entity],
+      entityId: @resource[:entity_id],
+      object: @resource[:object],
+      projectTeam: @resource[:project_team],
+      role: @resource[:role]
     }.reject { |_, v| v.nil? }
     debug "request: #{request}" unless ENV['PUPPET_HTTP_DEBUG'].nil?
     request.to_json
   end
-  # rubocop:enable Metrics/MethodLength
 
   def fetch_auth(resource)
     self.class.fetch_auth(resource)
@@ -236,7 +179,7 @@ Puppet::Type.type(:gstorage_bucket).provide(:google) do
     URI.join(
       'https://www.googleapis.com/storage/v1/',
       expand_variables(
-        'b?project={{project}}',
+        'b/{{bucket}}/defaultObjectAcl',
         data
       )
     )
@@ -250,7 +193,7 @@ Puppet::Type.type(:gstorage_bucket).provide(:google) do
     URI.join(
       'https://www.googleapis.com/storage/v1/',
       expand_variables(
-        'b/{{name}}?projection=full',
+        'b/{{bucket}}/defaultObjectAcl/{{entity}}',
         data
       )
     )

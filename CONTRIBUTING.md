@@ -88,13 +88,17 @@ puppet-codegen:
   * .tools/end2end/data/bucket.pp
   * .tools/end2end/data/bucket_access_control.pp
   * .tools/end2end/data/bucket~acl.pp
+  * .tools/end2end/data/default_object_acl.pp
   * .tools/end2end/data/delete_bucket.pp
+  * .tools/end2end/data/object_access_control.pp
   * CHANGELOG.md
   * CONTRIBUTING.md
   * examples/bucket.pp
   * examples/bucket_access_control.pp
   * examples/bucket~acl.pp
+  * examples/default_object_acl.pp
   * examples/delete_bucket.pp
+  * examples/object_access_control.pp
   * Gemfile
   * lib/google/hash_utils.rb
   * lib/google/object_store.rb
@@ -111,6 +115,7 @@ puppet-codegen:
   * lib/google/storage/property/bucket_action.rb
   * lib/google/storage/property/bucket_condition.rb
   * lib/google/storage/property/bucket_cors.rb
+  * lib/google/storage/property/bucket_default_object_acl.rb
   * lib/google/storage/property/bucket_lifecycle.rb
   * lib/google/storage/property/bucket_logging.rb
   * lib/google/storage/property/bucket_name.rb
@@ -120,16 +125,22 @@ puppet-codegen:
   * lib/google/storage/property/bucket_versioning.rb
   * lib/google/storage/property/bucket_website.rb
   * lib/google/storage/property/bucketaccesscontrol_project_team.rb
+  * lib/google/storage/property/defaultobjectacl_project_team.rb
   * lib/google/storage/property/enum.rb
   * lib/google/storage/property/integer.rb
+  * lib/google/storage/property/objectaccesscontrol_project_team.rb
   * lib/google/storage/property/string.rb
   * lib/google/storage/property/string_array.rb
   * lib/google/storage/property/time.rb
   * lib/google/string_utils.rb
   * lib/puppet/provider/gstorage_bucket/google.rb
   * lib/puppet/provider/gstorage_bucket_access_control/google.rb
+  * lib/puppet/provider/gstorage_default_object_acl/google.rb
+  * lib/puppet/provider/gstorage_object_access_control/google.rb
   * lib/puppet/type/gstorage_bucket.rb
   * lib/puppet/type/gstorage_bucket_access_control.rb
+  * lib/puppet/type/gstorage_default_object_acl.rb
+  * lib/puppet/type/gstorage_object_access_control.rb
   * metadata.json
   * README.md
   * spec/.rubocop.yml
@@ -152,9 +163,23 @@ puppet-codegen:
   * spec/data/network/gstorage_bucket_access_control/success2~title.yaml
   * spec/data/network/gstorage_bucket_access_control/success3~name.yaml
   * spec/data/network/gstorage_bucket_access_control/success3~title.yaml
+  * spec/data/network/gstorage_default_object_acl/success1~name.yaml
+  * spec/data/network/gstorage_default_object_acl/success1~title.yaml
+  * spec/data/network/gstorage_default_object_acl/success2~name.yaml
+  * spec/data/network/gstorage_default_object_acl/success2~title.yaml
+  * spec/data/network/gstorage_default_object_acl/success3~name.yaml
+  * spec/data/network/gstorage_default_object_acl/success3~title.yaml
+  * spec/data/network/gstorage_object_access_control/success1~name.yaml
+  * spec/data/network/gstorage_object_access_control/success1~title.yaml
+  * spec/data/network/gstorage_object_access_control/success2~name.yaml
+  * spec/data/network/gstorage_object_access_control/success2~title.yaml
+  * spec/data/network/gstorage_object_access_control/success3~name.yaml
+  * spec/data/network/gstorage_object_access_control/success3~title.yaml
   * spec/fake_auth.rb
   * spec/gstorage_bucket_access_control_provider_spec.rb
   * spec/gstorage_bucket_provider_spec.rb
+  * spec/gstorage_default_object_acl_provider_spec.rb
+  * spec/gstorage_object_access_control_provider_spec.rb
   * spec/hash_utils_spec.rb
   * spec/network_blocker.rb
   * spec/network_blocker_spec.rb

@@ -62,5 +62,50 @@ module GoogleTests
       'test entity#3 data',
       'test entity#4 data'
     ].freeze
+
+    # Constants for: ObjectAccessControl.bucket
+    OAC_BUCKET_DATA = [
+      'test name#0 data',
+      'test name#1 data',
+      'test name#2 data',
+      'test name#3 data',
+      'test name#4 data'
+    ].freeze
+
+    # Constants for: ObjectAccessControl.object
+    OAC_OBJECT_DATA = [
+      'test object#0 data',
+      'test object#1 data',
+      'test object#2 data',
+      'test object#3 data',
+      'test object#4 data'
+    ].freeze
+
+    # Constants for: ObjectAccessControl.entity
+    OAC_ENTITY_DATA = [
+      'test entity#0 data',
+      'test entity#1 data',
+      'test entity#2 data',
+      'test entity#3 data',
+      'test entity#4 data'
+    ].freeze
+
+    # Constants for: DefaultObjectACL.bucket
+    DOACL_BUCKET_DATA = [
+      'test name#0 data',
+      'test name#1 data',
+      'test name#2 data',
+      'test name#3 data',
+      'test name#4 data'
+    ].freeze
+
+    # Constants for: DefaultObjectACL.entity
+    DOACL_ENTITY_DATA = [
+      'test entity#0 data',
+      'test entity#1 data',
+      'test entity#2 data',
+      'test entity#3 data',
+      'test entity#4 data'
+    ].freeze
   end
 end

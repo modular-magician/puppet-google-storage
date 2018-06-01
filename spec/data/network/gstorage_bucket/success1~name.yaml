@@ -101,6 +101,19 @@ cors:
   - jj
   - kk
   - ll
+defaultObjectAcl:
+- bucket: test name#0 data
+  domain: test domain#0 data
+  email: test email#0 data
+  entity: test entity#0 data
+  entityId: test entity_id#0 data
+  generation: 2373482136
+  id: test id#0 data
+  object: test object#0 data
+  projectTeam:
+    projectNumber: test project_number#0 data
+    team: editors
+  role: OWNER
 lifecycle:
   rule:
   - action:
