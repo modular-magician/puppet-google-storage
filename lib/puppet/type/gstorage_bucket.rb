@@ -31,6 +31,7 @@ require 'google/storage/property/bucket_acl'
 require 'google/storage/property/bucket_action'
 require 'google/storage/property/bucket_condition'
 require 'google/storage/property/bucket_cors'
+require 'google/storage/property/bucket_default_object_acl'
 require 'google/storage/property/bucket_lifecycle'
 require 'google/storage/property/bucket_logging'
 require 'google/storage/property/bucket_name'
@@ -109,6 +110,13 @@ Puppet::Type.newtype(:gstorage_bucket) do
 
   newproperty(:cors, parent: Google::Storage::Property::BucketCorsArray) do
     desc "The bucket's Cross-Origin Resource Sharing (CORS) configuration."
+  end
+
+  newproperty(:default_object_acl,
+              parent: Google::Storage::Property::BuckeDefauObjecAclArray) do
+    desc <<-DOC
+      Default access controls to apply to new objects when no ACL is provided.
+    DOC
   end
 
   newproperty(:id, parent: Google::Storage::Property::String) do
