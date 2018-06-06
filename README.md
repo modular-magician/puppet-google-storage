@@ -65,7 +65,7 @@ required gems.
 # manifest.
 gstorage_bucket { 'puppet-storage-module-test':
   ensure     => present,
-  project    => 'google.com:graphite-playground',
+  project    => $project, # e.g. 'my-test-project'
   credential => 'mycred',
 }
 
@@ -80,7 +80,7 @@ gstorage_bucket_access_control { 'user-nelsona@google.com':
   bucket     => 'puppet-storage-module-test',
   entity     => 'user-nelsona@google.com',
   role       => 'WRITER',
-  project    => 'google.com:graphite-playground',
+  project    => $project, # e.g. 'my-test-project'
   credential => 'mycred',
 }
 
@@ -96,7 +96,7 @@ gstorage_object_access_control { 'user-nelsona@google.com':
   object     => 'acl-controlled-file.txt'
   entity     => 'user-nelsona@google.com',
   role       => 'WRITER',
-  project    => 'google.com:graphite-playground',
+  project    => $project, # e.g. 'my-test-project'
   credential => 'mycred',
 }
 
@@ -111,7 +111,7 @@ gstorage_default_object_acl { 'user-nelsona@google.com':
   bucket     => 'puppet-storage-module-test',
   entity     => 'user-nelsona@google.com',
   role       => 'READER',
-  project    => 'google.com:graphite-playground',
+  project    => $project, # e.g. 'my-test-project'
   credential => 'mycred',
 }
 
@@ -215,7 +215,7 @@ A bucket is always owned by the project team owners group.
 # manifest.
 gstorage_bucket { 'puppet-storage-module-test':
   ensure     => present,
-  project    => 'google.com:graphite-playground',
+  project    => $project, # e.g. 'my-test-project'
   credential => 'mycred',
 }
 
@@ -638,7 +638,7 @@ gstorage_bucket_access_control { 'user-nelsona@google.com':
   bucket     => 'puppet-storage-module-test',
   entity     => 'user-nelsona@google.com',
   role       => 'WRITER',
-  project    => 'google.com:graphite-playground',
+  project    => $project, # e.g. 'my-test-project'
   credential => 'mycred',
 }
 
@@ -742,7 +742,7 @@ gstorage_object_access_control { 'user-nelsona@google.com':
   object     => 'acl-controlled-file.txt'
   entity     => 'user-nelsona@google.com',
   role       => 'WRITER',
-  project    => 'google.com:graphite-playground',
+  project    => $project, # e.g. 'my-test-project'
   credential => 'mycred',
 }
 
@@ -854,7 +854,7 @@ gstorage_default_object_acl { 'user-nelsona@google.com':
   bucket     => 'puppet-storage-module-test',
   entity     => 'user-nelsona@google.com',
   role       => 'READER',
-  project    => 'google.com:graphite-playground',
+  project    => $project, # e.g. 'my-test-project'
   credential => 'mycred',
 }
 
