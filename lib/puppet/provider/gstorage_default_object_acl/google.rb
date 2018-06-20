@@ -56,19 +56,19 @@ Puppet::Type.type(:gstorage_default_object_acl).provide(:google) do
       debug("prefetch #{name} @ #{project}") unless project.nil?
       fetch = fetch_resource(resource, self_link(resource),
                              'storage#objectAccessControl')
-      resource.provider = present(name, fetch) unless fetch.nil?
+      resource.provider = present(name, fetch, resource) unless fetch.nil?
     end
   end
 
-  def self.present(name, fetch)
-    result = new({ title: name, ensure: :present }.merge(fetch_to_hash(fetch)))
+  def self.present(name, fetch, resource)
+    result = new(
+      { title: name, ensure: :present }.merge(fetch_to_hash(fetch, resource))
+    )
     result
   end
 
-  def self.fetch_to_hash(fetch)
+  def self.fetch_to_hash(fetch, resource)
     {
-      bucket:
-        Google::Storage::Property::BucketNameRef.api_munge(fetch['bucket']),
       domain: Google::Storage::Property::String.api_munge(fetch['domain']),
       email: Google::Storage::Property::String.api_munge(fetch['email']),
       entity: Google::Storage::Property::String.api_munge(fetch['entity']),
@@ -80,7 +80,8 @@ Puppet::Type.type(:gstorage_default_object_acl).provide(:google) do
       project_team: Google::Storage::Property::DefaObjeAclProjTeam.api_munge(
         fetch['projectTeam']
       ),
-      role: Google::Storage::Property::Enum.api_munge(fetch['role'])
+      role: Google::Storage::Property::Enum.api_munge(fetch['role']),
+      bucket: resource[:bucket]
     }.reject { |_, v| v.nil? }
   end
 
