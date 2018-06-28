@@ -227,7 +227,7 @@ gstorage_bucket { 'puppet-storage-module-test':
 gstorage_bucket { 'id-of-resource':
   acl                           => [
     {
-      bucket       => reference to gstorage_bucket,
+      bucket       => reference to a gstorage_bucket,
       domain       => string,
       email        => string,
       entity       => string,
@@ -261,7 +261,7 @@ gstorage_bucket { 'id-of-resource':
   ],
   default_object_acl            => [
     {
-      bucket       => reference to gstorage_bucket,
+      bucket       => reference to a gstorage_bucket,
       domain       => string,
       email        => string,
       entity       => string,
@@ -648,7 +648,7 @@ gstorage_bucket_access_control { 'user-nelsona@google.com':
 
 ```puppet
 gstorage_bucket_access_control { 'id-of-resource':
-  bucket       => reference to gstorage_bucket,
+  bucket       => reference to a gstorage_bucket,
   domain       => string,
   email        => string,
   entity       => string,
@@ -752,7 +752,7 @@ gstorage_object_access_control { 'user-nelsona@google.com':
 
 ```puppet
 gstorage_object_access_control { 'id-of-resource':
-  bucket       => reference to gstorage_bucket,
+  bucket       => reference to a gstorage_bucket,
   domain       => string,
   email        => string,
   entity       => string,
@@ -864,7 +864,7 @@ gstorage_default_object_acl { 'user-nelsona@google.com':
 
 ```puppet
 gstorage_default_object_acl { 'id-of-resource':
-  bucket       => reference to gstorage_bucket,
+  bucket       => reference to a gstorage_bucket,
   domain       => string,
   email        => string,
   entity       => string,
