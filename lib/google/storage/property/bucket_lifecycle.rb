@@ -45,7 +45,7 @@ module Google
         def to_s
           {
             rule: ['[',
-                   rule.map(&:to_json).join(', '),
+                   (rule || []).map(&:to_json).join(', '),
                    ']'].join(' ')
           }.reject { |_k, v| v.nil? }.map { |k, v| "#{k}: #{v}" }.join(', ')
         end
