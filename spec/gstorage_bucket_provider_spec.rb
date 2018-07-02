@@ -63,7 +63,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                   ensure                        => present,
                   acl                           => [
                     {
-                      bucket       => 'resource(bucket,0)',
                       domain       => 'test domain#0 data',
                       email        => 'test email#0 data',
                       entity       => 'test entity#0 data',
@@ -76,7 +75,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                       },
                     },
                     {
-                      bucket       => 'resource(bucket,1)',
                       domain       => 'test domain#1 data',
                       email        => 'test email#1 data',
                       entity       => 'test entity#1 data',
@@ -86,6 +84,30 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                       project_team => {
                         team           => 'owners',
                         project_number => 'test project_number#1 data',
+                      },
+                    },
+                    {
+                      domain       => 'test domain#2 data',
+                      email        => 'test email#2 data',
+                      entity       => 'test entity#2 data',
+                      entity_id    => 'test entity_id#2 data',
+                      id           => 'test id#2 data',
+                      role         => 'WRITER',
+                      project_team => {
+                        team           => 'viewers',
+                        project_number => 'test project_number#2 data',
+                      },
+                    },
+                    {
+                      domain       => 'test domain#3 data',
+                      email        => 'test email#3 data',
+                      entity       => 'test entity#3 data',
+                      entity_id    => 'test entity_id#3 data',
+                      id           => 'test id#3 data',
+                      role         => 'OWNER',
+                      project_team => {
+                        team           => 'editors',
+                        project_number => 'test project_number#3 data',
                       },
                     },
                   ],
@@ -118,7 +140,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                       entity_id    => 'test entity_id#0 data',
                       generation   => 2373482136,
                       id           => 'test id#0 data',
-                      object       => 'test object#0 data',
                       role         => 'OWNER',
                       project_team => {
                         team           => 'editors',
@@ -209,7 +230,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                   ensure                        => present,
                   acl                           => [
                     {
-                      bucket       => 'resource(bucket,1)',
                       domain       => 'test domain#1 data',
                       email        => 'test email#1 data',
                       entity       => 'test entity#1 data',
@@ -222,7 +242,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                       },
                     },
                     {
-                      bucket       => 'resource(bucket,2)',
                       domain       => 'test domain#2 data',
                       email        => 'test email#2 data',
                       entity       => 'test entity#2 data',
@@ -232,19 +251,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                       project_team => {
                         team           => 'viewers',
                         project_number => 'test project_number#2 data',
-                      },
-                    },
-                    {
-                      bucket       => 'resource(bucket,0)',
-                      domain       => 'test domain#3 data',
-                      email        => 'test email#3 data',
-                      entity       => 'test entity#3 data',
-                      entity_id    => 'test entity_id#3 data',
-                      id           => 'test id#3 data',
-                      role         => 'OWNER',
-                      project_team => {
-                        team           => 'editors',
-                        project_number => 'test project_number#3 data',
                       },
                     },
                   ],
@@ -283,7 +289,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                       entity_id    => 'test entity_id#1 data',
                       generation   => 4746964272,
                       id           => 'test id#1 data',
-                      object       => 'test object#1 data',
                       role         => 'READER',
                       project_team => {
                         team           => 'owners',
@@ -298,7 +303,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                       entity_id    => 'test entity_id#2 data',
                       generation   => 7120446408,
                       id           => 'test id#2 data',
-                      object       => 'test object#2 data',
                       role         => 'OWNER',
                       project_team => {
                         team           => 'viewers',
@@ -313,7 +317,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                       entity_id    => 'test entity_id#3 data',
                       generation   => 9493928544,
                       id           => 'test id#3 data',
-                      object       => 'test object#3 data',
                       role         => 'READER',
                       project_team => {
                         team           => 'editors',
@@ -378,7 +381,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                   ensure                        => present,
                   acl                           => [
                     {
-                      bucket       => 'resource(bucket,2)',
                       domain       => 'test domain#2 data',
                       email        => 'test email#2 data',
                       entity       => 'test entity#2 data',
@@ -391,7 +393,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                       },
                     },
                     {
-                      bucket       => 'resource(bucket,0)',
                       domain       => 'test domain#3 data',
                       email        => 'test email#3 data',
                       entity       => 'test entity#3 data',
@@ -404,7 +405,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                       },
                     },
                     {
-                      bucket       => 'resource(bucket,1)',
                       domain       => 'test domain#4 data',
                       email        => 'test email#4 data',
                       entity       => 'test entity#4 data',
@@ -414,6 +414,30 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                       project_team => {
                         team           => 'owners',
                         project_number => 'test project_number#4 data',
+                      },
+                    },
+                    {
+                      domain       => 'test domain#5 data',
+                      email        => 'test email#5 data',
+                      entity       => 'test entity#5 data',
+                      entity_id    => 'test entity_id#5 data',
+                      id           => 'test id#5 data',
+                      role         => 'WRITER',
+                      project_team => {
+                        team           => 'viewers',
+                        project_number => 'test project_number#5 data',
+                      },
+                    },
+                    {
+                      domain       => 'test domain#6 data',
+                      email        => 'test email#6 data',
+                      entity       => 'test entity#6 data',
+                      entity_id    => 'test entity_id#6 data',
+                      id           => 'test id#6 data',
+                      role         => 'OWNER',
+                      project_team => {
+                        team           => 'editors',
+                        project_number => 'test project_number#6 data',
                       },
                     },
                   ],
@@ -458,7 +482,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                       entity_id    => 'test entity_id#2 data',
                       generation   => 7120446408,
                       id           => 'test id#2 data',
-                      object       => 'test object#2 data',
                       role         => 'OWNER',
                       project_team => {
                         team           => 'viewers',
@@ -473,7 +496,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                       entity_id    => 'test entity_id#3 data',
                       generation   => 9493928544,
                       id           => 'test id#3 data',
-                      object       => 'test object#3 data',
                       role         => 'READER',
                       project_team => {
                         team           => 'editors',
@@ -488,7 +510,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                       entity_id    => 'test entity_id#4 data',
                       generation   => 11867410680,
                       id           => 'test id#4 data',
-                      object       => 'test object#4 data',
                       role         => 'OWNER',
                       project_team => {
                         team           => 'owners',
@@ -650,7 +671,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                   ensure                        => present,
                   acl                           => [
                     {
-                      bucket       => 'resource(bucket,0)',
                       domain       => 'test domain#0 data',
                       email        => 'test email#0 data',
                       entity       => 'test entity#0 data',
@@ -663,7 +683,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                       },
                     },
                     {
-                      bucket       => 'resource(bucket,1)',
                       domain       => 'test domain#1 data',
                       email        => 'test email#1 data',
                       entity       => 'test entity#1 data',
@@ -673,6 +692,30 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                       project_team => {
                         team           => 'owners',
                         project_number => 'test project_number#1 data',
+                      },
+                    },
+                    {
+                      domain       => 'test domain#2 data',
+                      email        => 'test email#2 data',
+                      entity       => 'test entity#2 data',
+                      entity_id    => 'test entity_id#2 data',
+                      id           => 'test id#2 data',
+                      role         => 'WRITER',
+                      project_team => {
+                        team           => 'viewers',
+                        project_number => 'test project_number#2 data',
+                      },
+                    },
+                    {
+                      domain       => 'test domain#3 data',
+                      email        => 'test email#3 data',
+                      entity       => 'test entity#3 data',
+                      entity_id    => 'test entity_id#3 data',
+                      id           => 'test id#3 data',
+                      role         => 'OWNER',
+                      project_team => {
+                        team           => 'editors',
+                        project_number => 'test project_number#3 data',
                       },
                     },
                   ],
@@ -705,7 +748,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                       entity_id    => 'test entity_id#0 data',
                       generation   => 2373482136,
                       id           => 'test id#0 data',
-                      object       => 'test object#0 data',
                       role         => 'OWNER',
                       project_team => {
                         team           => 'editors',
@@ -797,7 +839,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                   ensure                        => present,
                   acl                           => [
                     {
-                      bucket       => 'resource(bucket,1)',
                       domain       => 'test domain#1 data',
                       email        => 'test email#1 data',
                       entity       => 'test entity#1 data',
@@ -810,7 +851,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                       },
                     },
                     {
-                      bucket       => 'resource(bucket,2)',
                       domain       => 'test domain#2 data',
                       email        => 'test email#2 data',
                       entity       => 'test entity#2 data',
@@ -820,19 +860,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                       project_team => {
                         team           => 'viewers',
                         project_number => 'test project_number#2 data',
-                      },
-                    },
-                    {
-                      bucket       => 'resource(bucket,0)',
-                      domain       => 'test domain#3 data',
-                      email        => 'test email#3 data',
-                      entity       => 'test entity#3 data',
-                      entity_id    => 'test entity_id#3 data',
-                      id           => 'test id#3 data',
-                      role         => 'OWNER',
-                      project_team => {
-                        team           => 'editors',
-                        project_number => 'test project_number#3 data',
                       },
                     },
                   ],
@@ -871,7 +898,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                       entity_id    => 'test entity_id#1 data',
                       generation   => 4746964272,
                       id           => 'test id#1 data',
-                      object       => 'test object#1 data',
                       role         => 'READER',
                       project_team => {
                         team           => 'owners',
@@ -886,7 +912,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                       entity_id    => 'test entity_id#2 data',
                       generation   => 7120446408,
                       id           => 'test id#2 data',
-                      object       => 'test object#2 data',
                       role         => 'OWNER',
                       project_team => {
                         team           => 'viewers',
@@ -901,7 +926,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                       entity_id    => 'test entity_id#3 data',
                       generation   => 9493928544,
                       id           => 'test id#3 data',
-                      object       => 'test object#3 data',
                       role         => 'READER',
                       project_team => {
                         team           => 'editors',
@@ -967,7 +991,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                   ensure                        => present,
                   acl                           => [
                     {
-                      bucket       => 'resource(bucket,2)',
                       domain       => 'test domain#2 data',
                       email        => 'test email#2 data',
                       entity       => 'test entity#2 data',
@@ -980,7 +1003,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                       },
                     },
                     {
-                      bucket       => 'resource(bucket,0)',
                       domain       => 'test domain#3 data',
                       email        => 'test email#3 data',
                       entity       => 'test entity#3 data',
@@ -993,7 +1015,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                       },
                     },
                     {
-                      bucket       => 'resource(bucket,1)',
                       domain       => 'test domain#4 data',
                       email        => 'test email#4 data',
                       entity       => 'test entity#4 data',
@@ -1003,6 +1024,30 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                       project_team => {
                         team           => 'owners',
                         project_number => 'test project_number#4 data',
+                      },
+                    },
+                    {
+                      domain       => 'test domain#5 data',
+                      email        => 'test email#5 data',
+                      entity       => 'test entity#5 data',
+                      entity_id    => 'test entity_id#5 data',
+                      id           => 'test id#5 data',
+                      role         => 'WRITER',
+                      project_team => {
+                        team           => 'viewers',
+                        project_number => 'test project_number#5 data',
+                      },
+                    },
+                    {
+                      domain       => 'test domain#6 data',
+                      email        => 'test email#6 data',
+                      entity       => 'test entity#6 data',
+                      entity_id    => 'test entity_id#6 data',
+                      id           => 'test id#6 data',
+                      role         => 'OWNER',
+                      project_team => {
+                        team           => 'editors',
+                        project_number => 'test project_number#6 data',
                       },
                     },
                   ],
@@ -1047,7 +1092,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                       entity_id    => 'test entity_id#2 data',
                       generation   => 7120446408,
                       id           => 'test id#2 data',
-                      object       => 'test object#2 data',
                       role         => 'OWNER',
                       project_team => {
                         team           => 'viewers',
@@ -1062,7 +1106,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                       entity_id    => 'test entity_id#3 data',
                       generation   => 9493928544,
                       id           => 'test id#3 data',
-                      object       => 'test object#3 data',
                       role         => 'READER',
                       project_team => {
                         team           => 'editors',
@@ -1077,7 +1120,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                       entity_id    => 'test entity_id#4 data',
                       generation   => 11867410680,
                       id           => 'test id#4 data',
-                      object       => 'test object#4 data',
                       role         => 'OWNER',
                       project_team => {
                         team           => 'owners',
@@ -1268,7 +1310,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                 'kind' => 'storage#bucket',
                 'acl' => [
                   {
-                    'bucket' => 'test name#0 data',
                     'domain' => 'test domain#0 data',
                     'email' => 'test email#0 data',
                     'entity' => 'test entity#0 data',
@@ -1281,7 +1322,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                     'role' => 'OWNER'
                   },
                   {
-                    'bucket' => 'test name#1 data',
                     'domain' => 'test domain#1 data',
                     'email' => 'test email#1 data',
                     'entity' => 'test entity#1 data',
@@ -1292,6 +1332,30 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                       'team' => 'owners'
                     },
                     'role' => 'READER'
+                  },
+                  {
+                    'domain' => 'test domain#2 data',
+                    'email' => 'test email#2 data',
+                    'entity' => 'test entity#2 data',
+                    'entityId' => 'test entity_id#2 data',
+                    'id' => 'test id#2 data',
+                    'projectTeam' => {
+                      'projectNumber' => 'test project_number#2 data',
+                      'team' => 'viewers'
+                    },
+                    'role' => 'WRITER'
+                  },
+                  {
+                    'domain' => 'test domain#3 data',
+                    'email' => 'test email#3 data',
+                    'entity' => 'test entity#3 data',
+                    'entityId' => 'test entity_id#3 data',
+                    'id' => 'test id#3 data',
+                    'projectTeam' => {
+                      'projectNumber' => 'test project_number#3 data',
+                      'team' => 'editors'
+                    },
+                    'role' => 'OWNER'
                   }
                 ],
                 'cors' => [
@@ -1323,7 +1387,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                     'entityId' => 'test entity_id#0 data',
                     'generation' => 2_373_482_136,
                     'id' => 'test id#0 data',
-                    'object' => 'test object#0 data',
                     'projectTeam' => {
                       'projectNumber' => 'test project_number#0 data',
                       'team' => 'editors'
@@ -1419,7 +1482,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                 ensure                        => present,
                 acl                           => [
                   {
-                    bucket       => 'resource(bucket,0)',
                     domain       => 'test domain#0 data',
                     email        => 'test email#0 data',
                     entity       => 'test entity#0 data',
@@ -1432,7 +1494,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                     },
                   },
                   {
-                    bucket       => 'resource(bucket,1)',
                     domain       => 'test domain#1 data',
                     email        => 'test email#1 data',
                     entity       => 'test entity#1 data',
@@ -1442,6 +1503,30 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                     project_team => {
                       team           => 'owners',
                       project_number => 'test project_number#1 data',
+                    },
+                  },
+                  {
+                    domain       => 'test domain#2 data',
+                    email        => 'test email#2 data',
+                    entity       => 'test entity#2 data',
+                    entity_id    => 'test entity_id#2 data',
+                    id           => 'test id#2 data',
+                    role         => 'WRITER',
+                    project_team => {
+                      team           => 'viewers',
+                      project_number => 'test project_number#2 data',
+                    },
+                  },
+                  {
+                    domain       => 'test domain#3 data',
+                    email        => 'test email#3 data',
+                    entity       => 'test entity#3 data',
+                    entity_id    => 'test entity_id#3 data',
+                    id           => 'test id#3 data',
+                    role         => 'OWNER',
+                    project_team => {
+                      team           => 'editors',
+                      project_number => 'test project_number#3 data',
                     },
                   },
                 ],
@@ -1474,7 +1559,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                     entity_id    => 'test entity_id#0 data',
                     generation   => 2373482136,
                     id           => 'test id#0 data',
-                    object       => 'test object#0 data',
                     role         => 'OWNER',
                     project_team => {
                       team           => 'editors',
@@ -1560,175 +1644,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                 project                       => 'test project#0 data',
                 credential                    => 'cred0',
               }
-
-              gstorage_bucket { 'title1':
-                ensure                        => present,
-                acl                           => [
-                  {
-                    bucket       => 'resource(bucket,1)',
-                    domain       => 'test domain#1 data',
-                    email        => 'test email#1 data',
-                    entity       => 'test entity#1 data',
-                    entity_id    => 'test entity_id#1 data',
-                    id           => 'test id#1 data',
-                    role         => 'READER',
-                    project_team => {
-                      team           => 'owners',
-                      project_number => 'test project_number#1 data',
-                    },
-                  },
-                  {
-                    bucket       => 'resource(bucket,2)',
-                    domain       => 'test domain#2 data',
-                    email        => 'test email#2 data',
-                    entity       => 'test entity#2 data',
-                    entity_id    => 'test entity_id#2 data',
-                    id           => 'test id#2 data',
-                    role         => 'WRITER',
-                    project_team => {
-                      team           => 'viewers',
-                      project_number => 'test project_number#2 data',
-                    },
-                  },
-                  {
-                    bucket       => 'resource(bucket,0)',
-                    domain       => 'test domain#3 data',
-                    email        => 'test email#3 data',
-                    entity       => 'test entity#3 data',
-                    entity_id    => 'test entity_id#3 data',
-                    id           => 'test id#3 data',
-                    role         => 'OWNER',
-                    project_team => {
-                      team           => 'editors',
-                      project_number => 'test project_number#3 data',
-                    },
-                  },
-                ],
-                cors                          => [
-                  {
-                    max_age_seconds => 669849527,
-                    method          => ['ll', 'mm', 'nn', 'oo', 'pp'],
-                    origin          => ['vv', 'ww', 'xx'],
-                    response_header => ['vv', 'ww', 'xx', 'yy', 'zz'],
-                  },
-                  {
-                    max_age_seconds => 1004774291,
-                    method          => ['ff', 'gg', 'hh', 'ii', 'jj'],
-                    origin          => ['tt', 'uu', 'vv'],
-                    response_header => ['hh', 'ii', 'jj', 'kk', 'll'],
-                  },
-                  {
-                    max_age_seconds => 1339699054,
-                    method          => ['vv', 'ww', 'xx', 'yy', 'zz'],
-                    origin          => ['ss', 'tt', 'uu', 'vv'],
-                    response_header => ['tt', 'uu', 'vv', 'ww', 'xx'],
-                  },
-                  {
-                    max_age_seconds => 1674623818,
-                    method          => ['tt', 'uu', 'vv', 'ww', 'xx'],
-                    origin          => ['qq', 'rr', 'ss', 'tt'],
-                    response_header => ['ff', 'gg', 'hh', 'ii', 'jj'],
-                  },
-                ],
-                default_object_acl            => [
-                  {
-                    bucket       => 'resource(bucket,1)',
-                    domain       => 'test domain#1 data',
-                    email        => 'test email#1 data',
-                    entity       => 'test entity#1 data',
-                    entity_id    => 'test entity_id#1 data',
-                    generation   => 4746964272,
-                    id           => 'test id#1 data',
-                    object       => 'test object#1 data',
-                    role         => 'READER',
-                    project_team => {
-                      team           => 'owners',
-                      project_number => 'test project_number#1 data',
-                    },
-                  },
-                  {
-                    bucket       => 'resource(bucket,2)',
-                    domain       => 'test domain#2 data',
-                    email        => 'test email#2 data',
-                    entity       => 'test entity#2 data',
-                    entity_id    => 'test entity_id#2 data',
-                    generation   => 7120446408,
-                    id           => 'test id#2 data',
-                    object       => 'test object#2 data',
-                    role         => 'OWNER',
-                    project_team => {
-                      team           => 'viewers',
-                      project_number => 'test project_number#2 data',
-                    },
-                  },
-                  {
-                    bucket       => 'resource(bucket,0)',
-                    domain       => 'test domain#3 data',
-                    email        => 'test email#3 data',
-                    entity       => 'test entity#3 data',
-                    entity_id    => 'test entity_id#3 data',
-                    generation   => 9493928544,
-                    id           => 'test id#3 data',
-                    object       => 'test object#3 data',
-                    role         => 'READER',
-                    project_team => {
-                      team           => 'editors',
-                      project_number => 'test project_number#3 data',
-                    },
-                  },
-                ],
-                lifecycle                     => {
-                  rule => [
-                    {
-                      action    => {
-                        storage_class => 'test storage_class#1 data',
-                        type          => 'SetStorageClass',
-                      },
-                      condition => {
-                        age_days              => 3554603704,
-                        created_before        => '2026-08-06T22:30:34+00:00',
-                        is_live               => false,
-                        matches_storage_class => ['ss', 'tt'],
-                        num_newer_versions    => 4115926961,
-                      },
-                    },
-                    {
-                      action    => {
-                        storage_class => 'test storage_class#2 data',
-                        type          => 'Delete',
-                      },
-                      condition => {
-                        age_days              => 5331905557,
-                        created_before        => '2054-11-23T21:45:51+00:00',
-                        is_live               => true,
-                        matches_storage_class => ['cc', 'dd', 'ee', 'ff'],
-                        num_newer_versions    => 6173890442,
-                      },
-                    },
-                  ],
-                },
-                location                      => 'test location#1 data',
-                logging                       => {
-                  log_bucket        => 'test log_bucket#1 data',
-                  log_object_prefix => 'test log_object_prefix#1 data',
-                },
-                metageneration                => 2877109677,
-                owner                         => {
-                  entity    => 'test entity#1 data',
-                  entity_id => 'test entity_id#1 data',
-                },
-                predefined_default_object_acl => 'bucketOwnerFullControl',
-                storage_class                 => 'REGIONAL',
-                versioning                    => {
-                  enabled => false,
-                },
-                website                       => {
-                  main_page_suffix => 'test main_page_suffix#1 data',
-                  not_found_page   => 'test not_found_page#1 data',
-                },
-                project                       => 'test project#1 data',
-                credential                    => 'cred1',
-              }
               MANIFEST
             ).catalog.resource('Gstorage_bucket[title0]').provider.ensure
           end
@@ -1757,7 +1672,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
               'kind' => 'storage#bucket',
               'acl' => [
                 {
-                  'bucket' => 'test name#0 data',
                   'domain' => 'test domain#0 data',
                   'email' => 'test email#0 data',
                   'entity' => 'test entity#0 data',
@@ -1770,7 +1684,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                   'role' => 'OWNER'
                 },
                 {
-                  'bucket' => 'test name#1 data',
                   'domain' => 'test domain#1 data',
                   'email' => 'test email#1 data',
                   'entity' => 'test entity#1 data',
@@ -1781,6 +1694,30 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                     'team' => 'owners'
                   },
                   'role' => 'READER'
+                },
+                {
+                  'domain' => 'test domain#2 data',
+                  'email' => 'test email#2 data',
+                  'entity' => 'test entity#2 data',
+                  'entityId' => 'test entity_id#2 data',
+                  'id' => 'test id#2 data',
+                  'projectTeam' => {
+                    'projectNumber' => 'test project_number#2 data',
+                    'team' => 'viewers'
+                  },
+                  'role' => 'WRITER'
+                },
+                {
+                  'domain' => 'test domain#3 data',
+                  'email' => 'test email#3 data',
+                  'entity' => 'test entity#3 data',
+                  'entityId' => 'test entity_id#3 data',
+                  'id' => 'test id#3 data',
+                  'projectTeam' => {
+                    'projectNumber' => 'test project_number#3 data',
+                    'team' => 'editors'
+                  },
+                  'role' => 'OWNER'
                 }
               ],
               'cors' => [
@@ -1812,7 +1749,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                   'entityId' => 'test entity_id#0 data',
                   'generation' => 2_373_482_136,
                   'id' => 'test id#0 data',
-                  'object' => 'test object#0 data',
                   'projectTeam' => {
                     'projectNumber' => 'test project_number#0 data',
                     'team' => 'editors'
@@ -1906,7 +1842,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                 ensure                        => present,
                 acl                           => [
                   {
-                    bucket       => 'resource(bucket,0)',
                     domain       => 'test domain#0 data',
                     email        => 'test email#0 data',
                     entity       => 'test entity#0 data',
@@ -1919,7 +1854,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                     },
                   },
                   {
-                    bucket       => 'resource(bucket,1)',
                     domain       => 'test domain#1 data',
                     email        => 'test email#1 data',
                     entity       => 'test entity#1 data',
@@ -1929,6 +1863,30 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                     project_team => {
                       team           => 'owners',
                       project_number => 'test project_number#1 data',
+                    },
+                  },
+                  {
+                    domain       => 'test domain#2 data',
+                    email        => 'test email#2 data',
+                    entity       => 'test entity#2 data',
+                    entity_id    => 'test entity_id#2 data',
+                    id           => 'test id#2 data',
+                    role         => 'WRITER',
+                    project_team => {
+                      team           => 'viewers',
+                      project_number => 'test project_number#2 data',
+                    },
+                  },
+                  {
+                    domain       => 'test domain#3 data',
+                    email        => 'test email#3 data',
+                    entity       => 'test entity#3 data',
+                    entity_id    => 'test entity_id#3 data',
+                    id           => 'test id#3 data',
+                    role         => 'OWNER',
+                    project_team => {
+                      team           => 'editors',
+                      project_number => 'test project_number#3 data',
                     },
                   },
                 ],
@@ -1961,7 +1919,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                     entity_id    => 'test entity_id#0 data',
                     generation   => 2373482136,
                     id           => 'test id#0 data',
-                    object       => 'test object#0 data',
                     role         => 'OWNER',
                     project_team => {
                       team           => 'editors',
@@ -2047,176 +2004,6 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
                 },
                 project                       => 'test project#0 data',
                 credential                    => 'cred0',
-              }
-
-              gstorage_bucket { 'title1':
-                ensure                        => present,
-                acl                           => [
-                  {
-                    bucket       => 'resource(bucket,1)',
-                    domain       => 'test domain#1 data',
-                    email        => 'test email#1 data',
-                    entity       => 'test entity#1 data',
-                    entity_id    => 'test entity_id#1 data',
-                    id           => 'test id#1 data',
-                    role         => 'READER',
-                    project_team => {
-                      team           => 'owners',
-                      project_number => 'test project_number#1 data',
-                    },
-                  },
-                  {
-                    bucket       => 'resource(bucket,2)',
-                    domain       => 'test domain#2 data',
-                    email        => 'test email#2 data',
-                    entity       => 'test entity#2 data',
-                    entity_id    => 'test entity_id#2 data',
-                    id           => 'test id#2 data',
-                    role         => 'WRITER',
-                    project_team => {
-                      team           => 'viewers',
-                      project_number => 'test project_number#2 data',
-                    },
-                  },
-                  {
-                    bucket       => 'resource(bucket,0)',
-                    domain       => 'test domain#3 data',
-                    email        => 'test email#3 data',
-                    entity       => 'test entity#3 data',
-                    entity_id    => 'test entity_id#3 data',
-                    id           => 'test id#3 data',
-                    role         => 'OWNER',
-                    project_team => {
-                      team           => 'editors',
-                      project_number => 'test project_number#3 data',
-                    },
-                  },
-                ],
-                cors                          => [
-                  {
-                    max_age_seconds => 669849527,
-                    method          => ['ll', 'mm', 'nn', 'oo', 'pp'],
-                    origin          => ['vv', 'ww', 'xx'],
-                    response_header => ['vv', 'ww', 'xx', 'yy', 'zz'],
-                  },
-                  {
-                    max_age_seconds => 1004774291,
-                    method          => ['ff', 'gg', 'hh', 'ii', 'jj'],
-                    origin          => ['tt', 'uu', 'vv'],
-                    response_header => ['hh', 'ii', 'jj', 'kk', 'll'],
-                  },
-                  {
-                    max_age_seconds => 1339699054,
-                    method          => ['vv', 'ww', 'xx', 'yy', 'zz'],
-                    origin          => ['ss', 'tt', 'uu', 'vv'],
-                    response_header => ['tt', 'uu', 'vv', 'ww', 'xx'],
-                  },
-                  {
-                    max_age_seconds => 1674623818,
-                    method          => ['tt', 'uu', 'vv', 'ww', 'xx'],
-                    origin          => ['qq', 'rr', 'ss', 'tt'],
-                    response_header => ['ff', 'gg', 'hh', 'ii', 'jj'],
-                  },
-                ],
-                default_object_acl            => [
-                  {
-                    bucket       => 'resource(bucket,1)',
-                    domain       => 'test domain#1 data',
-                    email        => 'test email#1 data',
-                    entity       => 'test entity#1 data',
-                    entity_id    => 'test entity_id#1 data',
-                    generation   => 4746964272,
-                    id           => 'test id#1 data',
-                    object       => 'test object#1 data',
-                    role         => 'READER',
-                    project_team => {
-                      team           => 'owners',
-                      project_number => 'test project_number#1 data',
-                    },
-                  },
-                  {
-                    bucket       => 'resource(bucket,2)',
-                    domain       => 'test domain#2 data',
-                    email        => 'test email#2 data',
-                    entity       => 'test entity#2 data',
-                    entity_id    => 'test entity_id#2 data',
-                    generation   => 7120446408,
-                    id           => 'test id#2 data',
-                    object       => 'test object#2 data',
-                    role         => 'OWNER',
-                    project_team => {
-                      team           => 'viewers',
-                      project_number => 'test project_number#2 data',
-                    },
-                  },
-                  {
-                    bucket       => 'resource(bucket,0)',
-                    domain       => 'test domain#3 data',
-                    email        => 'test email#3 data',
-                    entity       => 'test entity#3 data',
-                    entity_id    => 'test entity_id#3 data',
-                    generation   => 9493928544,
-                    id           => 'test id#3 data',
-                    object       => 'test object#3 data',
-                    role         => 'READER',
-                    project_team => {
-                      team           => 'editors',
-                      project_number => 'test project_number#3 data',
-                    },
-                  },
-                ],
-                lifecycle                     => {
-                  rule => [
-                    {
-                      action    => {
-                        storage_class => 'test storage_class#1 data',
-                        type          => 'SetStorageClass',
-                      },
-                      condition => {
-                        age_days              => 3554603704,
-                        created_before        => '2026-08-06T22:30:34+00:00',
-                        is_live               => false,
-                        matches_storage_class => ['ss', 'tt'],
-                        num_newer_versions    => 4115926961,
-                      },
-                    },
-                    {
-                      action    => {
-                        storage_class => 'test storage_class#2 data',
-                        type          => 'Delete',
-                      },
-                      condition => {
-                        age_days              => 5331905557,
-                        created_before        => '2054-11-23T21:45:51+00:00',
-                        is_live               => true,
-                        matches_storage_class => ['cc', 'dd', 'ee', 'ff'],
-                        num_newer_versions    => 6173890442,
-                      },
-                    },
-                  ],
-                },
-                location                      => 'test location#1 data',
-                logging                       => {
-                  log_bucket        => 'test log_bucket#1 data',
-                  log_object_prefix => 'test log_object_prefix#1 data',
-                },
-                metageneration                => 2877109677,
-                name                          => 'test name#1 data',
-                owner                         => {
-                  entity    => 'test entity#1 data',
-                  entity_id => 'test entity_id#1 data',
-                },
-                predefined_default_object_acl => 'bucketOwnerFullControl',
-                storage_class                 => 'REGIONAL',
-                versioning                    => {
-                  enabled => false,
-                },
-                website                       => {
-                  main_page_suffix => 'test main_page_suffix#1 data',
-                  not_found_page   => 'test not_found_page#1 data',
-                },
-                project                       => 'test project#1 data',
-                credential                    => 'cred1',
               }
               MANIFEST
             ).catalog.resource('Gstorage_bucket[title0]').provider.ensure

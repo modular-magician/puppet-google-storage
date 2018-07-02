@@ -30,8 +30,7 @@ kind: storage#bucket
 name: test name#1 data
 id: test id#1 data
 acl:
-- bucket: test name#1 data
-  domain: test domain#1 data
+- domain: test domain#1 data
   email: test email#1 data
   entity: test entity#1 data
   entityId: test entity_id#1 data
@@ -40,8 +39,7 @@ acl:
     projectNumber: test project_number#1 data
     team: owners
   role: READER
-- bucket: test name#2 data
-  domain: test domain#2 data
+- domain: test domain#2 data
   email: test email#2 data
   entity: test entity#2 data
   entityId: test entity_id#2 data
@@ -50,16 +48,6 @@ acl:
     projectNumber: test project_number#2 data
     team: viewers
   role: WRITER
-- bucket: test name#0 data
-  domain: test domain#3 data
-  email: test email#3 data
-  entity: test entity#3 data
-  entityId: test entity_id#3 data
-  id: test id#3 data
-  projectTeam:
-    projectNumber: test project_number#3 data
-    team: editors
-  role: OWNER
 cors:
 - maxAgeSeconds: 669849527
   method:
@@ -139,7 +127,6 @@ defaultObjectAcl:
   entityId: test entity_id#1 data
   generation: 4746964272
   id: test id#1 data
-  object: test object#1 data
   projectTeam:
     projectNumber: test project_number#1 data
     team: owners
@@ -151,7 +138,6 @@ defaultObjectAcl:
   entityId: test entity_id#2 data
   generation: 7120446408
   id: test id#2 data
-  object: test object#2 data
   projectTeam:
     projectNumber: test project_number#2 data
     team: viewers
@@ -163,7 +149,6 @@ defaultObjectAcl:
   entityId: test entity_id#3 data
   generation: 9493928544
   id: test id#3 data
-  object: test object#3 data
   projectTeam:
     projectNumber: test project_number#3 data
     team: editors

@@ -227,7 +227,6 @@ gstorage_bucket { 'puppet-storage-module-test':
 gstorage_bucket { 'id-of-resource':
   acl                           => [
     {
-      bucket       => reference to gstorage_bucket,
       domain       => string,
       email        => string,
       entity       => string,
@@ -268,7 +267,6 @@ gstorage_bucket { 'id-of-resource':
       entity_id    => string,
       generation   => integer,
       id           => string,
-      object       => string,
       role         => 'OWNER' or 'READER',
       project_team => {
         team           => 'editors', 'owners' or 'viewers',
@@ -330,9 +328,6 @@ gstorage_bucket { 'id-of-resource':
 ##### `acl`
 
   Access controls on the bucket.
-
-##### acl[]/bucket
-Required.  The name of the bucket.
 
 ##### acl[]/domain
 Output only.  The domain associated with the entity.
@@ -436,9 +431,6 @@ Output only.  The content generation of the object, if applied to an object.
 
 ##### default_object_acl[]/id
 Output only.  The ID of the access-control entry.
-
-##### default_object_acl[]/object
-  The name of the object, if applied to an object.
 
 ##### default_object_acl[]/project_team
   The project team associated with the entity
@@ -664,10 +656,6 @@ gstorage_bucket_access_control { 'id-of-resource':
 }
 ```
 
-##### `bucket`
-
-Required.  The name of the bucket.
-
 ##### `entity`
 
 Required.  The entity holding the permission, in one of the following forms:
@@ -703,6 +691,10 @@ Required.  The entity holding the permission, in one of the following forms:
 ##### `role`
 
   The access permission for the entity.
+
+##### `bucket`
+
+Required.  The name of the bucket.
 
 
 ##### Output-only properties
@@ -796,10 +788,6 @@ Required.  The entity holding the permission, in one of the following forms:
 
   The ID for the entity
 
-##### `object`
-
-Required.  The name of the object, if applied to an object.
-
 ##### `project_team`
 
   The project team associated with the entity
@@ -813,6 +801,14 @@ Required.  The name of the object, if applied to an object.
 ##### `role`
 
   The access permission for the entity.
+
+##### `bucket`
+
+Required.  The name of the bucket.
+
+##### `object`
+
+Required.  The name of the object, if applied to an object.
 
 
 ##### Output-only properties
@@ -908,10 +904,6 @@ Required.  The entity holding the permission, in one of the following forms:
 
   The ID for the entity
 
-##### `object`
-
-  The name of the object, if applied to an object.
-
 ##### `project_team`
 
   The project team associated with the entity
@@ -925,6 +917,14 @@ Required.  The entity holding the permission, in one of the following forms:
 ##### `role`
 
   The access permission for the entity.
+
+##### `bucket`
+
+Required.  The name of the bucket.
+
+##### `object`
+
+  The name of the object, if applied to an object.
 
 
 ##### Output-only properties

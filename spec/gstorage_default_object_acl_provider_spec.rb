@@ -159,9 +159,6 @@ describe Puppet::Type.type(:gstorage_default_object_acl).provider(:google) do
               end
               it { is_expected.to have_attributes(generation: 2_373_482_136) }
               it { is_expected.to have_attributes(id: 'test id#0 data') }
-              it do
-                is_expected.to have_attributes(object: 'test object#0 data')
-              end
               # TODO(nelsonjr): Implement complex nested property object test.
               # it 'projectTeam' do
               #   # Add test code here
@@ -191,9 +188,6 @@ describe Puppet::Type.type(:gstorage_default_object_acl).provider(:google) do
               end
               it { is_expected.to have_attributes(generation: 4_746_964_272) }
               it { is_expected.to have_attributes(id: 'test id#1 data') }
-              it do
-                is_expected.to have_attributes(object: 'test object#1 data')
-              end
               # TODO(nelsonjr): Implement complex nested property object test.
               # it 'projectTeam' do
               #   # Add test code here
@@ -223,9 +217,6 @@ describe Puppet::Type.type(:gstorage_default_object_acl).provider(:google) do
               end
               it { is_expected.to have_attributes(generation: 7_120_446_408) }
               it { is_expected.to have_attributes(id: 'test id#2 data') }
-              it do
-                is_expected.to have_attributes(object: 'test object#2 data')
-              end
               # TODO(nelsonjr): Implement complex nested property object test.
               # it 'projectTeam' do
               #   # Add test code here
@@ -352,9 +343,6 @@ describe Puppet::Type.type(:gstorage_default_object_acl).provider(:google) do
               end
               it { is_expected.to have_attributes(generation: 2_373_482_136) }
               it { is_expected.to have_attributes(id: 'test id#0 data') }
-              it do
-                is_expected.to have_attributes(object: 'test object#0 data')
-              end
               # TODO(nelsonjr): Implement complex nested property object test.
               # it 'projectTeam' do
               #   # Add test code here
@@ -384,9 +372,6 @@ describe Puppet::Type.type(:gstorage_default_object_acl).provider(:google) do
               end
               it { is_expected.to have_attributes(generation: 4_746_964_272) }
               it { is_expected.to have_attributes(id: 'test id#1 data') }
-              it do
-                is_expected.to have_attributes(object: 'test object#1 data')
-              end
               # TODO(nelsonjr): Implement complex nested property object test.
               # it 'projectTeam' do
               #   # Add test code here
@@ -416,9 +401,6 @@ describe Puppet::Type.type(:gstorage_default_object_acl).provider(:google) do
               end
               it { is_expected.to have_attributes(generation: 7_120_446_408) }
               it { is_expected.to have_attributes(id: 'test id#2 data') }
-              it do
-                is_expected.to have_attributes(object: 'test object#2 data')
-              end
               # TODO(nelsonjr): Implement complex nested property object test.
               # it 'projectTeam' do
               #   # Add test code here
@@ -486,7 +468,6 @@ describe Puppet::Type.type(:gstorage_default_object_acl).provider(:google) do
                 'bucket' => 'test name#0 data',
                 'entity' => 'test entity#0 data',
                 'entityId' => 'test entity_id#0 data',
-                'object' => 'test object#0 data',
                 'projectTeam' => {
                   'projectNumber' => 'test project_number#0 data',
                   'team' => 'editors'
@@ -550,7 +531,6 @@ describe Puppet::Type.type(:gstorage_default_object_acl).provider(:google) do
                 'bucket' => 'test name#0 data',
                 'entity' => 'test entity#0 data',
                 'entityId' => 'test entity_id#0 data',
-                'object' => 'test object#0 data',
                 'projectTeam' => {
                   'projectNumber' => 'test project_number#0 data',
                   'team' => 'editors'
@@ -947,6 +927,55 @@ describe Puppet::Type.type(:gstorage_default_object_acl).provider(:google) do
     )
   end
 
+  def expect_network_get_success_bucket(id, data = {})
+    id_data = data.fetch(:name, '').include?('title') ? 'title' : 'name'
+    body = load_network_result_bucket("success#{id}~" \
+                                                           "#{id_data}.yaml")
+           .to_json
+    uri = uri_data_bucket(id).merge(data)
+
+    request = double('request')
+    allow(request).to receive(:send).and_return(http_success(body))
+
+    debug_network "!! GET #{uri}"
+    expect(Google::Storage::Network::Get).to receive(:new)
+      .with(self_link_bucket(uri),
+            instance_of(Google::FakeAuthorization)) do |args|
+      debug_network ">> GET #{args}"
+      request
+    end
+  end
+
+  def load_network_result_bucket(file)
+    results = File.join(File.dirname(__FILE__), 'data', 'network',
+                        'gstorage_bucket', file)
+    raise "Network result data file #{results}" unless File.exist?(results)
+    data = YAML.safe_load(File.read(results))
+    raise "Invalid network results #{results}" unless data.class <= Hash
+    data
+  end
+
+  # Creates variable test data to comply with self_link URI parameters
+  # Only used for gstorage_bucket objects
+  def uri_data_bucket(id)
+    {
+      name: GoogleTests::Constants::B_NAME_DATA[(id - 1) \
+        % GoogleTests::Constants::B_NAME_DATA.size],
+      project: GoogleTests::Constants::B_PROJECT_DATA[(id - 1) \
+        % GoogleTests::Constants::B_PROJECT_DATA.size]
+    }
+  end
+
+  def self_link_bucket(data)
+    URI.join(
+      'https://www.googleapis.com/storage/v1/',
+      expand_variables_bucket(
+        'b/{{name}}?projection=full',
+        data
+      )
+    )
+  end
+
   def debug(message)
     puts(message) if ENV['RSPEC_DEBUG']
   end
@@ -954,6 +983,11 @@ describe Puppet::Type.type(:gstorage_default_object_acl).provider(:google) do
   def debug_network(message)
     puts("Network #{message}") \
       if ENV['RSPEC_DEBUG'] || ENV['RSPEC_HTTP_VERBOSE']
+  end
+
+  def expand_variables_bucket(template, data, ext_dat = {})
+    Puppet::Type.type(:gstorage_bucket).provider(:google)
+                .expand_variables(template, data, ext_dat)
   end
 
   def expand_variables_bucket(template, data, ext_dat = {})
