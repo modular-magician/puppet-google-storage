@@ -30,7 +30,7 @@ require 'google/storage/property/base'
 module Google
   module Storage
     module Data
-      # A class to manage data for lifecycle for bucket.
+      # A class to manage data for Lifecycle for bucket.
       class BucketLifecycle
         include Comparable
 
@@ -99,7 +99,7 @@ module Google
     end
 
     module Property
-      # A class to manage input to lifecycle for bucket.
+      # A class to manage input to Lifecycle for bucket.
       class BucketLifecycle < Google::Storage::Property::Base
         # Used for parsing Puppet catalog
         def unsafe_munge(value)

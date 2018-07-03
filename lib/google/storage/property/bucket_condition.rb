@@ -30,7 +30,7 @@ require 'google/storage/property/base'
 module Google
   module Storage
     module Data
-      # A class to manage data for condition for bucket.
+      # A class to manage data for Condition for bucket.
       class BucketCondition
         include Comparable
 
@@ -133,7 +133,7 @@ module Google
     end
 
     module Property
-      # A class to manage input to condition for bucket.
+      # A class to manage input to Condition for bucket.
       class BucketCondition < Google::Storage::Property::Base
         # Used for parsing Puppet catalog
         def unsafe_munge(value)

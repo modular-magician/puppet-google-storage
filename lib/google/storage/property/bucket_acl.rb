@@ -31,7 +31,7 @@ require 'google/storage/property/base'
 module Google
   module Storage
     module Data
-      # A class to manage data for acl for bucket.
+      # A class to manage data for Acl for bucket.
       class BucketAcl
         include Comparable
 
@@ -152,7 +152,7 @@ module Google
     end
 
     module Property
-      # A class to manage input to acl for bucket.
+      # A class to manage input to Acl for bucket.
       class BucketAcl < Google::Storage::Property::Base
         # Used for parsing Puppet catalog
         def unsafe_munge(value)
