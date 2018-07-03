@@ -30,7 +30,7 @@ require 'google/storage/property/base'
 module Google
   module Storage
     module Data
-      # A class to manage data for project_team for bucket.
+      # A class to manage data for ProjectTeam for bucket.
       class BucketProjectTeam
         include Comparable
 
@@ -103,7 +103,7 @@ module Google
     end
 
     module Property
-      # A class to manage input to project_team for bucket.
+      # A class to manage input to ProjectTeam for bucket.
       class BucketProjectTeam < Google::Storage::Property::Base
         # Used for parsing Puppet catalog
         def unsafe_munge(value)

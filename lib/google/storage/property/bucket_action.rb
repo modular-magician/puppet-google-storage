@@ -30,7 +30,7 @@ require 'google/storage/property/base'
 module Google
   module Storage
     module Data
-      # A class to manage data for action for bucket.
+      # A class to manage data for Action for bucket.
       class BucketAction
         include Comparable
 
@@ -103,7 +103,7 @@ module Google
     end
 
     module Property
-      # A class to manage input to action for bucket.
+      # A class to manage input to Action for bucket.
       class BucketAction < Google::Storage::Property::Base
         # Used for parsing Puppet catalog
         def unsafe_munge(value)
