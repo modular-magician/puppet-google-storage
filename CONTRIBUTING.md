@@ -130,6 +130,7 @@ puppet-codegen:
   * lib/google/storage/property/string.rb
   * lib/google/storage/property/string_array.rb
   * lib/google/storage/property/time.rb
+  * lib/puppet/functions/gcp_declare.rb
   * lib/puppet/provider/gstorage_bucket/google.rb
   * lib/puppet/provider/gstorage_bucket_access_control/google.rb
   * lib/puppet/provider/gstorage_default_object_acl/google.rb
