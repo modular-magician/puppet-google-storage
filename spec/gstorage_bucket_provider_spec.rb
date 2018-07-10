@@ -2251,9 +2251,10 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
             apply_with_error_check(
               <<-MANIFEST
               gstorage_bucket { 'title0':
-                ensure     => absent,
-                project    => 'test project#0 data',
-                credential => 'cred0',
+                ensure                        => absent,
+                predefined_default_object_acl => 'authenticatedRead',
+                project                       => 'test project#0 data',
+                credential                    => 'cred0',
               }
               MANIFEST
             ).catalog.resource('Gstorage_bucket[title0]')
@@ -2283,10 +2284,11 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
             apply_with_error_check(
               <<-MANIFEST
               gstorage_bucket { 'title0':
-                ensure     => absent,
-                name       => 'test name#0 data',
-                project    => 'test project#0 data',
-                credential => 'cred0',
+                ensure                        => absent,
+                name                          => 'test name#0 data',
+                predefined_default_object_acl => 'authenticatedRead',
+                project                       => 'test project#0 data',
+                credential                    => 'cred0',
               }
               MANIFEST
             ).catalog.resource('Gstorage_bucket[title0]')
@@ -2319,9 +2321,10 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
             apply_with_error_check(
               <<-MANIFEST
               gstorage_bucket { 'title0':
-                ensure     => absent,
-                project    => 'test project#0 data',
-                credential => 'cred0',
+                ensure                        => absent,
+                predefined_default_object_acl => 'authenticatedRead',
+                project                       => 'test project#0 data',
+                credential                    => 'cred0',
               }
               MANIFEST
             ).catalog.resource('Gstorage_bucket[title0]')
@@ -2352,10 +2355,11 @@ describe Puppet::Type.type(:gstorage_bucket).provider(:google) do
             apply_with_error_check(
               <<-MANIFEST
               gstorage_bucket { 'title0':
-                ensure     => absent,
-                name       => 'test name#0 data',
-                project    => 'test project#0 data',
-                credential => 'cred0',
+                ensure                        => absent,
+                name                          => 'test name#0 data',
+                predefined_default_object_acl => 'authenticatedRead',
+                project                       => 'test project#0 data',
+                credential                    => 'cred0',
               }
               MANIFEST
             ).catalog.resource('Gstorage_bucket[title0]')

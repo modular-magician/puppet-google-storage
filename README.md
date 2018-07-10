@@ -577,11 +577,11 @@ Output only.  The ID for the entity.
 
 ##### `project`
 
-  A valid API project identifier.
+Required.  A valid API project identifier.
 
 ##### `predefined_default_object_acl`
 
-  Apply a predefined set of default object access controls to this
+Required.  Apply a predefined set of default object access controls to this
   bucket.
   Acceptable values are:
   - "authenticatedRead": Object owner gets OWNER access, and

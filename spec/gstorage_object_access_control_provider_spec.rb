@@ -69,24 +69,27 @@ describe Puppet::Type.type(:gstorage_object_access_control).provider(:google) do
               apply_with_error_check(
                 <<-MANIFEST
                 gstorage_bucket { 'resource(bucket,0)':
-                  ensure     => present,
-                  name       => 'test name#0 data',
-                  project    => 'test project#0 data',
-                  credential => 'cred0',
+                  ensure                        => present,
+                  name                          => 'test name#0 data',
+                  predefined_default_object_acl => 'authenticatedRead',
+                  project                       => 'test project#0 data',
+                  credential                    => 'cred0',
                 }
 
                 gstorage_bucket { 'resource(bucket,1)':
-                  ensure     => present,
-                  name       => 'test name#1 data',
-                  project    => 'test project#1 data',
-                  credential => 'cred1',
+                  ensure                        => present,
+                  name                          => 'test name#1 data',
+                  predefined_default_object_acl => 'bucketOwnerFullControl',
+                  project                       => 'test project#1 data',
+                  credential                    => 'cred1',
                 }
 
                 gstorage_bucket { 'resource(bucket,2)':
-                  ensure     => present,
-                  name       => 'test name#2 data',
-                  project    => 'test project#2 data',
-                  credential => 'cred2',
+                  ensure                        => present,
+                  name                          => 'test name#2 data',
+                  predefined_default_object_acl => 'bucketOwnerRead',
+                  project                       => 'test project#2 data',
+                  credential                    => 'cred2',
                 }
 
                 gstorage_object_access_control { 'title0':
@@ -265,24 +268,27 @@ describe Puppet::Type.type(:gstorage_object_access_control).provider(:google) do
               apply_with_error_check(
                 <<-MANIFEST
                 gstorage_bucket { 'resource(bucket,0)':
-                  ensure     => present,
-                  name       => 'test name#0 data',
-                  project    => 'test project#0 data',
-                  credential => 'cred0',
+                  ensure                        => present,
+                  name                          => 'test name#0 data',
+                  predefined_default_object_acl => 'authenticatedRead',
+                  project                       => 'test project#0 data',
+                  credential                    => 'cred0',
                 }
 
                 gstorage_bucket { 'resource(bucket,1)':
-                  ensure     => present,
-                  name       => 'test name#1 data',
-                  project    => 'test project#1 data',
-                  credential => 'cred1',
+                  ensure                        => present,
+                  name                          => 'test name#1 data',
+                  predefined_default_object_acl => 'bucketOwnerFullControl',
+                  project                       => 'test project#1 data',
+                  credential                    => 'cred1',
                 }
 
                 gstorage_bucket { 'resource(bucket,2)':
-                  ensure     => present,
-                  name       => 'test name#2 data',
-                  project    => 'test project#2 data',
-                  credential => 'cred2',
+                  ensure                        => present,
+                  name                          => 'test name#2 data',
+                  predefined_default_object_acl => 'bucketOwnerRead',
+                  project                       => 'test project#2 data',
+                  credential                    => 'cred2',
                 }
 
                 gstorage_object_access_control { 'title0':
@@ -507,10 +513,11 @@ describe Puppet::Type.type(:gstorage_object_access_control).provider(:google) do
             apply_with_error_check(
               <<-MANIFEST
               gstorage_bucket { 'resource(bucket,0)':
-                ensure     => present,
-                name       => 'test name#0 data',
-                project    => 'test project#0 data',
-                credential => 'cred0',
+                ensure                        => present,
+                name                          => 'test name#0 data',
+                predefined_default_object_acl => 'authenticatedRead',
+                project                       => 'test project#0 data',
+                credential                    => 'cred0',
               }
 
               gstorage_object_access_control { 'title0':
@@ -571,10 +578,11 @@ describe Puppet::Type.type(:gstorage_object_access_control).provider(:google) do
             apply_with_error_check(
               <<-MANIFEST
               gstorage_bucket { 'resource(bucket,0)':
-                ensure     => present,
-                name       => 'test name#0 data',
-                project    => 'test project#0 data',
-                credential => 'cred0',
+                ensure                        => present,
+                name                          => 'test name#0 data',
+                predefined_default_object_acl => 'authenticatedRead',
+                project                       => 'test project#0 data',
+                credential                    => 'cred0',
               }
 
               gstorage_object_access_control { 'title0':
@@ -626,10 +634,11 @@ describe Puppet::Type.type(:gstorage_object_access_control).provider(:google) do
             apply_with_error_check(
               <<-MANIFEST
               gstorage_bucket { 'resource(bucket,0)':
-                ensure     => present,
-                name       => 'test name#0 data',
-                project    => 'test project#0 data',
-                credential => 'cred0',
+                ensure                        => present,
+                name                          => 'test name#0 data',
+                predefined_default_object_acl => 'authenticatedRead',
+                project                       => 'test project#0 data',
+                credential                    => 'cred0',
               }
 
               gstorage_object_access_control { 'title0':
@@ -669,10 +678,11 @@ describe Puppet::Type.type(:gstorage_object_access_control).provider(:google) do
             apply_with_error_check(
               <<-MANIFEST
               gstorage_bucket { 'resource(bucket,0)':
-                ensure     => present,
-                name       => 'test name#0 data',
-                project    => 'test project#0 data',
-                credential => 'cred0',
+                ensure                        => present,
+                name                          => 'test name#0 data',
+                predefined_default_object_acl => 'authenticatedRead',
+                project                       => 'test project#0 data',
+                credential                    => 'cred0',
               }
 
               gstorage_object_access_control { 'title0':
@@ -717,10 +727,11 @@ describe Puppet::Type.type(:gstorage_object_access_control).provider(:google) do
             apply_with_error_check(
               <<-MANIFEST
               gstorage_bucket { 'resource(bucket,0)':
-                ensure     => present,
-                name       => 'test name#0 data',
-                project    => 'test project#0 data',
-                credential => 'cred0',
+                ensure                        => present,
+                name                          => 'test name#0 data',
+                predefined_default_object_acl => 'authenticatedRead',
+                project                       => 'test project#0 data',
+                credential                    => 'cred0',
               }
 
               gstorage_object_access_control { 'title0':
@@ -761,10 +772,11 @@ describe Puppet::Type.type(:gstorage_object_access_control).provider(:google) do
             apply_with_error_check(
               <<-MANIFEST
               gstorage_bucket { 'resource(bucket,0)':
-                ensure     => present,
-                name       => 'test name#0 data',
-                project    => 'test project#0 data',
-                credential => 'cred0',
+                ensure                        => present,
+                name                          => 'test name#0 data',
+                predefined_default_object_acl => 'authenticatedRead',
+                project                       => 'test project#0 data',
+                credential                    => 'cred0',
               }
 
               gstorage_object_access_control { 'title0':
