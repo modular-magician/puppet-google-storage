@@ -30,8 +30,7 @@ kind: storage#bucket
 name: title2
 id: test id#2 data
 acl:
-- bucket: test name#2 data
-  domain: test domain#2 data
+- domain: test domain#2 data
   email: test email#2 data
   entity: test entity#2 data
   entityId: test entity_id#2 data
@@ -40,8 +39,7 @@ acl:
     projectNumber: test project_number#2 data
     team: viewers
   role: WRITER
-- bucket: test name#0 data
-  domain: test domain#3 data
+- domain: test domain#3 data
   email: test email#3 data
   entity: test entity#3 data
   entityId: test entity_id#3 data
@@ -50,8 +48,7 @@ acl:
     projectNumber: test project_number#3 data
     team: editors
   role: OWNER
-- bucket: test name#1 data
-  domain: test domain#4 data
+- domain: test domain#4 data
   email: test email#4 data
   entity: test entity#4 data
   entityId: test entity_id#4 data
@@ -60,6 +57,24 @@ acl:
     projectNumber: test project_number#4 data
     team: owners
   role: READER
+- domain: test domain#5 data
+  email: test email#5 data
+  entity: test entity#5 data
+  entityId: test entity_id#5 data
+  id: test id#5 data
+  projectTeam:
+    projectNumber: test project_number#5 data
+    team: viewers
+  role: WRITER
+- domain: test domain#6 data
+  email: test email#6 data
+  entity: test entity#6 data
+  entityId: test entity_id#6 data
+  id: test id#6 data
+  projectTeam:
+    projectNumber: test project_number#6 data
+    team: editors
+  role: OWNER
 cors:
 - maxAgeSeconds: 1004774291
   method:
@@ -155,7 +170,6 @@ defaultObjectAcl:
   entityId: test entity_id#2 data
   generation: 7120446408
   id: test id#2 data
-  object: test object#2 data
   projectTeam:
     projectNumber: test project_number#2 data
     team: viewers
@@ -167,7 +181,6 @@ defaultObjectAcl:
   entityId: test entity_id#3 data
   generation: 9493928544
   id: test id#3 data
-  object: test object#3 data
   projectTeam:
     projectNumber: test project_number#3 data
     team: editors
@@ -179,7 +192,6 @@ defaultObjectAcl:
   entityId: test entity_id#4 data
   generation: 11867410680
   id: test id#4 data
-  object: test object#4 data
   projectTeam:
     projectNumber: test project_number#4 data
     team: owners

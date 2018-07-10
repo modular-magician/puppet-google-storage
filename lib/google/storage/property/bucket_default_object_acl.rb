@@ -42,7 +42,6 @@ module Google
         attr_reader :entity_id
         attr_reader :generation
         attr_reader :id
-        attr_reader :object
         attr_reader :project_team
         attr_reader :role
 
@@ -55,7 +54,6 @@ module Google
             'entityId' => entity_id,
             'generation' => generation,
             'id' => id,
-            'object' => object,
             'projectTeam' => project_team,
             'role' => role
           }.reject { |_k, v| v.nil? }.to_json
@@ -70,7 +68,6 @@ module Google
             entity_id: entity_id,
             generation: generation,
             id: id,
-            object: object,
             project_team: project_team,
             role: role
           }.reject { |_k, v| v.nil? }.map { |k, v| "#{k}: #{v}" }.join(', ')
@@ -106,7 +103,6 @@ module Google
             { self: entity_id, other: other.entity_id },
             { self: generation, other: other.generation },
             { self: id, other: other.id },
-            { self: object, other: other.object },
             { self: project_team, other: other.project_team },
             { self: role, other: other.role }
           ]
@@ -127,7 +123,6 @@ module Google
           @generation =
             Google::Storage::Property::Integer.api_munge(args['generation'])
           @id = Google::Storage::Property::String.api_munge(args['id'])
-          @object = Google::Storage::Property::String.api_munge(args['object'])
           @project_team =
             Google::Storage::Property::BucketProjectTeam.api_munge(
               args['projectTeam']
@@ -153,8 +148,6 @@ module Google
           @generation =
             Google::Storage::Property::Integer.unsafe_munge(args['generation'])
           @id = Google::Storage::Property::String.unsafe_munge(args['id'])
-          @object =
-            Google::Storage::Property::String.unsafe_munge(args['object'])
           @project_team =
             Google::Storage::Property::BucketProjectTeam.unsafe_munge(
               args['project_team']

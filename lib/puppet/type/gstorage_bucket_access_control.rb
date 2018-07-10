@@ -52,6 +52,12 @@ Puppet::Type.newtype(:gstorage_bucket_access_control) do
     [credential]
   end
 
+  autorequire(:gstorage_bucket) do
+    reference = self[:bucket]
+    raise "#{ref} required property 'bucket' is missing" if reference.nil?
+    reference.autorequires
+  end
+
   ensurable
 
   newparam :credential do
@@ -70,7 +76,7 @@ Puppet::Type.newtype(:gstorage_bucket_access_control) do
     desc 'The name of the BucketAccessControl.'
   end
 
-  newproperty(:bucket, parent: Google::Storage::Property::BucketNameRef) do
+  newparam(:bucket, parent: Google::Storage::Property::BucketNameRef) do
     desc 'The name of the bucket.'
   end
 

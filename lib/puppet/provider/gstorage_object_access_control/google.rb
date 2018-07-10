@@ -76,7 +76,6 @@ Puppet::Type.type(:gstorage_object_access_control).provide(:google) do
       generation:
         Google::Storage::Property::Integer.api_munge(fetch['generation']),
       id: Google::Storage::Property::String.api_munge(fetch['id']),
-      object: Google::Storage::Property::String.api_munge(fetch['object']),
       project_team: Google::Storage::Property::ObjeAcceContProjTeam.api_munge(
         fetch['projectTeam']
       ),
@@ -142,9 +141,10 @@ Puppet::Type.type(:gstorage_object_access_control).provide(:google) do
       entity_id: resource[:entity_id],
       generation: resource[:generation],
       id: resource[:id],
-      object: resource[:object],
       project_team: resource[:project_team],
-      role: resource[:role]
+      role: resource[:role],
+      bucket: resource[:bucket],
+      object: resource[:object]
     }.reject { |_, v| v.nil? }
   end
 
@@ -154,7 +154,6 @@ Puppet::Type.type(:gstorage_object_access_control).provide(:google) do
       bucket: @resource[:bucket],
       entity: @resource[:entity],
       entityId: @resource[:entity_id],
-      object: @resource[:object],
       projectTeam: @resource[:project_team],
       role: @resource[:role]
     }.reject { |_, v| v.nil? }

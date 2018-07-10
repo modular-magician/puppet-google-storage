@@ -51,6 +51,12 @@ Puppet::Type.newtype(:gstorage_default_object_acl) do
     [credential]
   end
 
+  autorequire(:gstorage_bucket) do
+    reference = self[:bucket]
+    raise "#{ref} required property 'bucket' is missing" if reference.nil?
+    reference.autorequires
+  end
+
   ensurable
 
   newparam :credential do
@@ -67,6 +73,14 @@ Puppet::Type.newtype(:gstorage_default_object_acl) do
   newparam(:name, namevar: true) do
     # TODO(nelsona): Make this description to match the key of the object.
     desc 'The name of the DefaultObjectACL.'
+  end
+
+  newparam(:bucket, parent: Google::Storage::Property::BucketNameRef) do
+    desc 'The name of the bucket.'
+  end
+
+  newparam(:object, parent: Google::Storage::Property::String) do
+    desc 'The name of the object, if applied to an object.'
   end
 
   newproperty(:bucket, parent: Google::Storage::Property::BucketNameRef) do
@@ -106,10 +120,6 @@ Puppet::Type.newtype(:gstorage_default_object_acl) do
 
   newproperty(:id, parent: Google::Storage::Property::String) do
     desc 'The ID of the access-control entry. (output only)'
-  end
-
-  newproperty(:object, parent: Google::Storage::Property::String) do
-    desc 'The name of the object, if applied to an object.'
   end
 
   newproperty(:project_team,

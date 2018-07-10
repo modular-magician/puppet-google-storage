@@ -140,10 +140,6 @@ describe Puppet::Type.type(:gstorage_bucket_access_control).provider(:google) do
                        .provider
               end
 
-              # TODO(alexstephen): Implement resourceref test.
-              # it 'bucket' do
-              #   # Add test code here
-              # end
               it do
                 is_expected.to have_attributes(domain: 'test domain#0 data')
               end
@@ -169,10 +165,6 @@ describe Puppet::Type.type(:gstorage_bucket_access_control).provider(:google) do
                        .provider
               end
 
-              # TODO(alexstephen): Implement resourceref test.
-              # it 'bucket' do
-              #   # Add test code here
-              # end
               it do
                 is_expected.to have_attributes(domain: 'test domain#1 data')
               end
@@ -198,10 +190,6 @@ describe Puppet::Type.type(:gstorage_bucket_access_control).provider(:google) do
                        .provider
               end
 
-              # TODO(alexstephen): Implement resourceref test.
-              # it 'bucket' do
-              #   # Add test code here
-              # end
               it do
                 is_expected.to have_attributes(domain: 'test domain#2 data')
               end
@@ -321,10 +309,6 @@ describe Puppet::Type.type(:gstorage_bucket_access_control).provider(:google) do
                        .provider
               end
 
-              # TODO(alexstephen): Implement resourceref test.
-              # it 'bucket' do
-              #   # Add test code here
-              # end
               it do
                 is_expected.to have_attributes(domain: 'test domain#0 data')
               end
@@ -350,10 +334,6 @@ describe Puppet::Type.type(:gstorage_bucket_access_control).provider(:google) do
                        .provider
               end
 
-              # TODO(alexstephen): Implement resourceref test.
-              # it 'bucket' do
-              #   # Add test code here
-              # end
               it do
                 is_expected.to have_attributes(domain: 'test domain#1 data')
               end
@@ -379,10 +359,6 @@ describe Puppet::Type.type(:gstorage_bucket_access_control).provider(:google) do
                        .provider
               end
 
-              # TODO(alexstephen): Implement resourceref test.
-              # it 'bucket' do
-              #   # Add test code here
-              # end
               it do
                 is_expected.to have_attributes(domain: 'test domain#2 data')
               end
@@ -459,7 +435,6 @@ describe Puppet::Type.type(:gstorage_bucket_access_control).provider(:google) do
               1,
               {
                 'kind' => 'storage#bucketAccessControl',
-                'bucket' => 'test name#0 data',
                 'entity' => 'test entity#0 data',
                 'entityId' => 'test entity_id#0 data',
                 'projectTeam' => {
@@ -521,7 +496,6 @@ describe Puppet::Type.type(:gstorage_bucket_access_control).provider(:google) do
               1,
               {
                 'kind' => 'storage#bucketAccessControl',
-                'bucket' => 'test name#0 data',
                 'entity' => 'test entity#0 data',
                 'entityId' => 'test entity_id#0 data',
                 'projectTeam' => {

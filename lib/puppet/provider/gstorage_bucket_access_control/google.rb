@@ -66,8 +66,6 @@ Puppet::Type.type(:gstorage_bucket_access_control).provide(:google) do
 
   def self.fetch_to_hash(fetch)
     {
-      bucket:
-        Google::Storage::Property::BucketNameRef.api_munge(fetch['bucket']),
       domain: Google::Storage::Property::String.api_munge(fetch['domain']),
       email: Google::Storage::Property::String.api_munge(fetch['email']),
       entity: Google::Storage::Property::String.api_munge(fetch['entity']),
@@ -131,21 +129,20 @@ Puppet::Type.type(:gstorage_bucket_access_control).provide(:google) do
       project: resource[:project],
       name: resource[:name],
       kind: 'storage#bucketAccessControl',
-      bucket: resource[:bucket],
       domain: resource[:domain],
       email: resource[:email],
       entity: resource[:entity],
       entity_id: resource[:entity_id],
       id: resource[:id],
       project_team: resource[:project_team],
-      role: resource[:role]
+      role: resource[:role],
+      bucket: resource[:bucket]
     }.reject { |_, v| v.nil? }
   end
 
   def resource_to_request
     request = {
       kind: 'storage#bucketAccessControl',
-      bucket: @resource[:bucket],
       entity: @resource[:entity],
       entityId: @resource[:entity_id],
       projectTeam: @resource[:project_team],
