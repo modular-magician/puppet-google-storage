@@ -30,9 +30,7 @@
 # Command line arguments: JSON object from STDIN with the following fields:
 #
 # - name: The name of the remote file to upload
-# - type:
-#     The type of the remote file (in MIME notation)
-#     (default: 'application/octet-stream')
+# - type: The type of the remote file (in MIME notation) (default: 'application/octet-stream')
 # - source: The path to a local file to upload
 # - bucket: The target bucket to write the file to
 # - project: The project that owns the bucket

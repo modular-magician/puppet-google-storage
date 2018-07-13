@@ -84,8 +84,7 @@ module Google
       # Data is coming from the GCP API
       class BucketActionApi < BucketAction
         def initialize(args)
-          @storage_class =
-            Google::Storage::Property::String.api_munge(args['storageClass'])
+          @storage_class = Google::Storage::Property::String.api_munge(args['storageClass'])
           @type = Google::Storage::Property::Enum.api_munge(args['type'])
         end
       end
@@ -94,9 +93,7 @@ module Google
       # Data is coming from the Puppet manifest
       class BucketActionCatalog < BucketAction
         def initialize(args)
-          @storage_class = Google::Storage::Property::String.unsafe_munge(
-            args['storage_class']
-          )
+          @storage_class = Google::Storage::Property::String.unsafe_munge(args['storage_class'])
           @type = Google::Storage::Property::Enum.unsafe_munge(args['type'])
         end
       end

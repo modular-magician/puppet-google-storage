@@ -123,28 +123,22 @@ gstorage_default_object_acl { 'user-nelsona@google.com':
 #### Public classes
 
 * [`gstorage_bucket`][]:
-    The Buckets resource represents a bucket in Google Cloud Storage. There
-    is
-    a single global namespace shared by all buckets. For more information,
-    see
+    The Buckets resource represents a bucket in Google Cloud Storage. There is
+    a single global namespace shared by all buckets. For more information, see
     Bucket Name Requirements.
     Buckets contain objects which can be accessed by their own methods. In
     addition to the acl property, buckets contain bucketAccessControls, for
-    use in fine-grained manipulation of an existing bucket's access
-    controls.
+    use in fine-grained manipulation of an existing bucket's access controls.
     A bucket is always owned by the project team owners group.
 * [`gstorage_bucket_access_control`][]:
     The BucketAccessControls resource represents the Access Control Lists
-    (ACLs) for buckets within Google Cloud Storage. ACLs let you specify
-    who
+    (ACLs) for buckets within Google Cloud Storage. ACLs let you specify who
     has access to your data and to what extent.
     There are three roles that can be assigned to an entity:
-    READERs can get the bucket, though no acl property will be returned,
-    and
+    READERs can get the bucket, though no acl property will be returned, and
     list the bucket's objects.  WRITERs are READERs, and they can insert
     objects into the bucket and delete the bucket's objects.  OWNERs are
-    WRITERs, and they can get the acl property of a bucket, update a
-    bucket,
+    WRITERs, and they can get the acl property of a bucket, update a bucket,
     and call all BucketAccessControls methods on the bucket.  For more
     information, see Access Control, with the caveat that this API uses
     READER, WRITER, and OWNER instead of READ, WRITE, and FULL_CONTROL.
@@ -153,12 +147,9 @@ gstorage_default_object_acl { 'user-nelsona@google.com':
     (ACLs) for objects within Google Cloud Storage. ACLs let you specify
     who has access to your data and to what extent.
     There are two roles that can be assigned to an entity:
-    READERs can get an object, though the acl property will not be
-    revealed.
-    OWNERs are READERs, and they can get the acl property, update an
-    object,
-    and call all objectAccessControls methods on the object. The owner of
-    an
+    READERs can get an object, though the acl property will not be revealed.
+    OWNERs are READERs, and they can get the acl property, update an object,
+    and call all objectAccessControls methods on the object. The owner of an
     object is always an OWNER.
     For more information, see Access Control, with the caveat that this API
     uses READER and OWNER instead of READ and FULL_CONTROL.
@@ -167,12 +158,9 @@ gstorage_default_object_acl { 'user-nelsona@google.com':
     (ACLs) for objects within Google Cloud Storage. ACLs let you specify
     who has access to your data and to what extent.
     There are two roles that can be assigned to an entity:
-    READERs can get an object, though the acl property will not be
-    revealed.
-    OWNERs are READERs, and they can get the acl property, update an
-    object,
-    and call all objectAccessControls methods on the object. The owner of
-    an
+    READERs can get an object, though the acl property will not be revealed.
+    OWNERs are READERs, and they can get the acl property, update an object,
+    and call all objectAccessControls methods on the object. The owner of an
     object is always an OWNER.
     For more information, see Access Control, with the caveat that this API
     uses READER and OWNER instead of READ and FULL_CONTROL.
@@ -957,8 +945,7 @@ This task takes inputs as JSON from standard input.
     The name of the remote file to upload
 
   - `type`:
-    The type of the remote file (in MIME notation) (default:
-    'application/octet-stream')
+    The type of the remote file (in MIME notation) (default: 'application/octet-stream')
 
   - `source`:
     The path to a local file to upload

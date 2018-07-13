@@ -93,15 +93,11 @@ module Google
       # Data is coming from the GCP API
       class BucketCorsApi < BucketCors
         def initialize(args)
-          @max_age_seconds =
-            Google::Storage::Property::Integer.api_munge(args['maxAgeSeconds'])
-          @method =
-            Google::Storage::Property::StringArray.api_munge(args['method'])
-          @origin =
-            Google::Storage::Property::StringArray.api_munge(args['origin'])
-          @response_header = Google::Storage::Property::StringArray.api_munge(
-            args['responseHeader']
-          )
+          @max_age_seconds = Google::Storage::Property::Integer.api_munge(args['maxAgeSeconds'])
+          @method = Google::Storage::Property::StringArray.api_munge(args['method'])
+          @origin = Google::Storage::Property::StringArray.api_munge(args['origin'])
+          @response_header =
+            Google::Storage::Property::StringArray.api_munge(args['responseHeader'])
         end
       end
 
@@ -109,17 +105,12 @@ module Google
       # Data is coming from the Puppet manifest
       class BucketCorsCatalog < BucketCors
         def initialize(args)
-          @max_age_seconds = Google::Storage::Property::Integer.unsafe_munge(
-            args['max_age_seconds']
-          )
-          @method =
-            Google::Storage::Property::StringArray.unsafe_munge(args['method'])
-          @origin =
-            Google::Storage::Property::StringArray.unsafe_munge(args['origin'])
+          @max_age_seconds =
+            Google::Storage::Property::Integer.unsafe_munge(args['max_age_seconds'])
+          @method = Google::Storage::Property::StringArray.unsafe_munge(args['method'])
+          @origin = Google::Storage::Property::StringArray.unsafe_munge(args['origin'])
           @response_header =
-            Google::Storage::Property::StringArray.unsafe_munge(
-              args['response_header']
-            )
+            Google::Storage::Property::StringArray.unsafe_munge(args['response_header'])
         end
       end
     end

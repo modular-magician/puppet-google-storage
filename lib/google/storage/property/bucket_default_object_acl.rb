@@ -117,21 +117,16 @@ module Google
       # Data is coming from the GCP API
       class BuckeDefauObjecAclApi < BuckeDefauObjecAcl
         def initialize(args)
-          @bucket =
-            Google::Storage::Property::BucketNameRef.api_munge(args['bucket'])
+          @bucket = Google::Storage::Property::BucketNameRef.api_munge(args['bucket'])
           @domain = Google::Storage::Property::String.api_munge(args['domain'])
           @email = Google::Storage::Property::String.api_munge(args['email'])
           @entity = Google::Storage::Property::String.api_munge(args['entity'])
-          @entity_id =
-            Google::Storage::Property::String.api_munge(args['entityId'])
-          @generation =
-            Google::Storage::Property::Integer.api_munge(args['generation'])
+          @entity_id = Google::Storage::Property::String.api_munge(args['entityId'])
+          @generation = Google::Storage::Property::Integer.api_munge(args['generation'])
           @id = Google::Storage::Property::String.api_munge(args['id'])
           @object = Google::Storage::Property::String.api_munge(args['object'])
           @project_team =
-            Google::Storage::Property::BucketProjectTeam.api_munge(
-              args['projectTeam']
-            )
+            Google::Storage::Property::BucketProjectTeam.api_munge(args['projectTeam'])
           @role = Google::Storage::Property::Enum.api_munge(args['role'])
         end
       end
@@ -140,25 +135,16 @@ module Google
       # Data is coming from the Puppet manifest
       class BuckeDefauObjecAclCatalog < BuckeDefauObjecAcl
         def initialize(args)
-          @bucket = Google::Storage::Property::BucketNameRef.unsafe_munge(
-            args['bucket']
-          )
-          @domain =
-            Google::Storage::Property::String.unsafe_munge(args['domain'])
+          @bucket = Google::Storage::Property::BucketNameRef.unsafe_munge(args['bucket'])
+          @domain = Google::Storage::Property::String.unsafe_munge(args['domain'])
           @email = Google::Storage::Property::String.unsafe_munge(args['email'])
-          @entity =
-            Google::Storage::Property::String.unsafe_munge(args['entity'])
-          @entity_id =
-            Google::Storage::Property::String.unsafe_munge(args['entity_id'])
-          @generation =
-            Google::Storage::Property::Integer.unsafe_munge(args['generation'])
+          @entity = Google::Storage::Property::String.unsafe_munge(args['entity'])
+          @entity_id = Google::Storage::Property::String.unsafe_munge(args['entity_id'])
+          @generation = Google::Storage::Property::Integer.unsafe_munge(args['generation'])
           @id = Google::Storage::Property::String.unsafe_munge(args['id'])
-          @object =
-            Google::Storage::Property::String.unsafe_munge(args['object'])
+          @object = Google::Storage::Property::String.unsafe_munge(args['object'])
           @project_team =
-            Google::Storage::Property::BucketProjectTeam.unsafe_munge(
-              args['project_team']
-            )
+            Google::Storage::Property::BucketProjectTeam.unsafe_munge(args['project_team'])
           @role = Google::Storage::Property::Enum.unsafe_munge(args['role'])
         end
       end

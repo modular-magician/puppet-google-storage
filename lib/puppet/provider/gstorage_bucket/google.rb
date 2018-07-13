@@ -89,28 +89,18 @@ Puppet::Type.type(:gstorage_bucket).provide(:google) do
       acl: Google::Storage::Property::BucketAclArray.api_munge(fetch['acl']),
       cors: Google::Storage::Property::BucketCorsArray.api_munge(fetch['cors']),
       id: Google::Storage::Property::String.api_munge(fetch['id']),
-      lifecycle: Google::Storage::Property::BucketLifecycle.api_munge(
-        fetch['lifecycle']
-      ),
+      lifecycle: Google::Storage::Property::BucketLifecycle.api_munge(fetch['lifecycle']),
       location: Google::Storage::Property::String.api_munge(fetch['location']),
-      logging:
-        Google::Storage::Property::BucketLogging.api_munge(fetch['logging']),
-      metageneration:
-        Google::Storage::Property::Integer.api_munge(fetch['metageneration']),
+      logging: Google::Storage::Property::BucketLogging.api_munge(fetch['logging']),
+      metageneration: Google::Storage::Property::Integer.api_munge(fetch['metageneration']),
       name: Google::Storage::Property::String.api_munge(fetch['name']),
       owner: Google::Storage::Property::BucketOwner.api_munge(fetch['owner']),
-      project_number:
-        Google::Storage::Property::Integer.api_munge(fetch['projectNumber']),
-      storage_class:
-        Google::Storage::Property::Enum.api_munge(fetch['storageClass']),
-      time_created:
-        Google::Storage::Property::Time.api_munge(fetch['timeCreated']),
+      project_number: Google::Storage::Property::Integer.api_munge(fetch['projectNumber']),
+      storage_class: Google::Storage::Property::Enum.api_munge(fetch['storageClass']),
+      time_created: Google::Storage::Property::Time.api_munge(fetch['timeCreated']),
       updated: Google::Storage::Property::Time.api_munge(fetch['updated']),
-      versioning: Google::Storage::Property::BucketVersioning.api_munge(
-        fetch['versioning']
-      ),
-      website:
-        Google::Storage::Property::BucketWebsite.api_munge(fetch['website']),
+      versioning: Google::Storage::Property::BucketVersioning.api_munge(fetch['versioning']),
+      website: Google::Storage::Property::BucketWebsite.api_munge(fetch['website']),
       default_object_acl: resource[:default_object_acl]
     }.reject { |_, v| v.nil? }
   end

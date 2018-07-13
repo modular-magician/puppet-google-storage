@@ -84,8 +84,7 @@ module Google
       # Data is coming from the GCP API
       class BuckAcceContProjTeamApi < BuckAcceContProjTeam
         def initialize(args)
-          @project_number =
-            Google::Storage::Property::String.api_munge(args['projectNumber'])
+          @project_number = Google::Storage::Property::String.api_munge(args['projectNumber'])
           @team = Google::Storage::Property::Enum.api_munge(args['team'])
         end
       end
@@ -94,9 +93,7 @@ module Google
       # Data is coming from the Puppet manifest
       class BuckAcceContProjTeamCatalog < BuckAcceContProjTeam
         def initialize(args)
-          @project_number = Google::Storage::Property::String.unsafe_munge(
-            args['project_number']
-          )
+          @project_number = Google::Storage::Property::String.unsafe_munge(args['project_number'])
           @team = Google::Storage::Property::Enum.unsafe_munge(args['team'])
         end
       end
