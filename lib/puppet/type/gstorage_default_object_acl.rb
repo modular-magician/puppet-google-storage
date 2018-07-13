@@ -34,15 +34,13 @@ require 'puppet'
 
 Puppet::Type.newtype(:gstorage_default_object_acl) do
   @doc = <<-DOC
-    The ObjectAccessControls resources represent the Access Control Lists
-    (ACLs) for objects within Google Cloud Storage. ACLs let you specify who
-    has access to your data and to what extent. There are two roles that can be
-    assigned to an entity: READERs can get an object, though the acl property
-    will not be revealed. OWNERs are READERs, and they can get the acl
-    property, update an object, and call all objectAccessControls methods on
-    the object. The owner of an object is always an OWNER. For more
-    information, see Access Control, with the caveat that this API uses READER
-    and OWNER instead of READ and FULL_CONTROL.
+    The ObjectAccessControls resources represent the Access Control Lists (ACLs) for objects within
+    Google Cloud Storage. ACLs let you specify who has access to your data and to what extent.
+    There are two roles that can be assigned to an entity: READERs can get an object, though the
+    acl property will not be revealed. OWNERs are READERs, and they can get the acl property,
+    update an object, and call all objectAccessControls methods on the object. The owner of an
+    object is always an OWNER. For more information, see Access Control, with the caveat that this
+    API uses READER and OWNER instead of READ and FULL_CONTROL.
   DOC
 
   autorequire(:gauth_credential) do
@@ -83,13 +81,12 @@ Puppet::Type.newtype(:gstorage_default_object_acl) do
 
   newproperty(:entity, parent: Google::Storage::Property::String) do
     desc <<-DOC
-      The entity holding the permission, in one of the following forms:
-      user-userId  user-email  group-groupId  group-email  domain-domain
-      project-team-projectId  allUsers  allAuthenticatedUsers Examples:  The
-      user liz@example.com would be user-liz@example.com.  The group
-      example@googlegroups.com would be  group-example@googlegroups.com.  To
-      refer to all members of the Google Apps for Business domain  example.com,
-      the entity would be domain-example.com.
+      The entity holding the permission, in one of the following forms:  user-userId  user-email
+      group-groupId  group-email  domain-domain  project-team-projectId  allUsers
+      allAuthenticatedUsers Examples:  The user liz@example.com would be user-liz@example.com.  The
+      group example@googlegroups.com would be  group-example@googlegroups.com.  To refer to all
+      members of the Google Apps for Business domain  example.com, the entity would be
+      domain-example.com.
     DOC
   end
 
@@ -98,10 +95,7 @@ Puppet::Type.newtype(:gstorage_default_object_acl) do
   end
 
   newproperty(:generation, parent: Google::Storage::Property::Integer) do
-    desc <<-DOC
-      The content generation of the object, if applied to an object. (output
-      only)
-    DOC
+    desc 'The content generation of the object, if applied to an object. (output only)'
   end
 
   newproperty(:id, parent: Google::Storage::Property::String) do
@@ -112,8 +106,7 @@ Puppet::Type.newtype(:gstorage_default_object_acl) do
     desc 'The name of the object, if applied to an object.'
   end
 
-  newproperty(:project_team,
-              parent: Google::Storage::Property::DefaObjeAclProjTeam) do
+  newproperty(:project_team, parent: Google::Storage::Property::DefaObjeAclProjTeam) do
     desc 'The project team associated with the entity'
   end
 

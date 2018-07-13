@@ -51,15 +51,9 @@ describe Puppet::Type.type(:gstorage_bucket_access_control).provider(:google) do
               allow(Time).to receive(:now).and_return(
                 Time.new(2017, 1, 2, 3, 4, 5)
               )
-              expect_network_get_success 1,
-                                         name: 'title0',
-                                         bucket: 'test name#0 data'
-              expect_network_get_success 2,
-                                         name: 'title1',
-                                         bucket: 'test name#1 data'
-              expect_network_get_success 3,
-                                         name: 'title2',
-                                         bucket: 'test name#2 data'
+              expect_network_get_success 1, name: 'title0', bucket: 'test name#0 data'
+              expect_network_get_success 2, name: 'title1', bucket: 'test name#1 data'
+              expect_network_get_success 3, name: 'title2', bucket: 'test name#2 data'
               expect_network_get_success_bucket 1
               expect_network_get_success_bucket 2
               expect_network_get_success_bucket 3
@@ -136,25 +130,17 @@ describe Puppet::Type.type(:gstorage_bucket_access_control).provider(:google) do
 
             context 'Gstorage_bucket_access_control[title0]' do
               subject do
-                catalog.resource('Gstorage_bucket_access_control[title0]')
-                       .provider
+                catalog.resource('Gstorage_bucket_access_control[title0]').provider
               end
 
               # TODO(alexstephen): Implement resourceref test.
               # it 'bucket' do
               #   # Add test code here
               # end
-              it do
-                is_expected.to have_attributes(domain: 'test domain#0 data')
-              end
+              it { is_expected.to have_attributes(domain: 'test domain#0 data') }
               it { is_expected.to have_attributes(email: 'test email#0 data') }
-              it do
-                is_expected.to have_attributes(entity: 'test entity#0 data')
-              end
-              it do
-                is_expected
-                  .to have_attributes(entity_id: 'test entity_id#0 data')
-              end
+              it { is_expected.to have_attributes(entity: 'test entity#0 data') }
+              it { is_expected.to have_attributes(entity_id: 'test entity_id#0 data') }
               it { is_expected.to have_attributes(id: 'test id#0 data') }
               # TODO(nelsonjr): Implement complex nested property object test.
               # it 'projectTeam' do
@@ -165,25 +151,17 @@ describe Puppet::Type.type(:gstorage_bucket_access_control).provider(:google) do
 
             context 'Gstorage_bucket_access_control[title1]' do
               subject do
-                catalog.resource('Gstorage_bucket_access_control[title1]')
-                       .provider
+                catalog.resource('Gstorage_bucket_access_control[title1]').provider
               end
 
               # TODO(alexstephen): Implement resourceref test.
               # it 'bucket' do
               #   # Add test code here
               # end
-              it do
-                is_expected.to have_attributes(domain: 'test domain#1 data')
-              end
+              it { is_expected.to have_attributes(domain: 'test domain#1 data') }
               it { is_expected.to have_attributes(email: 'test email#1 data') }
-              it do
-                is_expected.to have_attributes(entity: 'test entity#1 data')
-              end
-              it do
-                is_expected
-                  .to have_attributes(entity_id: 'test entity_id#1 data')
-              end
+              it { is_expected.to have_attributes(entity: 'test entity#1 data') }
+              it { is_expected.to have_attributes(entity_id: 'test entity_id#1 data') }
               it { is_expected.to have_attributes(id: 'test id#1 data') }
               # TODO(nelsonjr): Implement complex nested property object test.
               # it 'projectTeam' do
@@ -194,25 +172,17 @@ describe Puppet::Type.type(:gstorage_bucket_access_control).provider(:google) do
 
             context 'Gstorage_bucket_access_control[title2]' do
               subject do
-                catalog.resource('Gstorage_bucket_access_control[title2]')
-                       .provider
+                catalog.resource('Gstorage_bucket_access_control[title2]').provider
               end
 
               # TODO(alexstephen): Implement resourceref test.
               # it 'bucket' do
               #   # Add test code here
               # end
-              it do
-                is_expected.to have_attributes(domain: 'test domain#2 data')
-              end
+              it { is_expected.to have_attributes(domain: 'test domain#2 data') }
               it { is_expected.to have_attributes(email: 'test email#2 data') }
-              it do
-                is_expected.to have_attributes(entity: 'test entity#2 data')
-              end
-              it do
-                is_expected
-                  .to have_attributes(entity_id: 'test entity_id#2 data')
-              end
+              it { is_expected.to have_attributes(entity: 'test entity#2 data') }
+              it { is_expected.to have_attributes(entity_id: 'test entity_id#2 data') }
               it { is_expected.to have_attributes(id: 'test id#2 data') }
               # TODO(nelsonjr): Implement complex nested property object test.
               # it 'projectTeam' do
@@ -317,25 +287,17 @@ describe Puppet::Type.type(:gstorage_bucket_access_control).provider(:google) do
 
             context 'Gstorage_bucket_access_control[title0]' do
               subject do
-                catalog.resource('Gstorage_bucket_access_control[title0]')
-                       .provider
+                catalog.resource('Gstorage_bucket_access_control[title0]').provider
               end
 
               # TODO(alexstephen): Implement resourceref test.
               # it 'bucket' do
               #   # Add test code here
               # end
-              it do
-                is_expected.to have_attributes(domain: 'test domain#0 data')
-              end
+              it { is_expected.to have_attributes(domain: 'test domain#0 data') }
               it { is_expected.to have_attributes(email: 'test email#0 data') }
-              it do
-                is_expected.to have_attributes(entity: 'test entity#0 data')
-              end
-              it do
-                is_expected
-                  .to have_attributes(entity_id: 'test entity_id#0 data')
-              end
+              it { is_expected.to have_attributes(entity: 'test entity#0 data') }
+              it { is_expected.to have_attributes(entity_id: 'test entity_id#0 data') }
               it { is_expected.to have_attributes(id: 'test id#0 data') }
               # TODO(nelsonjr): Implement complex nested property object test.
               # it 'projectTeam' do
@@ -346,25 +308,17 @@ describe Puppet::Type.type(:gstorage_bucket_access_control).provider(:google) do
 
             context 'Gstorage_bucket_access_control[title1]' do
               subject do
-                catalog.resource('Gstorage_bucket_access_control[title1]')
-                       .provider
+                catalog.resource('Gstorage_bucket_access_control[title1]').provider
               end
 
               # TODO(alexstephen): Implement resourceref test.
               # it 'bucket' do
               #   # Add test code here
               # end
-              it do
-                is_expected.to have_attributes(domain: 'test domain#1 data')
-              end
+              it { is_expected.to have_attributes(domain: 'test domain#1 data') }
               it { is_expected.to have_attributes(email: 'test email#1 data') }
-              it do
-                is_expected.to have_attributes(entity: 'test entity#1 data')
-              end
-              it do
-                is_expected
-                  .to have_attributes(entity_id: 'test entity_id#1 data')
-              end
+              it { is_expected.to have_attributes(entity: 'test entity#1 data') }
+              it { is_expected.to have_attributes(entity_id: 'test entity_id#1 data') }
               it { is_expected.to have_attributes(id: 'test id#1 data') }
               # TODO(nelsonjr): Implement complex nested property object test.
               # it 'projectTeam' do
@@ -375,25 +329,17 @@ describe Puppet::Type.type(:gstorage_bucket_access_control).provider(:google) do
 
             context 'Gstorage_bucket_access_control[title2]' do
               subject do
-                catalog.resource('Gstorage_bucket_access_control[title2]')
-                       .provider
+                catalog.resource('Gstorage_bucket_access_control[title2]').provider
               end
 
               # TODO(alexstephen): Implement resourceref test.
               # it 'bucket' do
               #   # Add test code here
               # end
-              it do
-                is_expected.to have_attributes(domain: 'test domain#2 data')
-              end
+              it { is_expected.to have_attributes(domain: 'test domain#2 data') }
               it { is_expected.to have_attributes(email: 'test email#2 data') }
-              it do
-                is_expected.to have_attributes(entity: 'test entity#2 data')
-              end
-              it do
-                is_expected
-                  .to have_attributes(entity_id: 'test entity_id#2 data')
-              end
+              it { is_expected.to have_attributes(entity: 'test entity#2 data') }
+              it { is_expected.to have_attributes(entity_id: 'test entity_id#2 data') }
               it { is_expected.to have_attributes(id: 'test id#2 data') }
               # TODO(nelsonjr): Implement complex nested property object test.
               # it 'projectTeam' do
@@ -452,9 +398,7 @@ describe Puppet::Type.type(:gstorage_bucket_access_control).provider(:google) do
         # Ensure present: resource missing, ignore, no name, pass
         context 'title == name (pass)' do
           before(:each) do
-            expect_network_get_failed 1,
-                                      name: 'title0',
-                                      bucket: 'test name#0 data'
+            expect_network_get_failed 1, name: 'title0', bucket: 'test name#0 data'
             expect_network_create \
               1,
               {
@@ -496,8 +440,7 @@ describe Puppet::Type.type(:gstorage_bucket_access_control).provider(:google) do
                 credential   => 'cred0',
               }
               MANIFEST
-            ).catalog.resource('Gstorage_bucket_access_control[title0]')
-              .provider.ensure
+            ).catalog.resource('Gstorage_bucket_access_control[title0]').provider.ensure
           end
 
           it { is_expected.to eq :present }
@@ -558,8 +501,7 @@ describe Puppet::Type.type(:gstorage_bucket_access_control).provider(:google) do
                 credential   => 'cred0',
               }
               MANIFEST
-            ).catalog.resource('Gstorage_bucket_access_control[title0]')
-              .provider.ensure
+            ).catalog.resource('Gstorage_bucket_access_control[title0]').provider.ensure
           end
 
           it { is_expected.to eq :present }
@@ -582,9 +524,7 @@ describe Puppet::Type.type(:gstorage_bucket_access_control).provider(:google) do
         # Ensure absent: resource missing, ignore, no name, pass
         context 'title == name (pass)' do
           before(:each) do
-            expect_network_get_failed 1,
-                                      name: 'title0',
-                                      bucket: 'test name#0 data'
+            expect_network_get_failed 1, name: 'title0', bucket: 'test name#0 data'
             expect_network_get_success_bucket 1
           end
 
@@ -670,9 +610,7 @@ describe Puppet::Type.type(:gstorage_bucket_access_control).provider(:google) do
         # Ensure absent: resource exists, ignore, no name, pass
         context 'title == name (pass)' do
           before(:each) do
-            expect_network_get_success 1,
-                                       name: 'title0',
-                                       bucket: 'test name#0 data'
+            expect_network_get_success 1, name: 'title0', bucket: 'test name#0 data'
             expect_network_delete 1, 'title0', bucket: 'test name#0 data'
             expect_network_get_success_bucket 1
           end

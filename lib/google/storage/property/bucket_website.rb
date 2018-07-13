@@ -84,10 +84,8 @@ module Google
       # Data is coming from the GCP API
       class BucketWebsiteApi < BucketWebsite
         def initialize(args)
-          @main_page_suffix =
-            Google::Storage::Property::String.api_munge(args['mainPageSuffix'])
-          @not_found_page =
-            Google::Storage::Property::String.api_munge(args['notFoundPage'])
+          @main_page_suffix = Google::Storage::Property::String.api_munge(args['mainPageSuffix'])
+          @not_found_page = Google::Storage::Property::String.api_munge(args['notFoundPage'])
         end
       end
 
@@ -95,12 +93,9 @@ module Google
       # Data is coming from the Puppet manifest
       class BucketWebsiteCatalog < BucketWebsite
         def initialize(args)
-          @main_page_suffix = Google::Storage::Property::String.unsafe_munge(
-            args['main_page_suffix']
-          )
-          @not_found_page = Google::Storage::Property::String.unsafe_munge(
-            args['not_found_page']
-          )
+          @main_page_suffix =
+            Google::Storage::Property::String.unsafe_munge(args['main_page_suffix'])
+          @not_found_page = Google::Storage::Property::String.unsafe_munge(args['not_found_page'])
         end
       end
     end

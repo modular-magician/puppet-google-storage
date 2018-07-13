@@ -97,17 +97,12 @@ module Google
       class BucketConditionApi < BucketCondition
         def initialize(args)
           @age_days = Google::Storage::Property::Integer.api_munge(args['age'])
-          @created_before =
-            Google::Storage::Property::Time.api_munge(args['createdBefore'])
-          @is_live =
-            Google::Storage::Property::Boolean.api_munge(args['isLive'])
+          @created_before = Google::Storage::Property::Time.api_munge(args['createdBefore'])
+          @is_live = Google::Storage::Property::Boolean.api_munge(args['isLive'])
           @matches_storage_class =
-            Google::Storage::Property::StringArray.api_munge(
-              args['matchesStorageClass']
-            )
-          @num_newer_versions = Google::Storage::Property::Integer.api_munge(
-            args['numNewerVersions']
-          )
+            Google::Storage::Property::StringArray.api_munge(args['matchesStorageClass'])
+          @num_newer_versions =
+            Google::Storage::Property::Integer.api_munge(args['numNewerVersions'])
         end
       end
 
@@ -115,19 +110,13 @@ module Google
       # Data is coming from the Puppet manifest
       class BucketConditionCatalog < BucketCondition
         def initialize(args)
-          @age_days =
-            Google::Storage::Property::Integer.unsafe_munge(args['age_days'])
-          @created_before =
-            Google::Storage::Property::Time.unsafe_munge(args['created_before'])
-          @is_live =
-            Google::Storage::Property::Boolean.unsafe_munge(args['is_live'])
+          @age_days = Google::Storage::Property::Integer.unsafe_munge(args['age_days'])
+          @created_before = Google::Storage::Property::Time.unsafe_munge(args['created_before'])
+          @is_live = Google::Storage::Property::Boolean.unsafe_munge(args['is_live'])
           @matches_storage_class =
-            Google::Storage::Property::StringArray.unsafe_munge(
-              args['matches_storage_class']
-            )
-          @num_newer_versions = Google::Storage::Property::Integer.unsafe_munge(
-            args['num_newer_versions']
-          )
+            Google::Storage::Property::StringArray.unsafe_munge(args['matches_storage_class'])
+          @num_newer_versions =
+            Google::Storage::Property::Integer.unsafe_munge(args['num_newer_versions'])
         end
       end
     end

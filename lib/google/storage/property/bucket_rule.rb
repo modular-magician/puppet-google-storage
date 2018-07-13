@@ -85,11 +85,8 @@ module Google
       # Data is coming from the GCP API
       class BucketRuleApi < BucketRule
         def initialize(args)
-          @action =
-            Google::Storage::Property::BucketAction.api_munge(args['action'])
-          @condition = Google::Storage::Property::BucketCondition.api_munge(
-            args['condition']
-          )
+          @action = Google::Storage::Property::BucketAction.api_munge(args['action'])
+          @condition = Google::Storage::Property::BucketCondition.api_munge(args['condition'])
         end
       end
 
@@ -97,11 +94,8 @@ module Google
       # Data is coming from the Puppet manifest
       class BucketRuleCatalog < BucketRule
         def initialize(args)
-          @action =
-            Google::Storage::Property::BucketAction.unsafe_munge(args['action'])
-          @condition = Google::Storage::Property::BucketCondition.unsafe_munge(
-            args['condition']
-          )
+          @action = Google::Storage::Property::BucketAction.unsafe_munge(args['action'])
+          @condition = Google::Storage::Property::BucketCondition.unsafe_munge(args['condition'])
         end
       end
     end

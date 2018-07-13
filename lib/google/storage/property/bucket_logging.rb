@@ -84,10 +84,8 @@ module Google
       # Data is coming from the GCP API
       class BucketLoggingApi < BucketLogging
         def initialize(args)
-          @log_bucket =
-            Google::Storage::Property::String.api_munge(args['logBucket'])
-          @log_object_prefix =
-            Google::Storage::Property::String.api_munge(args['logObjectPrefix'])
+          @log_bucket = Google::Storage::Property::String.api_munge(args['logBucket'])
+          @log_object_prefix = Google::Storage::Property::String.api_munge(args['logObjectPrefix'])
         end
       end
 
@@ -95,11 +93,9 @@ module Google
       # Data is coming from the Puppet manifest
       class BucketLoggingCatalog < BucketLogging
         def initialize(args)
-          @log_bucket =
-            Google::Storage::Property::String.unsafe_munge(args['log_bucket'])
-          @log_object_prefix = Google::Storage::Property::String.unsafe_munge(
-            args['log_object_prefix']
-          )
+          @log_bucket = Google::Storage::Property::String.unsafe_munge(args['log_bucket'])
+          @log_object_prefix =
+            Google::Storage::Property::String.unsafe_munge(args['log_object_prefix'])
         end
       end
     end

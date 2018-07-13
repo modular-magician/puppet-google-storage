@@ -109,18 +109,14 @@ module Google
       # Data is coming from the GCP API
       class BucketAclApi < BucketAcl
         def initialize(args)
-          @bucket =
-            Google::Storage::Property::BucketNameRef.api_munge(args['bucket'])
+          @bucket = Google::Storage::Property::BucketNameRef.api_munge(args['bucket'])
           @domain = Google::Storage::Property::String.api_munge(args['domain'])
           @email = Google::Storage::Property::String.api_munge(args['email'])
           @entity = Google::Storage::Property::String.api_munge(args['entity'])
-          @entity_id =
-            Google::Storage::Property::String.api_munge(args['entityId'])
+          @entity_id = Google::Storage::Property::String.api_munge(args['entityId'])
           @id = Google::Storage::Property::String.api_munge(args['id'])
           @project_team =
-            Google::Storage::Property::BucketProjectTeam.api_munge(
-              args['projectTeam']
-            )
+            Google::Storage::Property::BucketProjectTeam.api_munge(args['projectTeam'])
           @role = Google::Storage::Property::Enum.api_munge(args['role'])
         end
       end
@@ -130,21 +126,14 @@ module Google
       class BucketAclCatalog < BucketAcl
         # rubocop:disable Metrics/MethodLength
         def initialize(args)
-          @bucket = Google::Storage::Property::BucketNameRef.unsafe_munge(
-            args['bucket']
-          )
-          @domain =
-            Google::Storage::Property::String.unsafe_munge(args['domain'])
+          @bucket = Google::Storage::Property::BucketNameRef.unsafe_munge(args['bucket'])
+          @domain = Google::Storage::Property::String.unsafe_munge(args['domain'])
           @email = Google::Storage::Property::String.unsafe_munge(args['email'])
-          @entity =
-            Google::Storage::Property::String.unsafe_munge(args['entity'])
-          @entity_id =
-            Google::Storage::Property::String.unsafe_munge(args['entity_id'])
+          @entity = Google::Storage::Property::String.unsafe_munge(args['entity'])
+          @entity_id = Google::Storage::Property::String.unsafe_munge(args['entity_id'])
           @id = Google::Storage::Property::String.unsafe_munge(args['id'])
           @project_team =
-            Google::Storage::Property::BucketProjectTeam.unsafe_munge(
-              args['project_team']
-            )
+            Google::Storage::Property::BucketProjectTeam.unsafe_munge(args['project_team'])
           @role = Google::Storage::Property::Enum.unsafe_munge(args['role'])
         end
         # rubocop:enable Metrics/MethodLength

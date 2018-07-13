@@ -80,8 +80,7 @@ module Google
       # Data is coming from the GCP API
       class BucketVersioningApi < BucketVersioning
         def initialize(args)
-          @enabled =
-            Google::Storage::Property::Boolean.api_munge(args['enabled'])
+          @enabled = Google::Storage::Property::Boolean.api_munge(args['enabled'])
         end
       end
 
@@ -89,8 +88,7 @@ module Google
       # Data is coming from the Puppet manifest
       class BucketVersioningCatalog < BucketVersioning
         def initialize(args)
-          @enabled =
-            Google::Storage::Property::Boolean.unsafe_munge(args['enabled'])
+          @enabled = Google::Storage::Property::Boolean.unsafe_munge(args['enabled'])
         end
       end
     end
