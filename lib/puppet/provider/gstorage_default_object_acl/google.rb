@@ -54,8 +54,7 @@ Puppet::Type.type(:gstorage_default_object_acl).provide(:google) do
       project = resource[:project]
       debug("prefetch #{name}") if project.nil?
       debug("prefetch #{name} @ #{project}") unless project.nil?
-      fetch = fetch_resource(resource, self_link(resource),
-                             'storage#objectAccessControl')
+      fetch = fetch_resource(resource, self_link(resource), 'storage#objectAccessControl')
       resource.provider = present(name, fetch, resource) unless fetch.nil?
     end
   end
@@ -73,13 +72,10 @@ Puppet::Type.type(:gstorage_default_object_acl).provide(:google) do
       email: Google::Storage::Property::String.api_munge(fetch['email']),
       entity: Google::Storage::Property::String.api_munge(fetch['entity']),
       entity_id: Google::Storage::Property::String.api_munge(fetch['entityId']),
-      generation:
-        Google::Storage::Property::Integer.api_munge(fetch['generation']),
+      generation: Google::Storage::Property::Integer.api_munge(fetch['generation']),
       id: Google::Storage::Property::String.api_munge(fetch['id']),
       object: Google::Storage::Property::String.api_munge(fetch['object']),
-      project_team: Google::Storage::Property::DefaObjeAclProjTeam.api_munge(
-        fetch['projectTeam']
-      ),
+      project_team: Google::Storage::Property::DefaObjeAclProjTeam.api_munge(fetch['projectTeam']),
       role: Google::Storage::Property::Enum.api_munge(fetch['role']),
       bucket: resource[:bucket]
     }.reject { |_, v| v.nil? }

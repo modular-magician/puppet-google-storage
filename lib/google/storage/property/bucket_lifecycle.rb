@@ -82,8 +82,7 @@ module Google
       # Data is coming from the GCP API
       class BucketLifecycleApi < BucketLifecycle
         def initialize(args)
-          @rule =
-            Google::Storage::Property::BucketRuleArray.api_munge(args['rule'])
+          @rule = Google::Storage::Property::BucketRuleArray.api_munge(args['rule'])
         end
       end
 
@@ -91,9 +90,7 @@ module Google
       # Data is coming from the Puppet manifest
       class BucketLifecycleCatalog < BucketLifecycle
         def initialize(args)
-          @rule = Google::Storage::Property::BucketRuleArray.unsafe_munge(
-            args['rule']
-          )
+          @rule = Google::Storage::Property::BucketRuleArray.unsafe_munge(args['rule'])
         end
       end
     end

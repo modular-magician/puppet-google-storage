@@ -85,8 +85,7 @@ module Google
       class BucketOwnerApi < BucketOwner
         def initialize(args)
           @entity = Google::Storage::Property::String.api_munge(args['entity'])
-          @entity_id =
-            Google::Storage::Property::String.api_munge(args['entityId'])
+          @entity_id = Google::Storage::Property::String.api_munge(args['entityId'])
         end
       end
 
@@ -94,10 +93,8 @@ module Google
       # Data is coming from the Puppet manifest
       class BucketOwnerCatalog < BucketOwner
         def initialize(args)
-          @entity =
-            Google::Storage::Property::String.unsafe_munge(args['entity'])
-          @entity_id =
-            Google::Storage::Property::String.unsafe_munge(args['entity_id'])
+          @entity = Google::Storage::Property::String.unsafe_munge(args['entity'])
+          @entity_id = Google::Storage::Property::String.unsafe_munge(args['entity_id'])
         end
       end
     end

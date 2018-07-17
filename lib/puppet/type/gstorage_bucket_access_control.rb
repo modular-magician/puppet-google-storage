@@ -33,17 +33,14 @@ require 'puppet'
 
 Puppet::Type.newtype(:gstorage_bucket_access_control) do
   @doc = <<-DOC
-    The BucketAccessControls resource represents the Access Control Lists
-    (ACLs) for buckets within Google Cloud Storage. ACLs let you specify who
-    has access to your data and to what extent. There are three roles that can
-    be assigned to an entity: READERs can get the bucket, though no acl
-    property will be returned, and list the bucket's objects. WRITERs are
-    READERs, and they can insert objects into the bucket and delete the
-    bucket's objects. OWNERs are WRITERs, and they can get the acl property of
-    a bucket, update a bucket, and call all BucketAccessControls methods on the
-    bucket. For more information, see Access Control, with the caveat that this
-    API uses READER, WRITER, and OWNER instead of READ, WRITE, and
-    FULL_CONTROL.
+    The BucketAccessControls resource represents the Access Control Lists (ACLs) for buckets within
+    Google Cloud Storage. ACLs let you specify who has access to your data and to what extent.
+    There are three roles that can be assigned to an entity: READERs can get the bucket, though no
+    acl property will be returned, and list the bucket's objects. WRITERs are READERs, and they can
+    insert objects into the bucket and delete the bucket's objects. OWNERs are WRITERs, and they
+    can get the acl property of a bucket, update a bucket, and call all BucketAccessControls
+    methods on the bucket. For more information, see Access Control, with the caveat that this API
+    uses READER, WRITER, and OWNER instead of READ, WRITE, and FULL_CONTROL.
   DOC
 
   autorequire(:gauth_credential) do
@@ -84,13 +81,12 @@ Puppet::Type.newtype(:gstorage_bucket_access_control) do
 
   newproperty(:entity, parent: Google::Storage::Property::String) do
     desc <<-DOC
-      The entity holding the permission, in one of the following forms:
-      user-userId  user-email  group-groupId  group-email  domain-domain
-      project-team-projectId  allUsers  allAuthenticatedUsers Examples:  The
-      user liz@example.com would be user-liz@example.com.  The group
-      example@googlegroups.com would be  group-example@googlegroups.com.  To
-      refer to all members of the Google Apps for Business domain  example.com,
-      the entity would be domain-example.com.
+      The entity holding the permission, in one of the following forms:  user-userId  user-email
+      group-groupId  group-email  domain-domain  project-team-projectId  allUsers
+      allAuthenticatedUsers Examples:  The user liz@example.com would be user-liz@example.com.  The
+      group example@googlegroups.com would be  group-example@googlegroups.com.  To refer to all
+      members of the Google Apps for Business domain  example.com, the entity would be
+      domain-example.com.
     DOC
   end
 
@@ -102,8 +98,7 @@ Puppet::Type.newtype(:gstorage_bucket_access_control) do
     desc 'The ID of the access-control entry. (output only)'
   end
 
-  newproperty(:project_team,
-              parent: Google::Storage::Property::BuckAcceContProjTeam) do
+  newproperty(:project_team, parent: Google::Storage::Property::BuckAcceContProjTeam) do
     desc 'The project team associated with the entity'
   end
 

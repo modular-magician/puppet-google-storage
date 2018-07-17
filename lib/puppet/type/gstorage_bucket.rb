@@ -49,13 +49,11 @@ require 'puppet'
 
 Puppet::Type.newtype(:gstorage_bucket) do
   @doc = <<-DOC
-    The Buckets resource represents a bucket in Google Cloud Storage. There is
-    a single global namespace shared by all buckets. For more information, see
-    Bucket Name Requirements. Buckets contain objects which can be accessed by
-    their own methods. In addition to the acl property, buckets contain
-    bucketAccessControls, for use in fine-grained manipulation of an existing
-    bucket's access controls. A bucket is always owned by the project team
-    owners group.
+    The Buckets resource represents a bucket in Google Cloud Storage. There is a single global
+    namespace shared by all buckets. For more information, see Bucket Name Requirements. Buckets
+    contain objects which can be accessed by their own methods. In addition to the acl property,
+    buckets contain bucketAccessControls, for use in fine-grained manipulation of an existing
+    bucket's access controls. A bucket is always owned by the project team owners group.
   DOC
 
   autorequire(:gauth_credential) do
@@ -82,18 +80,15 @@ Puppet::Type.newtype(:gstorage_bucket) do
     desc 'A valid API project identifier.'
   end
 
-  newparam(:predefined_default_object_acl,
-           parent: Google::Storage::Property::Enum) do
+  newparam(:predefined_default_object_acl, parent: Google::Storage::Property::Enum) do
     desc <<-DOC
-      Apply a predefined set of default object access controls to this bucket.
-      Acceptable values are:  - "authenticatedRead": Object owner gets OWNER
-      access, and   allAuthenticatedUsers get READER access.  -
-      "bucketOwnerFullControl": Object owner gets OWNER access, and   project
-      team owners get OWNER access.  - "bucketOwnerRead": Object owner gets
-      OWNER access, and project   team owners get READER access.  - "private":
-      Object owner gets OWNER access.  - "projectPrivate": Object owner gets
-      OWNER access, and project team   members get access according to their
-      roles.  - "publicRead": Object owner gets OWNER access, and allUsers get
+      Apply a predefined set of default object access controls to this bucket. Acceptable values
+      are:  - "authenticatedRead": Object owner gets OWNER access, and   allAuthenticatedUsers get
+      READER access.  - "bucketOwnerFullControl": Object owner gets OWNER access, and   project
+      team owners get OWNER access.  - "bucketOwnerRead": Object owner gets OWNER access, and
+      project   team owners get READER access.  - "private": Object owner gets OWNER access.  -
+      "projectPrivate": Object owner gets OWNER access, and project team   members get access
+      according to their roles.  - "publicRead": Object owner gets OWNER access, and allUsers get
       READER access.
     DOC
     newvalue(:authenticatedRead)
@@ -112,40 +107,34 @@ Puppet::Type.newtype(:gstorage_bucket) do
     desc "The bucket's Cross-Origin Resource Sharing (CORS) configuration."
   end
 
-  newproperty(:default_object_acl,
-              parent: Google::Storage::Property::BuckeDefauObjecAclArray) do
-    desc <<-DOC
-      Default access controls to apply to new objects when no ACL is provided.
-    DOC
+  newproperty(:default_object_acl, parent: Google::Storage::Property::BuckeDefauObjecAclArray) do
+    desc 'Default access controls to apply to new objects when no ACL is provided.'
   end
 
   newproperty(:id, parent: Google::Storage::Property::String) do
     desc <<-DOC
-      The ID of the bucket. For buckets, the id and name properities are the
-      same. (output only)
+      The ID of the bucket. For buckets, the id and name properities are the same. (output only)
     DOC
   end
 
   newproperty(:lifecycle, parent: Google::Storage::Property::BucketLifecycle) do
     desc <<-DOC
       The bucket's lifecycle configuration. See
-      https://developers.google.com/storage/docs/lifecycle for more
-      information.
+      https://developers.google.com/storage/docs/lifecycle for more information.
     DOC
   end
 
   newproperty(:location, parent: Google::Storage::Property::String) do
     desc <<-DOC
-      The location of the bucket. Object data for objects in the bucket resides
-      in physical storage within this region. Defaults to US. See the
-      developer's guide for the authoritative list.
+      The location of the bucket. Object data for objects in the bucket resides in physical storage
+      within this region. Defaults to US. See the developer's guide for the authoritative list.
     DOC
   end
 
   newproperty(:logging, parent: Google::Storage::Property::BucketLogging) do
     desc <<-DOC
-      The bucket's logging configuration, which defines the destination bucket
-      and optional name prefix for the current bucket's logs.
+      The bucket's logging configuration, which defines the destination bucket and optional name
+      prefix for the current bucket's logs.
     DOC
   end
 
@@ -158,26 +147,20 @@ Puppet::Type.newtype(:gstorage_bucket) do
   end
 
   newproperty(:owner, parent: Google::Storage::Property::BucketOwner) do
-    desc <<-DOC
-      The owner of the bucket. This is always the project team's owner group.
-    DOC
+    desc "The owner of the bucket. This is always the project team's owner group."
   end
 
   newproperty(:project_number, parent: Google::Storage::Property::Integer) do
-    desc <<-DOC
-      The project number of the project the bucket belongs to. (output only)
-    DOC
+    desc 'The project number of the project the bucket belongs to. (output only)'
   end
 
   newproperty(:storage_class, parent: Google::Storage::Property::Enum) do
     desc <<-DOC
-      The bucket's default storage class, used whenever no storageClass is
-      specified for a newly-created object. This defines how objects in the
-      bucket are stored and determines the SLA and the cost of storage. Values
-      include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, and
-      DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the
-      bucket is created, it will default to STANDARD. For more information, see
-      storage classes.
+      The bucket's default storage class, used whenever no storageClass is specified for a
+      newly-created object. This defines how objects in the bucket are stored and determines the
+      SLA and the cost of storage. Values include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE,
+      COLDLINE, and DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the bucket is
+      created, it will default to STANDARD. For more information, see storage classes.
     DOC
     newvalue(:MULTI_REGIONAL)
     newvalue(:REGIONAL)
@@ -195,16 +178,14 @@ Puppet::Type.newtype(:gstorage_bucket) do
     desc 'The modification time of the bucket in RFC 3339 format. (output only)'
   end
 
-  newproperty(:versioning,
-              parent: Google::Storage::Property::BucketVersioning) do
+  newproperty(:versioning, parent: Google::Storage::Property::BucketVersioning) do
     desc "The bucket's versioning configuration."
   end
 
   newproperty(:website, parent: Google::Storage::Property::BucketWebsite) do
     desc <<-DOC
-      The bucket's website configuration, controlling how the service behaves
-      when accessing bucket contents as a web site. See the Static Website
-      Examples for more information.
+      The bucket's website configuration, controlling how the service behaves when accessing bucket
+      contents as a web site. See the Static Website Examples for more information.
     DOC
   end
 
