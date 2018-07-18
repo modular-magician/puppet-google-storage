@@ -41,11 +41,15 @@ require 'google/storage/property/bucket_lifecycle'
 require 'google/storage/property/bucket_logging'
 require 'google/storage/property/bucket_name'
 require 'google/storage/property/bucket_owner'
+require 'google/storage/property/bucket_predefined_default_object_acl'
 require 'google/storage/property/bucket_project_team'
+require 'google/storage/property/bucket_role'
 require 'google/storage/property/bucket_rule'
+require 'google/storage/property/bucket_storage_class'
+require 'google/storage/property/bucket_team'
+require 'google/storage/property/bucket_type'
 require 'google/storage/property/bucket_versioning'
 require 'google/storage/property/bucket_website'
-require 'google/storage/property/enum'
 require 'google/storage/property/integer'
 require 'google/storage/property/string'
 require 'google/storage/property/string_array'
@@ -96,7 +100,7 @@ Puppet::Type.type(:gstorage_bucket).provide(:google) do
       name: Google::Storage::Property::String.api_munge(fetch['name']),
       owner: Google::Storage::Property::BucketOwner.api_munge(fetch['owner']),
       project_number: Google::Storage::Property::Integer.api_munge(fetch['projectNumber']),
-      storage_class: Google::Storage::Property::Enum.api_munge(fetch['storageClass']),
+      storage_class: Google::Storage::Property::StorageClassEnum.api_munge(fetch['storageClass']),
       time_created: Google::Storage::Property::Time.api_munge(fetch['timeCreated']),
       updated: Google::Storage::Property::Time.api_munge(fetch['updated']),
       versioning: Google::Storage::Property::BucketVersioning.api_munge(fetch['versioning']),

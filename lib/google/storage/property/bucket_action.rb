@@ -85,7 +85,7 @@ module Google
       class BucketActionApi < BucketAction
         def initialize(args)
           @storage_class = Google::Storage::Property::String.api_munge(args['storageClass'])
-          @type = Google::Storage::Property::Enum.api_munge(args['type'])
+          @type = Google::Storage::Property::TypeEnum.api_munge(args['type'])
         end
       end
 
@@ -94,7 +94,7 @@ module Google
       class BucketActionCatalog < BucketAction
         def initialize(args)
           @storage_class = Google::Storage::Property::String.unsafe_munge(args['storage_class'])
-          @type = Google::Storage::Property::Enum.unsafe_munge(args['type'])
+          @type = Google::Storage::Property::TypeEnum.unsafe_munge(args['type'])
         end
       end
     end

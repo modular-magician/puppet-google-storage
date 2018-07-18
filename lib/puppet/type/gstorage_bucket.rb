@@ -36,11 +36,15 @@ require 'google/storage/property/bucket_lifecycle'
 require 'google/storage/property/bucket_logging'
 require 'google/storage/property/bucket_name'
 require 'google/storage/property/bucket_owner'
+require 'google/storage/property/bucket_predefined_default_object_acl'
 require 'google/storage/property/bucket_project_team'
+require 'google/storage/property/bucket_role'
 require 'google/storage/property/bucket_rule'
+require 'google/storage/property/bucket_storage_class'
+require 'google/storage/property/bucket_team'
+require 'google/storage/property/bucket_type'
 require 'google/storage/property/bucket_versioning'
 require 'google/storage/property/bucket_website'
-require 'google/storage/property/enum'
 require 'google/storage/property/integer'
 require 'google/storage/property/string'
 require 'google/storage/property/string_array'
@@ -80,7 +84,8 @@ Puppet::Type.newtype(:gstorage_bucket) do
     desc 'A valid API project identifier.'
   end
 
-  newparam(:predefined_default_object_acl, parent: Google::Storage::Property::Enum) do
+  newparam(:predefined_default_object_acl,
+           parent: Google::Storage::Property::PredefinedDefaultObjectAclEnum) do
     desc <<-DOC
       Apply a predefined set of default object access controls to this bucket. Acceptable values
       are:  - "authenticatedRead": Object owner gets OWNER access, and   allAuthenticatedUsers get
@@ -154,7 +159,7 @@ Puppet::Type.newtype(:gstorage_bucket) do
     desc 'The project number of the project the bucket belongs to. (output only)'
   end
 
-  newproperty(:storage_class, parent: Google::Storage::Property::Enum) do
+  newproperty(:storage_class, parent: Google::Storage::Property::StorageClassEnum) do
     desc <<-DOC
       The bucket's default storage class, used whenever no storageClass is specified for a
       newly-created object. This defines how objects in the bucket are stored and determines the

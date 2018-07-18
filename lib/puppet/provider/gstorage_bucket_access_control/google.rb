@@ -30,9 +30,10 @@ require 'google/storage/network/delete'
 require 'google/storage/network/get'
 require 'google/storage/network/post'
 require 'google/storage/network/put'
+require 'google/storage/property/bucket_access_control_role'
+require 'google/storage/property/bucket_access_control_team'
 require 'google/storage/property/bucket_name'
 require 'google/storage/property/bucketaccesscontrol_project_team'
-require 'google/storage/property/enum'
 require 'google/storage/property/string'
 require 'puppet'
 
@@ -72,7 +73,7 @@ Puppet::Type.type(:gstorage_bucket_access_control).provide(:google) do
       entity_id: Google::Storage::Property::String.api_munge(fetch['entityId']),
       id: Google::Storage::Property::String.api_munge(fetch['id']),
       project_team: Google::Storage::Property::BuckAcceContProjTeam.api_munge(fetch['projectTeam']),
-      role: Google::Storage::Property::Enum.api_munge(fetch['role'])
+      role: Google::Storage::Property::RoleEnum.api_munge(fetch['role'])
     }.reject { |_, v| v.nil? }
   end
 

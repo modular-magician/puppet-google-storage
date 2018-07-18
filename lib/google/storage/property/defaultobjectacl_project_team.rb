@@ -85,7 +85,7 @@ module Google
       class DefaObjeAclProjTeamApi < DefaObjeAclProjTeam
         def initialize(args)
           @project_number = Google::Storage::Property::String.api_munge(args['projectNumber'])
-          @team = Google::Storage::Property::Enum.api_munge(args['team'])
+          @team = Google::Storage::Property::TeamEnum.api_munge(args['team'])
         end
       end
 
@@ -94,7 +94,7 @@ module Google
       class DefaObjeAclProjTeamCatalog < DefaObjeAclProjTeam
         def initialize(args)
           @project_number = Google::Storage::Property::String.unsafe_munge(args['project_number'])
-          @team = Google::Storage::Property::Enum.unsafe_munge(args['team'])
+          @team = Google::Storage::Property::TeamEnum.unsafe_munge(args['team'])
         end
       end
     end

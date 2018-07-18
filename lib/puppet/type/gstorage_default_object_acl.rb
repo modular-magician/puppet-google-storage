@@ -26,8 +26,9 @@
 # ----------------------------------------------------------------------------
 
 require 'google/storage/property/bucket_name'
+require 'google/storage/property/default_object_acl_role'
+require 'google/storage/property/default_object_acl_team'
 require 'google/storage/property/defaultobjectacl_project_team'
-require 'google/storage/property/enum'
 require 'google/storage/property/integer'
 require 'google/storage/property/string'
 require 'puppet'
@@ -110,7 +111,7 @@ Puppet::Type.newtype(:gstorage_default_object_acl) do
     desc 'The project team associated with the entity'
   end
 
-  newproperty(:role, parent: Google::Storage::Property::Enum) do
+  newproperty(:role, parent: Google::Storage::Property::RoleEnum) do
     desc 'The access permission for the entity.'
     newvalue(:OWNER)
     newvalue(:READER)
