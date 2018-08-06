@@ -106,7 +106,7 @@ Puppet::Type.newtype(:gstorage_default_object_acl) do
     desc 'The name of the object, if applied to an object.'
   end
 
-  newproperty(:project_team, parent: Google::Storage::Property::DefaObjeAclProjTeam) do
+  newproperty(:project_team, parent: Google::Storage::Property::DefaultObjectACLProjectTeam) do
     desc 'The project team associated with the entity'
   end
 
