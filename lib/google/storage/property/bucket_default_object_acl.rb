@@ -32,7 +32,7 @@ module Google
   module Storage
     module Data
       # A class to manage data for DefaultObjectAcl for bucket.
-      class BuckeDefauObjecAcl
+      class BucketDefaultObjectAcl
         include Comparable
 
         attr_reader :bucket
@@ -77,7 +77,7 @@ module Google
         end
 
         def ==(other)
-          return false unless other.is_a? BuckeDefauObjecAcl
+          return false unless other.is_a? BucketDefaultObjectAcl
           compare_fields(other).each do |compare|
             next if compare[:self].nil? || compare[:other].nil?
             return false if compare[:self] != compare[:other]
@@ -86,7 +86,7 @@ module Google
         end
 
         def <=>(other)
-          return false unless other.is_a? BuckeDefauObjecAcl
+          return false unless other.is_a? BucketDefaultObjectAcl
           compare_fields(other).each do |compare|
             next if compare[:self].nil? || compare[:other].nil?
             result = compare[:self] <=> compare[:other]
@@ -113,9 +113,9 @@ module Google
         end
       end
 
-      # Manages a BuckeDefauObjecAcl nested object
+      # Manages a BucketDefaultObjectAcl nested object
       # Data is coming from the GCP API
-      class BuckeDefauObjecAclApi < BuckeDefauObjecAcl
+      class BucketDefaultObjectAclApi < BucketDefaultObjectAcl
         def initialize(args)
           @bucket = Google::Storage::Property::BucketNameRef.api_munge(args['bucket'])
           @domain = Google::Storage::Property::String.api_munge(args['domain'])
@@ -131,9 +131,9 @@ module Google
         end
       end
 
-      # Manages a BuckeDefauObjecAcl nested object
+      # Manages a BucketDefaultObjectAcl nested object
       # Data is coming from the Puppet manifest
-      class BuckeDefauObjecAclCatalog < BuckeDefauObjecAcl
+      class BucketDefaultObjectAclCatalog < BucketDefaultObjectAcl
         def initialize(args)
           @bucket = Google::Storage::Property::BucketNameRef.unsafe_munge(args['bucket'])
           @domain = Google::Storage::Property::String.unsafe_munge(args['domain'])
@@ -152,7 +152,7 @@ module Google
 
     module Property
       # A class to manage input to DefaultObjectAcl for bucket.
-      class BuckeDefauObjecAcl < Google::Storage::Property::Base
+      class BucketDefaultObjectAcl < Google::Storage::Property::Base
         # Used for parsing Puppet catalog
         def unsafe_munge(value)
           self.class.unsafe_munge(value)
@@ -161,18 +161,18 @@ module Google
         # Used for parsing Puppet catalog
         def self.unsafe_munge(value)
           return if value.nil?
-          Data::BuckeDefauObjecAclCatalog.new(value)
+          Data::BucketDefaultObjectAclCatalog.new(value)
         end
 
         # Used for parsing GCP API responses
         def self.api_munge(value)
           return if value.nil?
-          Data::BuckeDefauObjecAclApi.new(value)
+          Data::BucketDefaultObjectAclApi.new(value)
         end
       end
 
       # A Puppet property that holds an integer
-      class BuckeDefauObjecAclArray < Google::Storage::Property::Array
+      class BucketDefaultObjectAclArray < Google::Storage::Property::Array
         # Used for parsing Puppet catalog
         def unsafe_munge(value)
           self.class.unsafe_munge(value)
@@ -181,17 +181,17 @@ module Google
         # Used for parsing Puppet catalog
         def self.unsafe_munge(value)
           return if value.nil?
-          return BuckeDefauObjecAcl.unsafe_munge(value) \
+          return BucketDefaultObjectAcl.unsafe_munge(value) \
             unless value.is_a?(::Array)
-          value.map { |v| BuckeDefauObjecAcl.unsafe_munge(v) }
+          value.map { |v| BucketDefaultObjectAcl.unsafe_munge(v) }
         end
 
         # Used for parsing GCP API responses
         def self.api_munge(value)
           return if value.nil?
-          return BuckeDefauObjecAcl.api_munge(value) \
+          return BucketDefaultObjectAcl.api_munge(value) \
             unless value.is_a?(::Array)
-          value.map { |v| BuckeDefauObjecAcl.api_munge(v) }
+          value.map { |v| BucketDefaultObjectAcl.api_munge(v) }
         end
       end
     end
