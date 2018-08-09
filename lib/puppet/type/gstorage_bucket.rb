@@ -107,7 +107,8 @@ Puppet::Type.newtype(:gstorage_bucket) do
     desc "The bucket's Cross-Origin Resource Sharing (CORS) configuration."
   end
 
-  newproperty(:default_object_acl, parent: Google::Storage::Property::BuckeDefauObjecAclArray) do
+  newproperty(:default_object_acl,
+              parent: Google::Storage::Property::BucketDefaultObjectAclArray) do
     desc 'Default access controls to apply to new objects when no ACL is provided.'
   end
 

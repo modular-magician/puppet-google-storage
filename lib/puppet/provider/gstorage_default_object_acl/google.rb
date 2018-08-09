@@ -75,7 +75,8 @@ Puppet::Type.type(:gstorage_default_object_acl).provide(:google) do
       generation: Google::Storage::Property::Integer.api_munge(fetch['generation']),
       id: Google::Storage::Property::String.api_munge(fetch['id']),
       object: Google::Storage::Property::String.api_munge(fetch['object']),
-      project_team: Google::Storage::Property::DefaObjeAclProjTeam.api_munge(fetch['projectTeam']),
+      project_team:
+        Google::Storage::Property::DefaultObjectACLProjectTeam.api_munge(fetch['projectTeam']),
       role: Google::Storage::Property::Enum.api_munge(fetch['role']),
       bucket: resource[:bucket]
     }.reject { |_, v| v.nil? }
