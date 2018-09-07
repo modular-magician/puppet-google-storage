@@ -153,8 +153,7 @@ Puppet::Type.type(:gstorage_bucket).provide(:google) do
 
   def exports
     {
-      name: resource[:name],
-      project: resource[:project]
+      name: resource[:name]
     }
   end
 
