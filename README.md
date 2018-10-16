@@ -432,7 +432,7 @@ Required.  The entity holding the permission, in one of the following forms:
   example.com, the entity would be domain-example.com.
 
 ##### default_object_acl[]/entity_id
-  The ID for the entity
+Output only.  The ID for the entity
 
 ##### default_object_acl[]/generation
 Output only.  The content generation of the object, if applied to an object.
@@ -444,7 +444,7 @@ Output only.  The ID of the access-control entry.
   The name of the object, if applied to an object.
 
 ##### default_object_acl[]/project_team
-  The project team associated with the entity
+Output only.  The project team associated with the entity
 
 ##### default_object_acl[]/project_team/project_number
   The project team associated with the entity
@@ -453,7 +453,7 @@ Output only.  The ID of the access-control entry.
   The team.
 
 ##### default_object_acl[]/role
-  The access permission for the entity.
+Required.  The access permission for the entity.
 
 ##### `lifecycle`
 
@@ -734,6 +734,9 @@ object is always an OWNER.
 For more information, see Access Control, with the caveat that this API
 uses READER and OWNER instead of READ and FULL_CONTROL.
 
+#### Reference Guides
+* [API Reference](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls)
+* [Official Documentation](https://cloud.google.com/storage/docs/access-control/create-manage-lists)
 
 #### Example
 
@@ -795,27 +798,13 @@ Required.  The entity holding the permission, in one of the following forms:
   To refer to all members of the Google Apps for Business domain
   example.com, the entity would be domain-example.com.
 
-##### `entity_id`
-
-  The ID for the entity
-
 ##### `object`
 
 Required.  The name of the object, if applied to an object.
 
-##### `project_team`
-
-  The project team associated with the entity
-
-##### project_team/project_number
-  The project team associated with the entity
-
-##### project_team/team
-  The team.
-
 ##### `role`
 
-  The access permission for the entity.
+Required.  The access permission for the entity.
 
 
 ##### Output-only properties
@@ -826,11 +815,23 @@ Required.  The name of the object, if applied to an object.
 * `email`: Output only.
   The email address associated with the entity.
 
+* `entity_id`: Output only.
+  The ID for the entity
+
 * `generation`: Output only.
   The content generation of the object, if applied to an object.
 
 * `id`: Output only.
   The ID of the access-control entry.
+
+* `project_team`: Output only.
+  The project team associated with the entity
+
+##### project_team/project_number
+  The project team associated with the entity
+
+##### project_team/team
+  The team.
 
 #### `gstorage_default_object_acl`
 
@@ -907,27 +908,13 @@ Required.  The entity holding the permission, in one of the following forms:
   To refer to all members of the Google Apps for Business domain
   example.com, the entity would be domain-example.com.
 
-##### `entity_id`
-
-  The ID for the entity
-
 ##### `object`
 
   The name of the object, if applied to an object.
 
-##### `project_team`
-
-  The project team associated with the entity
-
-##### project_team/project_number
-  The project team associated with the entity
-
-##### project_team/team
-  The team.
-
 ##### `role`
 
-  The access permission for the entity.
+Required.  The access permission for the entity.
 
 
 ##### Output-only properties
@@ -938,11 +925,23 @@ Required.  The entity holding the permission, in one of the following forms:
 * `email`: Output only.
   The email address associated with the entity.
 
+* `entity_id`: Output only.
+  The ID for the entity
+
 * `generation`: Output only.
   The content generation of the object, if applied to an object.
 
 * `id`: Output only.
   The ID of the access-control entry.
+
+* `project_team`: Output only.
+  The project team associated with the entity
+
+##### project_team/project_number
+  The project team associated with the entity
+
+##### project_team/team
+  The team.
 
 
 ### Bolt Tasks

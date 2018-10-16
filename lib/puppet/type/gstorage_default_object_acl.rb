@@ -91,7 +91,7 @@ Puppet::Type.newtype(:gstorage_default_object_acl) do
   end
 
   newproperty(:entity_id, parent: Google::Storage::Property::String) do
-    desc 'The ID for the entity'
+    desc 'The ID for the entity (output only)'
   end
 
   newproperty(:generation, parent: Google::Storage::Property::Integer) do
@@ -107,7 +107,7 @@ Puppet::Type.newtype(:gstorage_default_object_acl) do
   end
 
   newproperty(:project_team, parent: Google::Storage::Property::DefaultObjectACLProjectTeam) do
-    desc 'The project team associated with the entity'
+    desc 'The project team associated with the entity (output only)'
   end
 
   newproperty(:role, parent: Google::Storage::Property::Enum) do

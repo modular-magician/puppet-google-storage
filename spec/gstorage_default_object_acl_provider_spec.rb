@@ -84,48 +84,33 @@ describe Puppet::Type.type(:gstorage_default_object_acl).provider(:google) do
                 }
 
                 gstorage_default_object_acl { 'title0':
-                  ensure       => present,
-                  bucket       => 'resource(bucket,0)',
-                  entity       => 'test entity#0 data',
-                  entity_id    => 'test entity_id#0 data',
-                  object       => 'test object#0 data',
-                  role         => 'OWNER',
-                  project_team => {
-                    team           => 'editors',
-                    project_number => 'test project_number#0 data',
-                  },
-                  project      => 'test project#0 data',
-                  credential   => 'cred0',
+                  ensure     => present,
+                  bucket     => 'resource(bucket,0)',
+                  entity     => 'test entity#0 data',
+                  object     => 'test object#0 data',
+                  role       => 'OWNER',
+                  project    => 'test project#0 data',
+                  credential => 'cred0',
                 }
 
                 gstorage_default_object_acl { 'title1':
-                  ensure       => present,
-                  bucket       => 'resource(bucket,1)',
-                  entity       => 'test entity#1 data',
-                  entity_id    => 'test entity_id#1 data',
-                  object       => 'test object#1 data',
-                  role         => 'READER',
-                  project_team => {
-                    team           => 'owners',
-                    project_number => 'test project_number#1 data',
-                  },
-                  project      => 'test project#1 data',
-                  credential   => 'cred1',
+                  ensure     => present,
+                  bucket     => 'resource(bucket,1)',
+                  entity     => 'test entity#1 data',
+                  object     => 'test object#1 data',
+                  role       => 'READER',
+                  project    => 'test project#1 data',
+                  credential => 'cred1',
                 }
 
                 gstorage_default_object_acl { 'title2':
-                  ensure       => present,
-                  bucket       => 'resource(bucket,2)',
-                  entity       => 'test entity#2 data',
-                  entity_id    => 'test entity_id#2 data',
-                  object       => 'test object#2 data',
-                  role         => 'OWNER',
-                  project_team => {
-                    team           => 'viewers',
-                    project_number => 'test project_number#2 data',
-                  },
-                  project      => 'test project#2 data',
-                  credential   => 'cred2',
+                  ensure     => present,
+                  bucket     => 'resource(bucket,2)',
+                  entity     => 'test entity#2 data',
+                  object     => 'test object#2 data',
+                  role       => 'OWNER',
+                  project    => 'test project#2 data',
+                  credential => 'cred2',
                 }
                 MANIFEST
               ).catalog
@@ -250,48 +235,33 @@ describe Puppet::Type.type(:gstorage_default_object_acl).provider(:google) do
                 }
 
                 gstorage_default_object_acl { 'title0':
-                  ensure       => present,
-                  bucket       => 'resource(bucket,0)',
-                  entity       => 'test entity#0 data',
-                  entity_id    => 'test entity_id#0 data',
-                  object       => 'test object#0 data',
-                  role         => 'OWNER',
-                  project_team => {
-                    team           => 'editors',
-                    project_number => 'test project_number#0 data',
-                  },
-                  project      => 'test project#0 data',
-                  credential   => 'cred0',
+                  ensure     => present,
+                  bucket     => 'resource(bucket,0)',
+                  entity     => 'test entity#0 data',
+                  object     => 'test object#0 data',
+                  role       => 'OWNER',
+                  project    => 'test project#0 data',
+                  credential => 'cred0',
                 }
 
                 gstorage_default_object_acl { 'title1':
-                  ensure       => present,
-                  bucket       => 'resource(bucket,1)',
-                  entity       => 'test entity#1 data',
-                  entity_id    => 'test entity_id#1 data',
-                  object       => 'test object#1 data',
-                  role         => 'READER',
-                  project_team => {
-                    team           => 'owners',
-                    project_number => 'test project_number#1 data',
-                  },
-                  project      => 'test project#1 data',
-                  credential   => 'cred1',
+                  ensure     => present,
+                  bucket     => 'resource(bucket,1)',
+                  entity     => 'test entity#1 data',
+                  object     => 'test object#1 data',
+                  role       => 'READER',
+                  project    => 'test project#1 data',
+                  credential => 'cred1',
                 }
 
                 gstorage_default_object_acl { 'title2':
-                  ensure       => present,
-                  bucket       => 'resource(bucket,2)',
-                  entity       => 'test entity#2 data',
-                  entity_id    => 'test entity_id#2 data',
-                  object       => 'test object#2 data',
-                  role         => 'OWNER',
-                  project_team => {
-                    team           => 'viewers',
-                    project_number => 'test project_number#2 data',
-                  },
-                  project      => 'test project#2 data',
-                  credential   => 'cred2',
+                  ensure     => present,
+                  bucket     => 'resource(bucket,2)',
+                  entity     => 'test entity#2 data',
+                  object     => 'test object#2 data',
+                  role       => 'OWNER',
+                  project    => 'test project#2 data',
+                  credential => 'cred2',
                 }
                 MANIFEST
               ).catalog
@@ -423,12 +393,7 @@ describe Puppet::Type.type(:gstorage_default_object_acl).provider(:google) do
                 'kind' => 'storage#objectAccessControl',
                 'bucket' => 'test name#0 data',
                 'entity' => 'test entity#0 data',
-                'entityId' => 'test entity_id#0 data',
                 'object' => 'test object#0 data',
-                'projectTeam' => {
-                  'projectNumber' => 'test project_number#0 data',
-                  'team' => 'editors'
-                },
                 'role' => 'OWNER'
               },
               bucket: 'test name#0 data'
@@ -446,18 +411,13 @@ describe Puppet::Type.type(:gstorage_default_object_acl).provider(:google) do
               }
 
               gstorage_default_object_acl { 'title0':
-                ensure       => present,
-                bucket       => 'resource(bucket,0)',
-                entity       => 'test entity#0 data',
-                entity_id    => 'test entity_id#0 data',
-                object       => 'test object#0 data',
-                role         => 'OWNER',
-                project_team => {
-                  team           => 'editors',
-                  project_number => 'test project_number#0 data',
-                },
-                project      => 'test project#0 data',
-                credential   => 'cred0',
+                ensure     => present,
+                bucket     => 'resource(bucket,0)',
+                entity     => 'test entity#0 data',
+                object     => 'test object#0 data',
+                role       => 'OWNER',
+                project    => 'test project#0 data',
+                credential => 'cred0',
               }
               MANIFEST
             ).catalog.resource('Gstorage_default_object_acl[title0]').provider.ensure
@@ -486,12 +446,7 @@ describe Puppet::Type.type(:gstorage_default_object_acl).provider(:google) do
                 'kind' => 'storage#objectAccessControl',
                 'bucket' => 'test name#0 data',
                 'entity' => 'test entity#0 data',
-                'entityId' => 'test entity_id#0 data',
                 'object' => 'test object#0 data',
-                'projectTeam' => {
-                  'projectNumber' => 'test project_number#0 data',
-                  'team' => 'editors'
-                },
                 'role' => 'OWNER'
               },
               bucket: 'test name#0 data'
@@ -509,18 +464,13 @@ describe Puppet::Type.type(:gstorage_default_object_acl).provider(:google) do
               }
 
               gstorage_default_object_acl { 'title0':
-                ensure       => present,
-                bucket       => 'resource(bucket,0)',
-                entity       => 'test entity#0 data',
-                entity_id    => 'test entity_id#0 data',
-                object       => 'test object#0 data',
-                role         => 'OWNER',
-                project_team => {
-                  team           => 'editors',
-                  project_number => 'test project_number#0 data',
-                },
-                project      => 'test project#0 data',
-                credential   => 'cred0',
+                ensure     => present,
+                bucket     => 'resource(bucket,0)',
+                entity     => 'test entity#0 data',
+                object     => 'test object#0 data',
+                role       => 'OWNER',
+                project    => 'test project#0 data',
+                credential => 'cred0',
               }
               MANIFEST
             ).catalog.resource('Gstorage_default_object_acl[title0]').provider.ensure
@@ -564,6 +514,7 @@ describe Puppet::Type.type(:gstorage_default_object_acl).provider(:google) do
                 ensure     => absent,
                 bucket     => 'resource(bucket,0)',
                 entity     => 'test entity#0 data',
+                role       => 'OWNER',
                 project    => 'test project#0 data',
                 credential => 'cred0',
               }
@@ -606,6 +557,7 @@ describe Puppet::Type.type(:gstorage_default_object_acl).provider(:google) do
                 ensure     => absent,
                 bucket     => 'resource(bucket,0)',
                 entity     => 'test entity#0 data',
+                role       => 'OWNER',
                 project    => 'test project#0 data',
                 credential => 'cred0',
               }
@@ -651,6 +603,7 @@ describe Puppet::Type.type(:gstorage_default_object_acl).provider(:google) do
                 ensure     => absent,
                 bucket     => 'resource(bucket,0)',
                 entity     => 'test entity#0 data',
+                role       => 'OWNER',
                 project    => 'test project#0 data',
                 credential => 'cred0',
               }
@@ -694,6 +647,7 @@ describe Puppet::Type.type(:gstorage_default_object_acl).provider(:google) do
                 ensure     => absent,
                 bucket     => 'resource(bucket,0)',
                 entity     => 'test entity#0 data',
+                role       => 'OWNER',
                 project    => 'test project#0 data',
                 credential => 'cred0',
               }
