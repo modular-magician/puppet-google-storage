@@ -151,9 +151,7 @@ Puppet::Type.type(:gstorage_default_object_acl).provide(:google) do
       kind: 'storage#objectAccessControl',
       bucket: @resource[:bucket],
       entity: @resource[:entity],
-      entityId: @resource[:entity_id],
       object: @resource[:object],
-      projectTeam: @resource[:project_team],
       role: @resource[:role]
     }.reject { |_, v| v.nil? }
     debug "request: #{request}" unless ENV['PUPPET_HTTP_DEBUG'].nil?
