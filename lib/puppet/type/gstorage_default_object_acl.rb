@@ -81,17 +81,17 @@ Puppet::Type.newtype(:gstorage_default_object_acl) do
 
   newproperty(:entity, parent: Google::Storage::Property::String) do
     desc <<-DOC
-      The entity holding the permission, in one of the following forms:  user-userId  user-email
-      group-groupId  group-email  domain-domain  project-team-projectId  allUsers
-      allAuthenticatedUsers Examples:  The user liz@example.com would be user-liz@example.com.  The
-      group example@googlegroups.com would be  group-example@googlegroups.com.  To refer to all
-      members of the Google Apps for Business domain  example.com, the entity would be
-      domain-example.com.
+      The entity holding the permission, in one of the following forms:  * user-userId  *
+      user-email  * group-groupId  * group-email  * domain-domain  * project-team-projectId  *
+      allUsers  * allAuthenticatedUsers Examples:  The user liz@example.com would be
+      user-liz@example.com.  The group example@googlegroups.com would be
+      group-example@googlegroups.com.  To refer to all members of the Google Apps for Business
+      domain  example.com, the entity would be domain-example.com.
     DOC
   end
 
   newproperty(:entity_id, parent: Google::Storage::Property::String) do
-    desc 'The ID for the entity'
+    desc 'The ID for the entity (output only)'
   end
 
   newproperty(:generation, parent: Google::Storage::Property::Integer) do
@@ -107,7 +107,7 @@ Puppet::Type.newtype(:gstorage_default_object_acl) do
   end
 
   newproperty(:project_team, parent: Google::Storage::Property::DefaultObjectACLProjectTeam) do
-    desc 'The project team associated with the entity'
+    desc 'The project team associated with the entity (output only)'
   end
 
   newproperty(:role, parent: Google::Storage::Property::Enum) do
