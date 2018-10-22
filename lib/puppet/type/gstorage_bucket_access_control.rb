@@ -98,7 +98,7 @@ Puppet::Type.newtype(:gstorage_bucket_access_control) do
     desc 'The ID of the access-control entry. (output only)'
   end
 
-  newproperty(:project_team, parent: Google::Storage::Property::BucketAccessControlProjectTeam) do
+  newproperty(:project_team, parent: Google::Storage::Property::BucketAccessControlProjectteam) do
     desc 'The project team associated with the entity'
   end
 

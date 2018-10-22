@@ -108,7 +108,7 @@ Puppet::Type.newtype(:gstorage_bucket) do
   end
 
   newproperty(:default_object_acl,
-              parent: Google::Storage::Property::BucketDefaultObjectAclArray) do
+              parent: Google::Storage::Property::BucketDefaultobjectaclArray) do
     desc 'Default access controls to apply to new objects when no ACL is provided.'
   end
 

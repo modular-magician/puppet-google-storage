@@ -32,7 +32,7 @@ module Google
   module Storage
     module Data
       # A class to manage data for DefaultObjectAcl for bucket.
-      class BucketDefaultObjectAcl
+      class BucketDefaultobjectacl
         include Comparable
 
         attr_reader :bucket
@@ -77,7 +77,7 @@ module Google
         end
 
         def ==(other)
-          return false unless other.is_a? BucketDefaultObjectAcl
+          return false unless other.is_a? BucketDefaultobjectacl
           compare_fields(other).each do |compare|
             next if compare[:self].nil? || compare[:other].nil?
             return false if compare[:self] != compare[:other]
@@ -86,7 +86,7 @@ module Google
         end
 
         def <=>(other)
-          return false unless other.is_a? BucketDefaultObjectAcl
+          return false unless other.is_a? BucketDefaultobjectacl
           compare_fields(other).each do |compare|
             next if compare[:self].nil? || compare[:other].nil?
             result = compare[:self] <=> compare[:other]
@@ -113,9 +113,9 @@ module Google
         end
       end
 
-      # Manages a BucketDefaultObjectAcl nested object
+      # Manages a BucketDefaultobjectacl nested object
       # Data is coming from the GCP API
-      class BucketDefaultObjectAclApi < BucketDefaultObjectAcl
+      class BucketDefaultobjectaclApi < BucketDefaultobjectacl
         def initialize(args)
           @bucket = Google::Storage::Property::BucketNameRef.api_munge(args['bucket'])
           @domain = Google::Storage::Property::String.api_munge(args['domain'])
@@ -126,14 +126,14 @@ module Google
           @id = Google::Storage::Property::String.api_munge(args['id'])
           @object = Google::Storage::Property::String.api_munge(args['object'])
           @project_team =
-            Google::Storage::Property::BucketProjectTeam.api_munge(args['projectTeam'])
+            Google::Storage::Property::BucketProjectteam.api_munge(args['projectTeam'])
           @role = Google::Storage::Property::Enum.api_munge(args['role'])
         end
       end
 
-      # Manages a BucketDefaultObjectAcl nested object
+      # Manages a BucketDefaultobjectacl nested object
       # Data is coming from the Puppet manifest
-      class BucketDefaultObjectAclCatalog < BucketDefaultObjectAcl
+      class BucketDefaultobjectaclCatalog < BucketDefaultobjectacl
         def initialize(args)
           @bucket = Google::Storage::Property::BucketNameRef.unsafe_munge(args['bucket'])
           @domain = Google::Storage::Property::String.unsafe_munge(args['domain'])
@@ -144,7 +144,7 @@ module Google
           @id = Google::Storage::Property::String.unsafe_munge(args['id'])
           @object = Google::Storage::Property::String.unsafe_munge(args['object'])
           @project_team =
-            Google::Storage::Property::BucketProjectTeam.unsafe_munge(args['project_team'])
+            Google::Storage::Property::BucketProjectteam.unsafe_munge(args['project_team'])
           @role = Google::Storage::Property::Enum.unsafe_munge(args['role'])
         end
       end
@@ -152,7 +152,7 @@ module Google
 
     module Property
       # A class to manage input to DefaultObjectAcl for bucket.
-      class BucketDefaultObjectAcl < Google::Storage::Property::Base
+      class BucketDefaultobjectacl < Google::Storage::Property::Base
         # Used for parsing Puppet catalog
         def unsafe_munge(value)
           self.class.unsafe_munge(value)
@@ -161,18 +161,18 @@ module Google
         # Used for parsing Puppet catalog
         def self.unsafe_munge(value)
           return if value.nil?
-          Data::BucketDefaultObjectAclCatalog.new(value)
+          Data::BucketDefaultobjectaclCatalog.new(value)
         end
 
         # Used for parsing GCP API responses
         def self.api_munge(value)
           return if value.nil?
-          Data::BucketDefaultObjectAclApi.new(value)
+          Data::BucketDefaultobjectaclApi.new(value)
         end
       end
 
       # A Puppet property that holds an integer
-      class BucketDefaultObjectAclArray < Google::Storage::Property::Array
+      class BucketDefaultobjectaclArray < Google::Storage::Property::Array
         # Used for parsing Puppet catalog
         def unsafe_munge(value)
           self.class.unsafe_munge(value)
@@ -181,17 +181,17 @@ module Google
         # Used for parsing Puppet catalog
         def self.unsafe_munge(value)
           return if value.nil?
-          return BucketDefaultObjectAcl.unsafe_munge(value) \
+          return BucketDefaultobjectacl.unsafe_munge(value) \
             unless value.is_a?(::Array)
-          value.map { |v| BucketDefaultObjectAcl.unsafe_munge(v) }
+          value.map { |v| BucketDefaultobjectacl.unsafe_munge(v) }
         end
 
         # Used for parsing GCP API responses
         def self.api_munge(value)
           return if value.nil?
-          return BucketDefaultObjectAcl.api_munge(value) \
+          return BucketDefaultobjectacl.api_munge(value) \
             unless value.is_a?(::Array)
-          value.map { |v| BucketDefaultObjectAcl.api_munge(v) }
+          value.map { |v| BucketDefaultobjectacl.api_munge(v) }
         end
       end
     end

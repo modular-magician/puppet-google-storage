@@ -75,7 +75,7 @@ Puppet::Type.type(:gstorage_object_access_control).provide(:google) do
       id: Google::Storage::Property::String.api_munge(fetch['id']),
       object: Google::Storage::Property::String.api_munge(fetch['object']),
       project_team:
-        Google::Storage::Property::ObjectAccessControlProjectTeam.api_munge(fetch['projectTeam']),
+        Google::Storage::Property::ObjectAccessControlProjectteam.api_munge(fetch['projectTeam']),
       role: Google::Storage::Property::Enum.api_munge(fetch['role'])
     }.reject { |_, v| v.nil? }
   end
