@@ -104,7 +104,7 @@ Puppet::Type.newtype(:gstorage_object_access_control) do
     desc 'The name of the object, if applied to an object.'
   end
 
-  newproperty(:project_team, parent: Google::Storage::Property::ObjectAccessControlProjectTeam) do
+  newproperty(:project_team, parent: Google::Storage::Property::ObjectAccessControlProjectteam) do
     desc 'The project team associated with the entity (output only)'
   end
 

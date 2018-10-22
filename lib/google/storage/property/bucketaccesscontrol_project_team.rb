@@ -31,7 +31,7 @@ module Google
   module Storage
     module Data
       # A class to manage data for ProjectTeam for bucket_access_control.
-      class BucketAccessControlProjectTeam
+      class BucketAccessControlProjectteam
         include Comparable
 
         attr_reader :project_number
@@ -52,7 +52,7 @@ module Google
         end
 
         def ==(other)
-          return false unless other.is_a? BucketAccessControlProjectTeam
+          return false unless other.is_a? BucketAccessControlProjectteam
           compare_fields(other).each do |compare|
             next if compare[:self].nil? || compare[:other].nil?
             return false if compare[:self] != compare[:other]
@@ -61,7 +61,7 @@ module Google
         end
 
         def <=>(other)
-          return false unless other.is_a? BucketAccessControlProjectTeam
+          return false unless other.is_a? BucketAccessControlProjectteam
           compare_fields(other).each do |compare|
             next if compare[:self].nil? || compare[:other].nil?
             result = compare[:self] <=> compare[:other]
@@ -80,18 +80,18 @@ module Google
         end
       end
 
-      # Manages a BucketAccessControlProjectTeam nested object
+      # Manages a BucketAccessControlProjectteam nested object
       # Data is coming from the GCP API
-      class BucketAccessControlProjectTeamApi < BucketAccessControlProjectTeam
+      class BucketAccessControlProjectteamApi < BucketAccessControlProjectteam
         def initialize(args)
           @project_number = Google::Storage::Property::String.api_munge(args['projectNumber'])
           @team = Google::Storage::Property::Enum.api_munge(args['team'])
         end
       end
 
-      # Manages a BucketAccessControlProjectTeam nested object
+      # Manages a BucketAccessControlProjectteam nested object
       # Data is coming from the Puppet manifest
-      class BucketAccessControlProjectTeamCatalog < BucketAccessControlProjectTeam
+      class BucketAccessControlProjectteamCatalog < BucketAccessControlProjectteam
         def initialize(args)
           @project_number = Google::Storage::Property::String.unsafe_munge(args['project_number'])
           @team = Google::Storage::Property::Enum.unsafe_munge(args['team'])
@@ -101,7 +101,7 @@ module Google
 
     module Property
       # A class to manage input to ProjectTeam for bucket_access_control.
-      class BucketAccessControlProjectTeam < Google::Storage::Property::Base
+      class BucketAccessControlProjectteam < Google::Storage::Property::Base
         # Used for parsing Puppet catalog
         def unsafe_munge(value)
           self.class.unsafe_munge(value)
@@ -110,13 +110,13 @@ module Google
         # Used for parsing Puppet catalog
         def self.unsafe_munge(value)
           return if value.nil?
-          Data::BucketAccessControlProjectTeamCatalog.new(value)
+          Data::BucketAccessControlProjectteamCatalog.new(value)
         end
 
         # Used for parsing GCP API responses
         def self.api_munge(value)
           return if value.nil?
-          Data::BucketAccessControlProjectTeamApi.new(value)
+          Data::BucketAccessControlProjectteamApi.new(value)
         end
       end
     end
